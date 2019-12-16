@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Android-Q CTS&amp;CTS-Verifier测试差异总结 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
+  <meta name="description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
 <meta name="keywords" content="Android,CTS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-Q CTS&amp;CTS-Verifier测试差异总结">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
+<meta property="og:description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2019-12-16T17:46:48.178Z">
+<meta property="og:updated_time" content="2019-12-16T18:06:29.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -181,7 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Android-Q-CTS-amp-CTS-Verifier测试差异总结"><a href="#Android-Q-CTS-amp-CTS-Verifier测试差异总结" class="headerlink" title="Android-Q CTS &amp; CTS-Verifier测试差异总结"></a>Android-Q CTS &amp; CTS-Verifier测试差异总结</h1><p><strong>首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。</strong></p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>执行Android-Q CTS测试，你需要准备：</p>
+<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>执行Android-Q CTS测试，你需要准备：</p>
 <blockquote>
 <ul>
 <li>Linux系统电脑</li>
@@ -190,8 +190,7 @@
 </blockquote>
 <a id="more"></a>
 
-<hr>
-<h2 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h2><ol>
+<h2 id="二、CTS"><a href="#二、CTS" class="headerlink" title="二、CTS"></a>二、CTS</h2><ol>
 <li>使用Linux系统，电脑内存最低要求16G，使用8G内存PC会导致生成的报告异常，不能进行retry；</li>
 <li>需修改工具包tools目录下cts-tradefed文件最后一行修改为：<blockquote>
 <p>java $RDBG_FLAG <strong><font color="#ff0000">–Xmx32g</font></strong> -XX:+HeapDumpOnOutOfMemoryError  </p>
@@ -205,8 +204,7 @@
 <li>筛选过滤模块指令<code>--exclude-filter &lt;module name&gt;</code>在10.0CTS控制台中概率性不生效，意味着retry将需要更长时间；  </li>
 <li>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">切勿使用</font></strong>已root系统执行CTS-on-gsi与VTS测试。</li>
 </ol>
-<hr>
-<h2 id="CTS-Verifier"><a href="#CTS-Verifier" class="headerlink" title="CTS-Verifier"></a>CTS-Verifier</h2><ol>
+<h2 id="三、CTS-Verifier"><a href="#三、CTS-Verifier" class="headerlink" title="三、CTS-Verifier"></a>三、CTS-Verifier</h2><ol>
 <li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/2019/12/07/Android-Q/apk_name.png" alt="Apk"><blockquote>
 <p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可</p>
 </blockquote>
@@ -339,7 +337,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-Q-CTS-amp-CTS-Verifier测试差异总结"><span class="toc-number">1.</span> <span class="toc-text">Android-Q CTS &amp; CTS-Verifier测试差异总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CTS"><span class="toc-number">1.2.</span> <span class="toc-text">CTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CTS-Verifier"><span class="toc-number">1.3.</span> <span class="toc-text">CTS-Verifier</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-Q-CTS-amp-CTS-Verifier测试差异总结"><span class="toc-number">1.</span> <span class="toc-text">Android-Q CTS &amp; CTS-Verifier测试差异总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、CTS"><span class="toc-number">1.2.</span> <span class="toc-text">二、CTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、CTS-Verifier"><span class="toc-number">1.3.</span> <span class="toc-text">三、CTS-Verifier</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
