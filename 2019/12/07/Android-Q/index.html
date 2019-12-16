@@ -20,7 +20,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2019-12-16T16:39:15.289Z">
+<meta property="og:updated_time" content="2019-12-16T17:00:04.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -203,23 +203,25 @@
 <li>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备/不能挂载MTP设备”警告窗口。鉴于目前18版本较之前相对稳定，可考虑切换至18.04版本开展测试；</li>
 <li>执行完一轮测试后，需关闭当前命令行窗口另开窗口进行retry（使用Ctrl+C终止或输入exit退出当前控制台也可以）。原因是执行测试时Java程序会占用大量内存，关闭已执行完成窗口释放系统内存，否则将导致运行卡顿甚至生成的报告出现问题。可使用系统工具<strong>System Monitor</strong>查看内存实时占用情况；</li>
 <li>筛选过滤模块指令<code>--exclude-filter &lt;module name&gt;</code>在10.0CTS控制台中概率性不生效，意味着retry将需要更长时间；</li>
-<li>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">切勿使用</font></strong>已root系统执行CTS-on-gsi与VTS测试。  </li>
+<li>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">切勿使用</font></strong>已root系统执行CTS-on-gsi与VTS测试。</li>
 </ol>
 <hr>
 <h2 id="CTS-Verifier"><a href="#CTS-Verifier" class="headerlink" title="CTS-Verifier"></a>CTS-Verifier</h2><ol>
-<li><p>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：</p>
+<li><p>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：  </p>
 <blockquote>
-<p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可</p>
+<p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可  </p>
 </blockquote>
-<p> <img src="/2019/12/07/Android-Q/apk_name.png" alt="Apk"><br> 1.1 MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/2019/12/07/Android-Q/MIDI_Test.png" alt="MIDI_test"><br> 1.2 <del>ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/2019/12/07/Android-Q/ProAudio_Test.png" alt="MIDI_test"></p>
+<p> <img src="/2019/12/07/Android-Q/apk_name.png" alt="Apk"></p>
+<ul>
+<li>MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/2019/12/07/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
+<li><del>ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/2019/12/07/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
+</ul>
 </li>
-<li><p><code>HARDWARE</code>模块裁减了GNSS和GPS相关测试项；  </p>
+<li><p><code>HARDWARE</code>模块裁减了GNSS和GPS相关测试项；</p>
 </li>
 <li><p><code>SECURITY</code>模块新增生物锁相关项case，即Biometric Prompt Bound Keys Test与Biometric Test;</p>
 </li>
-<li><p>Android-Q Cts-verifier需要键入如下命令：<br><code>adb shell appops set com.android.cts.verifier android:read_device_identifiers allow</code><br>然后点击Verifier界面右上角保存按钮，才能生成报告文件。  </p>
-</li>
-<li><p>测试换行问题</p>
+<li><p>Android-Q Cts-verifier需要键入如下命令：<br><code>adb shell appops set com.android.cts.verifier android:read_device_identifiers allow</code><br>然后点击Verifier界面右上角保存按钮，才能生成报告文件。</p>
 </li>
 </ol>
 
