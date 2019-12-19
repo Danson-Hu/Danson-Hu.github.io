@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Android-Q CTS &amp; CTS-Verifier测试差异总结 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
+  <meta name="description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作从Android-P切换到Android-Q CTS测试，你需要额外准备：   Linux系统电脑（内存最低16G） 谷歌Android-Q CT">
 <meta name="keywords" content="Android,GMS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-Q CTS &amp; CTS-Verifier测试差异总结">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
+<meta property="og:description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作从Android-P切换到Android-Q CTS测试，你需要额外准备：   Linux系统电脑（内存最低16G） 谷歌Android-Q CT">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2019-12-19T15:46:56.463Z">
+<meta property="og:updated_time" content="2019-12-19T16:16:44.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -33,7 +33,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#ccc,#000);
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
   </style>
   
@@ -181,11 +181,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Android-Q-CTS-amp-CTS-Verifier测试差异总结"><a href="#Android-Q-CTS-amp-CTS-Verifier测试差异总结" class="headerlink" title="Android-Q CTS &amp; CTS-Verifier测试差异总结"></a>Android-Q CTS &amp; CTS-Verifier测试差异总结</h1><p><strong>首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。</strong></p>
-<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>执行Android-Q CTS测试，你需要准备：</p>
+<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>从Android-P切换到Android-Q CTS测试，你需要额外准备：</p>
 <blockquote>
 <ul>
-<li>Linux系统电脑</li>
-<li>谷歌CTS测试套件，<a href="https://source.android.com/compatibility/cts/downloads" target="_blank" rel="noopener">进入官网</a>下载对应版本工具</li>
+<li>Linux系统电脑（内存最低16G）</li>
+<li>谷歌Android-Q CTS测试套件，<a href="https://source.android.com/compatibility/cts/downloads" target="_blank" rel="noopener">进入官网</a>下载对应版本工具</li>
+<li>USB-MIDI回环线和Bluetooth-MIDI回环线</li>
 </ul>
 </blockquote>
 <a id="more"></a>
@@ -470,14 +471,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Android</a>
               </li>
              
@@ -486,7 +479,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">test，随笔</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">test</a>
               </li>
             
             <div class="clearfix"></div>
