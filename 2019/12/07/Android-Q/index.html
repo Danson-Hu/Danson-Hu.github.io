@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Android-Q CTS&amp;CTS-Verifier测试差异总结 | Danson</title>
+  <title>Android-Q | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
-<meta name="keywords" content="Android,CTS">
+<meta name="keywords" content="GMS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android-Q CTS&amp;CTS-Verifier测试差异总结">
+<meta property="og:title" content="Android-Q">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="Android-Q CTS &amp;amp; CTS-Verifier测试差异总结首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作执行Android-Q CTS测试，你需要准备：   Linux系统电脑 谷歌CTS测试套件，进入官网下载对应版本工具">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2019-12-16T18:06:29.467Z">
+<meta property="og:updated_time" content="2019-12-19T13:19:28.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -65,7 +65,9 @@
 	        
 				<li><a href="/archives/">归档</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/categories/">分类</a></li>
+	        
+				<li><a href="/tags/">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -123,6 +125,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -141,11 +145,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives/">归档</a></li>
+					<li style="width: 25%"><a href="/archives/">归档</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/categories/">分类</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -167,7 +173,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Android-Q CTS&amp;CTS-Verifier测试差异总结
+      Android-Q
     </h1>
   
 
@@ -208,10 +214,10 @@
 <li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/2019/12/07/Android-Q/apk_name.png" alt="Apk"><blockquote>
 <p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可</p>
 </blockquote>
-<ul>
+<ol>
 <li>MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/2019/12/07/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
 <li><del>ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/2019/12/07/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
-</ul>
+</ol>
 </li>
 <li><code>HARDWARE</code>模块裁剪了GNSS和GPS相关测试项；</li>
 <li><code>SECURITY</code>模块新增生物锁相关项case，即Biometric Prompt Bound Keys Test与Biometric Test;</li>
@@ -230,17 +236,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">CTS</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">GMS</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -308,7 +321,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          想一个梦
+          Think_of_a_dream
         
       </div>
     </a>
@@ -457,15 +470,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">CTS</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">python基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">精神病患写的诗</a>
               </li>
             
             <div class="clearfix"></div>
@@ -516,7 +529,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;做了一些微小的贡献</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一些微小的贡献</div>
   	  	
     	</section>
     
@@ -590,5 +603,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>
