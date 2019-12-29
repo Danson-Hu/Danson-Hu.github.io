@@ -179,35 +179,31 @@
       
         <h2 id="一：Ubuntu缓存目录media资源包被删除问题"><a href="#一：Ubuntu缓存目录media资源包被删除问题" class="headerlink" title="一：Ubuntu缓存目录media资源包被删除问题"></a>一：Ubuntu缓存目录media资源包被删除问题</h2><p>执行CTS-media相关模块测试时，会检查电脑<code>/tmp/android-cts-media</code>文件夹，Ubuntu重启后tmp缓存目录下的文件将会被清空，导致执行测试时将近6G的资源包需要重新下载，不仅消耗时间而且会占用大量网络，为让资源包不被删除，找到两种方法解决。</p>
 <ol>
-<li><p>在Linux文件系统里，chattr可以改变文件的属性；使用<code>chattr</code>命令修改文件夹权限，<code>lsattr</code>命令查看<br> <code>sudo chattr -V -R +a +u /tmp/android-cts-media</code>  </p>
-<blockquote>
-<p>-R：递归处理，将指定目录下的所有文件及子目录一并处理<br>-V：显示指令执行过程<br>-v：&lt;版本编号&gt; 设置文件或目录版本  </p>
-<ul>
-<li>&lt;属性&gt; 开启文件或目录的该项属性<br>  +a：文件可读可写不可删除<br>  +u：预防意外删除  </li>
-</ul>
-<ul>
-<li>&lt;属性&gt; 关闭文件或目录的该项属性<br>= &lt;属性&gt; 指定文件或目录的该项属性</li>
-</ul>
+<li>在Linux文件系统里，chattr可以改变文件的属性；使用<code>chattr</code>命令修改文件夹权限，<code>lsattr</code>命令查看，详细命令：<blockquote>
+<p><code>sudo chattr -V -R +a +u /tmp/android-cts-media</code><br>-R：递归处理，将指定目录下的所有文件及子目录一并处理<br>-V：显示指令执行过程<br>-v：&lt;版本编号&gt; 设置文件或目录版本<br>+ &lt;属性&gt; 开启文件或目录的该项属性<br>   +a：文件可读可写不可删除<br>   +u：预防意外删除<br>- &lt;属性&gt; 关闭文件或目录的该项属性<br>= &lt;属性&gt; 指定文件或目录的该项属性  </p>
 </blockquote>
 </li>
-<li><p>修改<code>/etc/default/rcS</code>文件。缺点：tmp目录下所有文件都不会被删除，占用系统空间<br> <code>sudo gedit /etc/default/rcS</code>  </p>
-<blockquote>
-<p>修改TMPTIME=-1<br>TMPTIME的值为0表示重启后删除文件，值为-1就不会自动删除文件，值为正整数表示/tmp目录下文件保留时间</p>
+<li>修改<code>/etc/default/rcS</code>文件。缺点：tmp目录下所有文件都不会被删除，占用系统空间  <blockquote>
+<p><code>sudo gedit /etc/default/rcS</code><br>修改TMPTIME=-1<br>TMPTIME的值为0表示重启后删除文件，值为-1就不会自动删除文件，值为正整数表示/tmp目录下文件保留时间</p>
 </blockquote>
 </li>
 </ol>
-<h2 id="二：CTS-Verifier测试结果的迁移"><a href="#二：CTS-Verifier测试结果的迁移" class="headerlink" title="二：CTS-Verifier测试结果的迁移"></a>二：CTS-Verifier测试结果的迁移</h2><p>测试CTS-Verifier时经常会因为当前机器问题出现失败项，但使用另一台机器就能测试通过，从而不能生成一份完整PASS报告，可以采取备份恢复verifier应用数据的方法，把出现问题机器的测试数据迁移至另一台能通过的机器里，再用后者测试前者的失败项，然后生成一份完整测试报告，<a href="https://blog.csdn.net/zhms/article/details/83409943" target="_blank" rel="noopener">参考</a>相关命令如下：  </p>
+<h2 id="二：CTS-Verifier测试结果的迁移"><a href="#二：CTS-Verifier测试结果的迁移" class="headerlink" title="二：CTS-Verifier测试结果的迁移"></a>二：CTS-Verifier测试结果的迁移</h2><p>测试CTS-Verifier时经常会因为当前机器问题出现失败项，但使用另一台机器就能测试通过，从而不能生成一份完整PASS报告，可以采取备份恢复verifier应用数据的方法，把出现问题机器的测试数据迁移至另一台能通过的机器里，再用后者测试前者的失败项，然后生成一份完整测试报告，<a href="https://blog.csdn.net/zhms/article/details/83409943" target="_blank" rel="noopener">参考</a>相关命令如下：</p>
 <ul>
-<li>原机器备份：<br>  <code>adb backup -f com.android.cts.verifier.backup -apk com.android.cts.verifier</code></li>
-<li>导入到新机器：<br>  <code>adb restore com.android.cts.verifier.backup</code></li>
+<li>原机器备份：<code>adb backup -f com.android.cts.verifier.backup -apk com.android.cts.verifier</code></li>
+<li>导入到新机器：<code>adb restore com.android.cts.verifier.backup</code></li>
 </ul>
-<h2 id="三：对总模块缺失的报告进行补全（比较少遇到）"><a href="#三：对总模块缺失的报告进行补全（比较少遇到）" class="headerlink" title="三：对总模块缺失的报告进行补全（比较少遇到）"></a>三：对总模块缺失的报告进行补全（比较少遇到）</h2><p>CTS测试生成的报告总模块数（非已执行总模块）有缺失，使用命令筛选提取出完整报告与有缺失报告的模块名，使用notepad++的compear对比插件定位出缺失模块，然后在缺失模块报告的xml文件里补全。  </p>
+<h2 id="三：对总模块缺失的报告进行补全（比较少遇到）"><a href="#三：对总模块缺失的报告进行补全（比较少遇到）" class="headerlink" title="三：对总模块缺失的报告进行补全（比较少遇到）"></a>三：对总模块缺失的报告进行补全（比较少遇到）</h2><p>CTS测试生成的报告总模块数（非已执行总模块）有缺失，使用命令筛选提取出完整报告与有缺失报告的模块名，然后使用notepad++的compear对比插件定位出缺失模块，最后在缺失模块报告的xml文件里补全。  </p>
 <ul>
 <li>首先在Windows的cmd窗口输入<code>findstr /c:&quot;Module name&quot; 报告xml文件 &gt; 要生成的提取关键字文件</code>，如：<blockquote>
 <p>findstr /c:”Module name” D:\2019.12.12_xx.xx.xx\test_result.xml &gt; D:\complete.txt<br>findstr /c:”Module name” D:\2019.12.21_xx.xx.xx\test_result.xml &gt; D:\lost.txt</p>
 </blockquote>
 </li>
 <li>使用notepad++的compear对比插件定位缺失模块，插件的安装参考网上教程</li>
+<li>在缺失模块报告的xml文件里补全，补充格式参考：  <blockquote>
+<p><code>&lt;Module name=&quot;模块名称&quot; abi=&quot;abi类别&quot; runtime=&quot;0&quot; done=&quot;false&quot; pass=&quot;0&quot; total_tests=&quot;0&quot; /&gt;</code></p>
+</blockquote>
+</li>
 </ul>
 
       
@@ -374,6 +370,11 @@ print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time()))</
 <pre><code>print(&quot;Hello, World!&quot;)</code></pre><blockquote>
 <p>what?<br>why?</p>
 </blockquote>
+<p>大概分为两点的  </p>
+<ol>
+<li>这个那个  </li>
+<li>方式</li>
+</ol>
 
       
 
@@ -708,15 +709,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
