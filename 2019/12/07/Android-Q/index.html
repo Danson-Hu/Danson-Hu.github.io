@@ -20,7 +20,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2019-12-29T11:42:09.059Z">
+<meta property="og:updated_time" content="2019-12-31T14:16:58.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -198,11 +198,11 @@
 
 <h2 id="二、CTS"><a href="#二、CTS" class="headerlink" title="二、CTS"></a>二、CTS</h2><ol>
 <li>使用Linux系统，电脑内存最低要求16G，使用8G内存PC会导致生成的报告异常，不能进行retry；</li>
-<li>需修改工具包tools目录下cts-tradefed文件最后一行修改为：<blockquote>
+<li>需修改工具包tools目录下<code>cts-tradefed</code>文件最后一行修改为：<blockquote>
 <p>java $RDBG_FLAG <strong><font color="#ff0000">–Xmx32g</font></strong> -XX:+HeapDumpOnOutOfMemoryError  </p>
 </blockquote>
 </li>
-<li>新项目机器连接电脑提示adb没有权限，需要在Ubuntu的<code>/etc/udev/rules.d/51-android.rules</code>文件按格式添加测试机的UID与PID（命令行输入lsusb获取）。如需在Ubuntu上使用Fastboot工具，在安装配置Fastboot环境后，测试机进入Fastboot模式，找到机器Fastboot状态下的UID与PID并添加至<code>51-android.rules</code>文件中即可；</li>
+<li>新项目机器连接电脑提示adb没有权限，需要在Ubuntu的<code>/etc/udev/rules.d/51-android.rules</code>文件按格式添加测试机的VID与PID（命令行输入lsusb获取）。如需在Ubuntu上使用Fastboot工具，在安装配置Fastboot环境后，测试机进入Fastboot模式，找到机器Fastboot状态下的VID与PID并添加至<code>51-android.rules</code>文件中即可；</li>
 <li>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/2019/12/07/Android-Q/cts10_module.png" alt="Module"></li>
 <li><code>CtsTelephonyTestCases</code>模块只有64位的case，联通卡相关项跑完不再锁SIM卡短信功能；</li>
 <li>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备/不能挂载MTP设备”警告窗口。鉴于目前18版本较之前相对稳定，可考虑切换至18.04版本开展测试；</li>
@@ -368,7 +368,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 道 信
+    		&copy; 2020 道 信
     	</div>
       	<div class="footer-right">
 			
@@ -474,7 +474,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">胡言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,6 +483,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
               </li>
             
             <div class="clearfix"></div>
