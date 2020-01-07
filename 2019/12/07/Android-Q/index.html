@@ -20,7 +20,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2019-12-31T14:16:58.062Z">
+<meta property="og:updated_time" content="2020-01-07T14:03:36.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -197,7 +197,7 @@
 <a id="more"></a>
 
 <h2 id="二、CTS"><a href="#二、CTS" class="headerlink" title="二、CTS"></a>二、CTS</h2><ol>
-<li>使用Linux系统，电脑内存最低要求16G，使用8G内存PC会导致生成的报告异常，不能进行retry；</li>
+<li>使用Linux（这边使用的是Ubuntu）系统，电脑内存最低要求16G，内存不足会导致生成的报告异常，不能继续retry；</li>
 <li>需修改工具包tools目录下<code>cts-tradefed</code>文件最后一行修改为：<blockquote>
 <p>java $RDBG_FLAG <strong><font color="#ff0000">–Xmx32g</font></strong> -XX:+HeapDumpOnOutOfMemoryError  </p>
 </blockquote>
@@ -205,10 +205,10 @@
 <li>新项目机器连接电脑提示adb没有权限，需要在Ubuntu的<code>/etc/udev/rules.d/51-android.rules</code>文件按格式添加测试机的VID与PID（命令行输入lsusb获取）。如需在Ubuntu上使用Fastboot工具，在安装配置Fastboot环境后，测试机进入Fastboot模式，找到机器Fastboot状态下的VID与PID并添加至<code>51-android.rules</code>文件中即可；</li>
 <li>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/2019/12/07/Android-Q/cts10_module.png" alt="Module"></li>
 <li><code>CtsTelephonyTestCases</code>模块只有64位的case，联通卡相关项跑完不再锁SIM卡短信功能；</li>
-<li>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备/不能挂载MTP设备”警告窗口。鉴于目前18版本较之前相对稳定，可考虑切换至18.04版本开展测试；</li>
+<li>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备/不能挂载MTP设备”警告窗口。鉴于目前18版本较之前稳定，可考虑切换至18.04版本开展测试；</li>
 <li>执行完一轮测试后，需关闭当前命令行窗口另开窗口进行retry（使用Ctrl+C终止或输入exit退出当前控制台也可以）。原因是执行测试时Java程序会占用大量内存，关闭已执行完成窗口释放系统内存，否则将导致运行卡顿甚至生成的报告出现问题。可使用系统工具<strong>System Monitor</strong>查看内存实时占用情况；</li>
-<li>筛选过滤模块指令<code>--exclude-filter &lt;module name&gt;</code>在10.0CTS控制台中概率性不生效，意味着retry将需要更长时间；  </li>
-<li>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">切勿使用</font></strong>已root系统执行CTS-on-gsi与VTS测试。</li>
+<li>筛选过滤模块指令<code>--exclude-filter &lt;module name&gt;</code>在10.0CTS控制台中存在某些项目会概率性不生效问题；  </li>
+<li>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行VTS工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">不建议使用</font></strong>root账户执行CTS-on-gsi与VTS测试。</li>
 </ol>
 <h2 id="三、CTS-Verifier"><a href="#三、CTS-Verifier" class="headerlink" title="三、CTS-Verifier"></a>三、CTS-Verifier</h2><ol>
 <li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/2019/12/07/Android-Q/apk_name.png" alt="Apk"><blockquote>
@@ -474,15 +474,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">胡言乱语</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">

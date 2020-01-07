@@ -251,12 +251,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>给出情景：<br>某次活动前——<br>A：“一定到，明天见！”<br>B：“无聊！不去。”<br>C：“无聊！不去。”<br>活动当天，B、C到了。<br>总结，人类的本质是：</p>
+        <p>给出情景：<br>某次活动前——<br>A：“一定到，明天见！”<br>B：“无聊！不去。”<br>C：“无聊！不去。”<br>活动当天，B、C到了。<br>得出结论，人类的本质是：</p>
 <blockquote>
 <ul>
-<li>鸽子  </li>
-<li>真香  </li>
-<li>复读机</li>
+<li><del>鸽子</del>  </li>
+<li><del>真香</del>  </li>
+<li><del>复读机</del></li>
 </ul>
 </blockquote>
 <hr>
@@ -335,7 +335,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一：Ubuntu缓存目录media资源包被删除问题"><a href="#一：Ubuntu缓存目录media资源包被删除问题" class="headerlink" title="一：Ubuntu缓存目录media资源包被删除问题"></a>一：Ubuntu缓存目录media资源包被删除问题</h2><p>执行CTS-media相关模块测试时，会检查电脑<code>/tmp/android-cts-media</code>文件夹，Ubuntu重启后tmp缓存目录下的文件将会被清空，导致执行测试时将近5G的资源包需要重新下载，不仅消耗时间而且会占用大量网络，为让资源包不被删除，找到两种方法解决。</p>
+        <h2 id="一：Ubuntu缓存目录media资源包被删除问题"><a href="#一：Ubuntu缓存目录media资源包被删除问题" class="headerlink" title="一：Ubuntu缓存目录media资源包被删除问题"></a>一：Ubuntu缓存目录media资源包被删除问题</h2><p>执行CTS-media相关模块测试时，会检查电脑<code>/tmp/android-cts-media</code>文件夹，但是Ubuntu重启后tmp缓存目录下的文件将会被清空，导致执行测试时将近5G的资源包需要重新下载，不仅消耗时间而且会占用大量网络，为了使资源包不被删除，找到两种方法解决。</p>
 <ol>
 <li>在Linux文件系统里，chattr可以改变文件的属性；使用<code>chattr</code>命令修改文件夹权限，<code>lsattr</code>命令查看，详细命令：<blockquote>
 <p><code>sudo chattr -V -R +a +u /tmp/android-cts-media</code> </p>
@@ -346,7 +346,7 @@
 <p>- &lt;属性&gt; 关闭文件或目录的该项属性<br>= &lt;属性&gt; 指定文件或目录的该项属性  </p>
 </blockquote>
 </li>
-<li>修改<code>/etc/default/rcS</code>文件。缺点：tmp目录下所有文件都不会被删除，占用系统空间，不建议采用<blockquote>
+<li>修改<code>/etc/default/rcS</code>文件。缺点：tmp目录下所有文件都不会被删除，占用系统空间，不建议采用。<blockquote>
 <p><code>sudo gedit /etc/default/rcS</code></p>
 <p>修改TMPTIME=-1<br>TMPTIME的值为0表示重启后删除文件，值为-1就不会自动删除文件，值为正整数表示/tmp目录下文件保留时间</p>
 </blockquote></li></ol>
@@ -765,15 +765,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">胡言乱语</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
