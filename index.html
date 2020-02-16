@@ -184,20 +184,14 @@
 <li><p>打开应用apk，界面显示用法如下：<br>You can now copy to or paste from clipboard using the following commands in adb shell:<br><code>am broadcast -a clipper.set -e text &quot;this can be pasted now&quot;</code><br><code>am broadcast -a clipper.get</code>  </p>
 </li>
 <li><p>例如往手机剪贴板写入”High or low, (high, low), it’s all the same.”<font color="#ff0000">（无法写入中文）</font></p>
-<pre><code>C:\Users\xxx\Desktop&gt; adb shell
-sagit:/ $ am broadcast -a clipper.set -e text &quot;High or low, (high, low), it&apos;s all the same.&quot;
-Broadcasting: Intent { act=clipper.set flg=0x400000 (has extras) }
-Broadcast completed: result=-1, data=&quot;Text is copied into clipboard.&quot;  </code></pre><p>显示data=”Text is copied into clipboard.”即写入成功。</p>
+<p> C:\Users\xxx\Desktop&gt; adb shell<br> sagit:/ $ am broadcast -a clipper.set -e text “High or low, (high, low), it’s all the same.”<br> Broadcasting: Intent { act=clipper.set flg=0x400000 (has extras) }<br> Broadcast completed: result=-1, data=”Text is copied into clipboard.”  </p>
 </li>
-<li><p>在手机需要的输入框中粘贴即可  </p>
-</li>
-<li><p>当然，也可以用<code>am broadcast -a clipper.get</code>命令获取手机剪切板的内容</p>
+</ol>
+<p>显示data=”Text is copied into clipboard.”即写入成功。<br>4. 在手机需要的输入框中粘贴即可<br>5. 当然，也可以用<code>am broadcast -a clipper.get</code>命令获取手机剪切板的内容</p>
 <pre><code>C:\Users\xxx\Desktop&gt; adb shell
 sagit:/ $ am broadcast -a clipper.get
 Broadcasting: Intent { act=clipper.get flg=0x400000 }
 Broadcast completed: result=-1, data=&quot;“我真傻，真的，”她说，“我单知道雪天是野兽在深山里没有食吃，会到村里来;我不知道春天也会有。”&quot;</code></pre><p>获取的内容在data里显示。</p>
-</li>
-</ol>
 
       
 
