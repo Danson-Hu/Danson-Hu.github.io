@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>adb命令与Android系统剪贴板服务进行交互 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目地址：https:&#x2F;&#x2F;github.com&#x2F;majido&#x2F;clipper    安装clipper.apk点击下载APKadb install 下载路径&#x2F;clipper.apk    打开应用apk，界面显示用法如下：You can now copy to or paste from clipboard using the following commands in adb shell:am">
+  <meta name="description" content="项目地址：https:&#x2F;&#x2F;github.com&#x2F;majido&#x2F;clipper    安装clipper.apk点击下载APKadb install 下载路径&#x2F;clipper.apk   打开应用apk，界面显示用法如下：You can now copy to or paste from clipboard using the following commands in adb shell:am b">
 <meta name="keywords" content="Android-ADB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="adb命令与Android系统剪贴板服务进行交互">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;16&#x2F;adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="项目地址：https:&#x2F;&#x2F;github.com&#x2F;majido&#x2F;clipper    安装clipper.apk点击下载APKadb install 下载路径&#x2F;clipper.apk    打开应用apk，界面显示用法如下：You can now copy to or paste from clipboard using the following commands in adb shell:am">
+<meta property="og:description" content="项目地址：https:&#x2F;&#x2F;github.com&#x2F;majido&#x2F;clipper    安装clipper.apk点击下载APKadb install 下载路径&#x2F;clipper.apk   打开应用apk，界面显示用法如下：You can now copy to or paste from clipboard using the following commands in adb shell:am b">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-16T15:12:23.152Z">
+<meta property="og:updated_time" content="2020-02-16T15:22:29.297Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -181,25 +181,12 @@
       
         <p><strong>项目地址：<a href="https://github.com/majido/clipper" target="_blank" rel="noopener">https://github.com/majido/clipper</a></strong>  </p>
 <ol>
-<li><p>安装clipper.apk<br><a href="https://github.com/majido/clipper/releases/download/v1.2.1/clipper.apk" target="_blank" rel="noopener">点击下载APK</a><br><code>adb install 下载路径/clipper.apk</code>  </p>
-</li>
-<li><p>打开应用apk，界面显示用法如下：<br>You can now copy to or paste from clipboard using the following commands in adb shell:<br><code>am broadcast -a clipper.set -e text &quot;this can be pasted now&quot;</code><br><code>am broadcast -a clipper.get</code>  </p>
-</li>
-<li><p>例如往手机剪贴板写入”High or low, (high, low), it’s all the same.”<font color="#ff0000">（无法写入中文）</font></p>
-<pre><code>C:\Users\xxx\Desktop&gt; adb shell
-sagit:/ $ am broadcast -a clipper.set -e text &quot;High or low, (high, low), it&apos;s all the same.&quot;
-Broadcasting: Intent { act=clipper.set flg=0x400000 (has extras) }
-Broadcast completed: result=-1, data=&quot;Text is copied into clipboard.&quot;</code></pre><p> 显示data=”Text is copied into clipboard.”即写入成功。</p>
-</li>
-<li><p>在手机需要的输入框中粘贴即可  </p>
-</li>
-<li><p>当然，也可以用<code>am broadcast -a clipper.get</code>命令获取手机剪切板的内容</p>
-<pre><code>C:\Users\xxx\Desktop&gt; adb shell
-sagit:/ $ am broadcast -a clipper.get
-Broadcasting: Intent { act=clipper.get flg=0x400000 }
-Broadcast completed: result=-1, data=&quot;“我真傻，真的，”她说，“我单知道雪天是野兽在深山里没有食吃，会到村里来;我不知道春天也会有。”&quot;</code></pre></li>
+<li>安装clipper.apk<br><a href="https://github.com/majido/clipper/releases/download/v1.2.1/clipper.apk" target="_blank" rel="noopener">点击下载APK</a><br><code>adb install 下载路径/clipper.apk</code>  </li>
+<li>打开应用apk，界面显示用法如下：<br>You can now copy to or paste from clipboard using the following commands in adb shell:<br><code>am broadcast -a clipper.set -e text &quot;this can be pasted now&quot;</code><br><code>am broadcast -a clipper.get</code>  </li>
+<li>例如往手机剪贴板写入”High or low, (high, low), it’s all the same.”<font color="#ff0000">（无法写入中文）</font><br> <code>adb shell</code><br> <code>am broadcast -a clipper.set -e text &quot;High or low, (high, low), it&#39;s all the same.&quot;</code><br>显示<strong>data=”Text is copied into clipboard.”</strong>即写入成功。  </li>
+<li>在手机需要的输入框中粘贴即可  </li>
+<li>当然，也可以用<code>am broadcast -a clipper.get</code>命令获取手机剪切板的内容<br> <code>adb shell</code><br> <code>am broadcast -a clipper.get</code><br>获取的内容在data里显示。</li>
 </ol>
-<p>获取的内容在data里显示。</p>
 
       
 
