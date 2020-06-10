@@ -157,6 +157,140 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python-Bing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/10/Python-Bing/">Python_Bing</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/10/Python-Bing/" class="archive-article-date">
+  	<time datetime="2020-06-10T11:57:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>爬取必应每日一图，以图片信息和日期命名，并设置为壁纸</strong><br><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，添加了获取图片的信息并以此命名该图片  </p>
+<pre><code>import urllib.request
+import requests
+import os.path
+import ctypes
+from bs4 import BeautifulSoup
+import re
+import datetime
+
+#解析必应官网，获取图片信息
+def img_info():
+    response = urllib.request.urlopen(&quot;https://www.bing.com/?mkt=zh-CN&quot;)
+    html = response.read()
+    #创建Beautiful Soup对象
+    soup = BeautifulSoup(html,&quot;html.parser&quot;)
+    info = soup.findAll(id=&quot;sh_cp&quot;)[0][&apos;title&apos;]
+    #删除括号和括号内内容，方便为图片命名
+    Pic_Name = re.sub(u&quot;\\(.*?\\)|\\{.*?}|\\[.*?]&quot;, &quot;&quot;, info) 
+    return Pic_Name.strip() #取出来的值多一个空格，加方法把空格去了
+
+def save_img(img_url,dirname):
+    #保存图片到磁盘文件夹dirname中
+    try:
+        if not os.path.exists(dirname):
+            print (&apos;文件夹&apos;,dirname,&apos;不存在，重新建立&apos;)
+            #os.mkdir(dirname)
+            os.makedirs(dirname)
+        #拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名
+        basename = os.path.basename(img_url)
+        #拼接目录与文件名，得到图片路径
+        filepath = os.path.join(dirname, img_info() + basename[5:])
+        #下载图片，并保存到文件夹中
+        urllib.request.urlretrieve(img_url, filepath)
+    except IOError as e:
+        print (&apos;文件操作失败&apos;,e)
+    except Exception as e:
+        print (&apos;错误 ：&apos;,e)
+    print(&quot;Save&quot;, filepath, &quot;successfully!&quot;)
+    return filepath
+
+# 请求网页，跳转到最终img地址
+def get_img_url(raw_img_url = &quot;https://blog.mrabit.com/bing/today&quot;):
+    r = requests.get(raw_img_url) 
+    img_url = r.url     # 得到图片文件的网址
+    print(&apos;img_url:&apos;, img_url)
+    return img_url
+
+# 设置图片绝对路径 filepath 所指向的图片为壁纸
+def set_img_as_wallpaper(filepath):
+    ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath, 0)
+
+def main():
+    dirname = &quot;E:/Pictures/bingImg/&quot;    # 图片要被保存在的位置
+    img_url = get_img_url()
+    filepath = save_img(img_url, dirname)   # 图片文件的的路径
+#   set_img_as_wallpaper(filepath)        #设置为壁纸
+main()
+&quot;&quot;&quot;
+备份网址：raw_img_url = https://area.sinaapp.com/bingImg/ ，使用该网址需重构命名代码块：  
+    basename = datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;)  
+    filepath = os.path.join(dirname, img_info() + basename + &quot;.jpg&quot;)
+&quot;&quot;&quot;&quot;</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/10/Python-Bing/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-keyevent_keycode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -255,8 +389,7 @@
 <td align="center">音量减小键</td>
 <td align="center">25</td>
 </tr>
-<tr>
-<td align="left"></td></tr></tbody></table>
+</tbody></table>
         
           <a class="article-more-a" href="/2020/05/06/keyevent_keycode/#more">more >></a>
         
@@ -767,11 +900,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
         		</li>
       		
 		</ul>
@@ -966,91 +1099,10 @@ print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time())))<
 
 
   
-    <article id="post-Android-Q" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/Android-Q/">Android-Q CTS &amp; CTS-Verifier测试差异总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/07/Android-Q/" class="archive-article-date">
-  	<time datetime="2019-12-06T16:39:32.044Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。</strong></p>
-<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>从Android-P切换到Android-Q CTS测试，你需要准备：</p>
-<blockquote>
-<ul>
-<li>Linux系统电脑（内存最低16G）</li>
-<li>谷歌Android-Q CTS测试套件，<a href="https://source.android.com/compatibility/cts/downloads" target="_blank" rel="noopener">进入官网</a>下载对应版本工具</li>
-<li>USB-MIDI回环线和Bluetooth-MIDI回环线</li>
-<li>安装MIDI+BTLE.apk<del>和Loopback.apk</del>，MIDI+BTLE.apk可前往Google Play商店下载安装</li>
-</ul>
-</blockquote>
-        
-          <a class="article-more-a" href="/2019/12/07/Android-Q/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/07/Android-Q/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -1158,11 +1210,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1170,7 +1222,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
