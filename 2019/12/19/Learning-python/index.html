@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Learning-python | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello, World!#python3  import this print(&amp;quot;Hello, World!&amp;quot;)TIME获取当前日期和时间import time  print(time.strftime(&amp;apos;%Y-%m-%d&amp;apos;,time.localtime(time.time()))) print(time.strftime(&amp;apos;%Y-%m-%d %">
+  <meta name="description" content="Hello, World!#python3  import this print(&amp;quot;Hello, World!&amp;quot;)TIME获取当前日期和时间import time import datetime  print(time.strftime(&amp;apos;%Y-%m-%d&amp;apos;,time.localtime(time.time()))) print(time.strftime(">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learning-python">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;19&#x2F;Learning-python&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="Hello, World!#python3  import this print(&amp;quot;Hello, World!&amp;quot;)TIME获取当前日期和时间import time  print(time.strftime(&amp;apos;%Y-%m-%d&amp;apos;,time.localtime(time.time()))) print(time.strftime(&amp;apos;%Y-%m-%d %">
+<meta property="og:description" content="Hello, World!#python3  import this print(&amp;quot;Hello, World!&amp;quot;)TIME获取当前日期和时间import time import datetime  print(time.strftime(&amp;apos;%Y-%m-%d&amp;apos;,time.localtime(time.time()))) print(time.strftime(">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-31T14:08:23.154Z">
+<meta property="og:updated_time" content="2020-06-10T14:10:45.922Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -183,9 +183,13 @@
 
 import this
 print(&quot;Hello, World!&quot;)</code></pre><h1 id="TIME"><a href="#TIME" class="headerlink" title="TIME"></a>TIME</h1><h3 id="获取当前日期和时间"><a href="#获取当前日期和时间" class="headerlink" title="获取当前日期和时间"></a>获取当前日期和时间</h3><pre><code>import time
+import datetime
 
 print(time.strftime(&apos;%Y-%m-%d&apos;,time.localtime(time.time())))
-print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time())))</code></pre>
+print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time())))
+
+print(datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;))  
+print(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;))</code></pre>
       
 
       
@@ -435,7 +439,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">胡言乱语</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">‘胡’言乱语</a>
               </li>
             
             <div class="clearfix"></div>

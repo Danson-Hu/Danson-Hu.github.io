@@ -177,7 +177,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>爬取必应每日一图，以图片信息和日期命名，并设置为壁纸</strong><br><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，添加了获取图片的信息并以此命名该图片  </p>
+        <p><strong>爬取必应每日一图，以图片信息和日期命名，并设置为桌面壁纸</strong><br><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，<del>想去旅游都找不到目的地。</del><br>顺便分享一下 <a href="https://bing.ioliu.cn/" target="_blank" rel="noopener">这个网址</a>，可以查看/点赞/下载必应搜索首页的历史图片</p>
 <pre><code>import urllib.request
 import requests
 import os.path
@@ -186,29 +186,29 @@ from bs4 import BeautifulSoup
 import re
 import datetime
 
-#解析必应官网，获取图片信息
+# 解析必应官网，获取图片信息
 def img_info():
     response = urllib.request.urlopen(&quot;https://www.bing.com/?mkt=zh-CN&quot;)
     html = response.read()
-    #创建Beautiful Soup对象
+    # 创建Beautiful Soup对象
     soup = BeautifulSoup(html,&quot;html.parser&quot;)
     info = soup.findAll(id=&quot;sh_cp&quot;)[0][&apos;title&apos;]
-    #删除括号和括号内内容，方便为图片命名
+    # 删除括号和括号内内容，方便为图片命名
     Pic_Name = re.sub(u&quot;\\(.*?\\)|\\{.*?}|\\[.*?]&quot;, &quot;&quot;, info) 
-    return Pic_Name.strip() #取出来的值多一个空格，加方法把空格去了
+    return Pic_Name.strip() # 取出来的值多一个空格，加方法把空格去了
 
 def save_img(img_url,dirname):
-    #保存图片到磁盘文件夹dirname中
+    # 保存图片到磁盘文件夹dirname中
     try:
         if not os.path.exists(dirname):
             print (&apos;文件夹&apos;,dirname,&apos;不存在，重新建立&apos;)
             #os.mkdir(dirname)
             os.makedirs(dirname)
-        #拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名
+        # 拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名
         basename = os.path.basename(img_url)
-        #拼接目录与文件名，得到图片路径
+        # 拼接目录与文件名，得到图片路径
         filepath = os.path.join(dirname, img_info() + basename[5:])
-        #下载图片，并保存到文件夹中
+        # 下载图片，并保存到文件夹中
         urllib.request.urlretrieve(img_url, filepath)
     except IOError as e:
         print (&apos;文件操作失败&apos;,e)
@@ -224,7 +224,7 @@ def get_img_url(raw_img_url = &quot;https://blog.mrabit.com/bing/today&quot;):
     print(&apos;img_url:&apos;, img_url)
     return img_url
 
-# 设置图片绝对路径 filepath 所指向的图片为壁纸
+# 设置图片绝对路径filepath所指向的图片为壁纸
 def set_img_as_wallpaper(filepath):
     ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath, 0)
 
@@ -232,13 +232,15 @@ def main():
     dirname = &quot;E:/Pictures/bingImg/&quot;    # 图片要被保存在的位置
     img_url = get_img_url()
     filepath = save_img(img_url, dirname)   # 图片文件的的路径
-#   set_img_as_wallpaper(filepath)        #设置为壁纸
+#   set_img_as_wallpaper(filepath)        # 设置为壁纸
 main()
 &quot;&quot;&quot;
 备份网址：raw_img_url = https://area.sinaapp.com/bingImg/ ，使用该网址需重构命名代码块：  
     basename = datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;)  
     filepath = os.path.join(dirname, img_info() + basename + &quot;.jpg&quot;)
-&quot;&quot;&quot;&quot;</code></pre>
+&quot;&quot;&quot;&quot;</code></pre><p>本地路径结果如下图：  </p>
+<p><img src="/2020/06/10/Python-Bing/Python_Bing.png" alt="Python_Bing">  </p>
+
       
 
       
@@ -810,7 +812,7 @@ main()
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">胡言乱语</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">‘胡’言乱语</a>
         		</li>
       		
 		</ul>
@@ -968,9 +970,13 @@ main()
 
 import this
 print(&quot;Hello, World!&quot;)</code></pre><h1 id="TIME"><a href="#TIME" class="headerlink" title="TIME"></a>TIME</h1><h3 id="获取当前日期和时间"><a href="#获取当前日期和时间" class="headerlink" title="获取当前日期和时间"></a>获取当前日期和时间</h3><pre><code>import time
+import datetime
 
 print(time.strftime(&apos;%Y-%m-%d&apos;,time.localtime(time.time())))
-print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time())))</code></pre>
+print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time())))
+
+print(datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;))  
+print(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;))</code></pre>
       
 
       
@@ -1226,7 +1232,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">胡言乱语</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">‘胡’言乱语</a>
               </li>
             
             <div class="clearfix"></div>
