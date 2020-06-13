@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | Danson</title>
+  <title>Excel_makedir | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Danson">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;02&#x2F;index.html">
+  <meta name="description" content="读取表格数据，按指定序列新建对应名称文件夹   问题提出业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低   解决思路参考博客。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用zip(list1，list2)方法读取两个列表，拼接文件夹名称，最后使用os">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel_makedir">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;13&#x2F;Excel-makedir&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
+<meta property="og:description" content="读取表格数据，按指定序列新建对应名称文件夹   问题提出业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低   解决思路参考博客。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用zip(list1，list2)方法读取两个列表，拼接文件夹名称，最后使用os">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-13T13:34:08.597Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -143,60 +147,195 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Excel-makedir" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/" class="archive-article-date">
-  	<time datetime="2020-02-16T10:40:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/">adb命令与Android系统剪贴板服务进行交互</a>
+    <h1 class="article-title" itemprop="name">
+      Excel_makedir
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/13/Excel-makedir/" class="archive-article-date">
+  	<time datetime="2020-06-13T13:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>读取表格数据，按指定序列新建对应名称文件夹</strong>  </p>
+<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低  </p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p><a href="https://blog.csdn.net/Strive_0902/article/details/82825063" target="_blank" rel="noopener">参考博客</a>。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用<code>zip(list1，list2)</code>方法读取两个列表，拼接文件夹名称，最后使用<code>os.makedirs()</code>方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能</p>
+<h2 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h2><pre><code>import numpy as np
+import xlrd
+import os
+
+data = xlrd.open_workbook(r&apos;汇总_2020.xlsx&apos;)
+table = data.sheets()[0]    # 第一个sheet页
+start = 1  # 开始的行,默认该行不读取
+end = 20  # 结束的行
+rows = end - start
+
+# 自定义文件夹序列号前缀
+list_number = []
+for i in range(1, rows+2):        # 可进行修改起始值，同步修改结束值，最后一行不循环遍历，需要+1生成
+    list_number.append(i)
+#print(number)
+
+# 读取表格的值
+list_values = []
+for x in range(start-1, end):    # 定义的首行不读取，设置定义行-1,最后一行不循环遍历，+1
+    values = []
+    row = table.row_values(x)
+    res = row[1]    # 读取指定列，默认不读首行
+    list_values.append(res)
+#print(list_values)
+
+# 以序列+版本号格式命名，通过zip方法读取两个列表，匹配命名
+for number,name in zip(list_number,list_values):
+    dirname = &quot;D:\\本地归档\\&quot; + str(number) + &quot;.&quot; + name
+    #print(dirname)
+    try:
+        if not os.path.exists(dirname):
+            print (&apos;文件夹&apos;,dirname,&apos;不存在，新建&apos;)
+            os.makedirs(dirname)
+    except Exception as e:
+        print (&apos;错误 ：&apos;,e)</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/13/Excel-makedir/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/10/Python-Bing/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python_Bing</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题提出"><span class="toc-number">1.</span> <span class="toc-text">问题提出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决思路"><span class="toc-number">2.</span> <span class="toc-text">解决思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目实践"><span class="toc-number">3.</span> <span class="toc-text">项目实践</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -237,8 +376,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
