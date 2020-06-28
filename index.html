@@ -145,19 +145,130 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Excel-makedir" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Devices" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/13/Excel-makedir/">Excel_makedir</a>
+      <a class="article-title" href="/2020/06/28/Devices/">并行操作多台安卓设备</a>
     </h1>
   
 
         
-        <a href="/2020/06/13/Excel-makedir/" class="archive-article-date">
+        <a href="/2020/06/28/Devices/" class="archive-article-date">
+  	<time datetime="2020-06-28T11:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。</p>
+<pre><code>import subprocess
+
+# adb device 命令获取所有设备的 serial number
+devices = subprocess.Popen(
+    &apos;adb devices&apos;.split(),
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE
+).communicate()[0]
+
+# 提取所有已连接设备的序列号
+serial_nos = []
+for item in devices.split():
+    filters = [b&apos;List&apos;, b&apos;of&apos;, b&apos;devices&apos;, b&apos;attached&apos;, b&apos;device&apos;]
+    if item not in filters:
+        serial_nos.append(item.decode(&quot;utf8&quot;))
+
+if len(serial_nos) != 0:
+    print(&quot;已连接设备序列号 %s ,共 %s 台设备&quot; % (serial_nos,len(serial_nos)))
+    # 循环列表执行adb命令
+    for serial_no in serial_nos:
+        print(&quot;\n设备号 %s 机器fingerprint为:&quot; % serial_no)
+        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.fingerprint&apos; % serial_no).split(),
+            #shell=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        ).communicate()[0].decode(&apos;gbk&apos;).split())
+        print(&quot;设备号 %s 机器display.id为:&quot; % serial_no)
+        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.display.id&apos; % serial_no).split(),
+            #shell=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        ).communicate()[0].decode(&apos;gbk&apos;).split())
+else:
+    print(&quot;未连接任何设备！请检查设备连接状态&quot;)</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/Devices/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Excel-makedirs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/13/Excel-makedirs/">读取表格数据，按指定序列新建对应名称文件夹</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/13/Excel-makedirs/" class="archive-article-date">
   	<time datetime="2020-06-13T13:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
 </a>
         
@@ -165,8 +276,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>读取表格数据，按指定序列新建对应名称文件夹</strong>  </p>
-<h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低  </p>
+        <h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低  </p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p><a href="https://blog.csdn.net/Strive_0902/article/details/82825063" target="_blank" rel="noopener">参考博客</a>。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用<code>zip(list1，list2)</code>方法读取两个列表，拼接文件夹名称，最后使用<code>os.makedirs()</code>方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能</p>
 <h2 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h2><pre><code>import numpy as np
 import xlrd
@@ -174,22 +284,22 @@ import os
 
 data = xlrd.open_workbook(r&apos;汇总_2020.xlsx&apos;)
 table = data.sheets()[0]    # 第一个sheet页
-start = 1  # 开始的行,默认该行不读取
+start = 3  # 开始的行,默认该行不读取
 end = 20  # 结束的行
 rows = end - start
 
 # 自定义文件夹序列号前缀
 list_number = []
-for i in range(1, rows+2):        # 可进行修改起始值，同步修改结束值，最后一行不循环遍历，需要+1生成
+No_start = 1    # 可进行修改起始值
+for i in range(No_start, rows+No_start+1):    # 同步修改结束值，最后一行不循环遍历，需要+1生成
     list_number.append(i)
-#print(number)
+#print(list_number)
 
 # 读取表格的值
 list_values = []
-for x in range(start-1, end):    # 定义的首行不读取，设置定义行-1,最后一行不循环遍历，+1
-    values = []
+for x in range(start-1, end):    # 定义的首行不读取，设置定义行-1
     row = table.row_values(x)
-    res = row[1]    # 读取指定列，默认不读首行
+    res = row[1]    # 从0开始读取指定列，默认不读首行
     list_values.append(res)
 #print(list_values)
 
@@ -225,7 +335,7 @@ for number,name in zip(list_number,list_values):
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/13/Excel-makedir/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/06/13/Excel-makedirs/">展开全文 >></a>
         </p>
       
 
@@ -262,7 +372,7 @@ for number,name in zip(list_number,list_values):
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/10/Python-Bing/">Python_Bing</a>
+      <a class="article-title" href="/2020/06/10/Python-Bing/">爬取必应每日一图，以图片信息和日期命名，并设置为桌面壁纸</a>
     </h1>
   
 
@@ -275,7 +385,7 @@ for number,name in zip(list_number,list_values):
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>爬取必应每日一图，以图片信息和日期命名，并设置为桌面壁纸</strong><br><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，<del>想去旅游都找不到目的地。</del><br>顺便分享一下 <a href="https://bing.ioliu.cn/" target="_blank" rel="noopener">这个网址</a>，可以查看/点赞/下载必应搜索首页的历史图片</p>
+        <p><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，<del>想去旅游都找不到目的地。</del><br>顺便分享一下 <a href="https://bing.ioliu.cn/" target="_blank" rel="noopener">这个网址</a>，可以查看/点赞/下载必应搜索首页的历史图片</p>
 <pre><code>import urllib.request
 import requests
 import os.path
@@ -1000,11 +1110,11 @@ main()
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
         		</li>
       		
 		</ul>
@@ -1015,89 +1125,6 @@ main()
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/21/CTS%E6%B5%8B%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learning-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/19/Learning-python/">Learning-python</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/19/Learning-python/" class="archive-article-date">
-  	<time datetime="2019-12-19T13:21:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello, World!"></a>Hello, World!</h1><pre><code>#python3
-
-import this
-print(&quot;Hello, World!&quot;)</code></pre><h1 id="TIME"><a href="#TIME" class="headerlink" title="TIME"></a>TIME</h1><h3 id="获取当前日期和时间"><a href="#获取当前日期和时间" class="headerlink" title="获取当前日期和时间"></a>获取当前日期和时间</h3><pre><code>import time
-import datetime
-
-print(time.strftime(&apos;%Y-%m-%d&apos;,time.localtime(time.time())))
-print(time.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;,time.localtime(time.time())))
-
-print(datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;))  
-print(datetime.datetime.now().strftime(&apos;%Y-%m-%d %H:%M:%S&apos;))</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/19/Learning-python/">展开全文 >></a>
         </p>
       
 
@@ -1238,11 +1265,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1250,7 +1273,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">

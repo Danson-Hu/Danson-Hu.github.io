@@ -6,23 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Android-Q CTS &amp; CTS-Verifier测试差异总结 | Danson</title>
+  <title>并行操作多台安卓设备 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作从Android-P切换到Android-Q CTS测试，你需要准备：   Linux系统电脑（内存最低16G） 谷歌Android-Q CTS测试套件，进入官网下载对应版本工具 USB-MIDI回环线和Bluetooth">
-<meta name="keywords" content="Android-GMS">
+  <meta name="description" content="GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。 import subprocess  # adb device 命令获取所有设备的 serial number devices &#x3D; subprocess.Popen(     &amp;apos;adb devices&amp;apos;.split(),     stdout&#x3D;subprocess.PIPE">
+<meta name="keywords" content="Android-ADB,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android-Q CTS &amp; CTS-Verifier测试差异总结">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;index.html">
+<meta property="og:title" content="并行操作多台安卓设备">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;28&#x2F;Devices&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作从Android-P切换到Android-Q CTS测试，你需要准备：   Linux系统电脑（内存最低16G） 谷歌Android-Q CTS测试套件，进入官网下载对应版本工具 USB-MIDI回环线和Bluetooth">
+<meta property="og:description" content="GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。 import subprocess  # adb device 命令获取所有设备的 serial number devices &#x3D; subprocess.Popen(     &amp;apos;adb devices&amp;apos;.split(),     stdout&#x3D;subprocess.PIPE">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2020-01-07T14:03:36.183Z">
+<meta property="og:updated_time" content="2020-06-28T12:08:00.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
   
@@ -152,66 +147,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Android-Q" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Devices" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Android-Q CTS &amp; CTS-Verifier测试差异总结
+      并行操作多台安卓设备
     </h1>
   
 
         
-        <a href="/2019/12/07/Android-Q/" class="archive-article-date">
-  	<time datetime="2019-12-06T16:39:32.044Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
+        <a href="/2020/06/28/Devices/" class="archive-article-date">
+  	<time datetime="2020-06-28T11:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。</strong></p>
-<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>从Android-P切换到Android-Q CTS测试，你需要准备：</p>
-<blockquote>
-<ul>
-<li>Linux系统电脑（内存最低16G）</li>
-<li>谷歌Android-Q CTS测试套件，<a href="https://source.android.com/compatibility/cts/downloads" target="_blank" rel="noopener">进入官网</a>下载对应版本工具</li>
-<li>USB-MIDI回环线和Bluetooth-MIDI回环线</li>
-<li>安装MIDI+BTLE.apk<del>和Loopback.apk</del>，MIDI+BTLE.apk可前往Google Play商店下载安装</li>
-</ul>
-</blockquote>
-<a id="more"></a>
+        <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。</p>
+<pre><code>import subprocess
 
-<h2 id="二、CTS"><a href="#二、CTS" class="headerlink" title="二、CTS"></a>二、CTS</h2><ol>
-<li>使用Linux（这边使用的是Ubuntu）系统，电脑内存最低要求16G，内存不足会导致生成的报告异常，不能继续retry；</li>
-<li>需修改工具包tools目录下<code>cts-tradefed</code>文件最后一行修改为：<blockquote>
-<p>java $RDBG_FLAG <strong><font color="#ff0000">–Xmx32g</font></strong> -XX:+HeapDumpOnOutOfMemoryError  </p>
-</blockquote>
-</li>
-<li>新项目机器连接电脑提示adb没有权限，需要在Ubuntu的<code>/etc/udev/rules.d/51-android.rules</code>文件按格式添加测试机的VID与PID（命令行输入lsusb获取）。如需在Ubuntu上使用Fastboot工具，在安装配置Fastboot环境后，测试机进入Fastboot模式，找到机器Fastboot状态下的VID与PID并添加至<code>51-android.rules</code>文件中即可；</li>
-<li>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/2019/12/07/Android-Q/cts10_module.png" alt="Module"></li>
-<li><code>CtsTelephonyTestCases</code>模块只有64位的case，联通卡相关项跑完不再锁SIM卡短信功能；</li>
-<li>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备/不能挂载MTP设备”警告窗口。鉴于目前18版本较之前稳定，可考虑切换至18.04版本开展测试；</li>
-<li>执行完一轮测试后，需关闭当前命令行窗口另开窗口进行retry（使用Ctrl+C终止或输入exit退出当前控制台也可以）。原因是执行测试时Java程序会占用大量内存，关闭已执行完成窗口释放系统内存，否则将导致运行卡顿甚至生成的报告出现问题。可使用系统工具<strong>System Monitor</strong>查看内存实时占用情况；</li>
-<li>筛选过滤模块指令<code>--exclude-filter &lt;module name&gt;</code>在10.0CTS控制台中存在某些项目会概率性不生效问题；  </li>
-<li>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行VTS工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">不建议使用</font></strong>root账户执行CTS-on-gsi与VTS测试。</li>
-</ol>
-<h2 id="三、CTS-Verifier"><a href="#三、CTS-Verifier" class="headerlink" title="三、CTS-Verifier"></a>三、CTS-Verifier</h2><ol>
-<li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/2019/12/07/Android-Q/apk_name.png" alt="Apk"><blockquote>
-<p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可</p>
-</blockquote>
-<ol>
-<li>1.1 MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/2019/12/07/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
-<li><del>1.2 ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/2019/12/07/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
-</ol>
-</li>
-<li><code>HARDWARE</code>模块裁剪了GNSS和GPS相关测试项；</li>
-<li><code>SECURITY</code>模块新增生物锁相关项case，即Biometric Prompt Bound Keys Test与Biometric Test;</li>
-<li>Android-Q Cts-verifier需要键入如下命令：<br><code>adb shell appops set com.android.cts.verifier android:read_device_identifiers allow</code><br>然后点击Verifier应用界面右上角保存按钮，才能生成报告文件。</li>
-</ol>
+# adb device 命令获取所有设备的 serial number
+devices = subprocess.Popen(
+    &apos;adb devices&apos;.split(),
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE
+).communicate()[0]
 
+# 提取所有已连接设备的序列号
+serial_nos = []
+for item in devices.split():
+    filters = [b&apos;List&apos;, b&apos;of&apos;, b&apos;devices&apos;, b&apos;attached&apos;, b&apos;device&apos;]
+    if item not in filters:
+        serial_nos.append(item.decode(&quot;utf8&quot;))
+
+if len(serial_nos) != 0:
+    print(&quot;已连接设备序列号 %s ,共 %s 台设备&quot; % (serial_nos,len(serial_nos)))
+    # 循环列表执行adb命令
+    for serial_no in serial_nos:
+        print(&quot;\n设备号 %s 机器fingerprint为:&quot; % serial_no)
+        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.fingerprint&apos; % serial_no).split(),
+            #shell=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        ).communicate()[0].decode(&apos;gbk&apos;).split())
+        print(&quot;设备号 %s 机器display.id为:&quot; % serial_no)
+        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.display.id&apos; % serial_no).split(),
+            #shell=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        ).communicate()[0].decode(&apos;gbk&apos;).split())
+else:
+    print(&quot;未连接任何设备！请检查设备连接状态&quot;)</code></pre>
       
 
       
@@ -224,7 +214,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -280,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/07/Android-Q/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/28/Devices/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,15 +288,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/15/Good_night/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          想一个梦
-        
-      </div>
-    </a>
   
+    <a href="/2020/06/13/Excel-makedirs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读取表格数据，按指定序列新建对应名称文件夹</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -327,7 +317,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、准备工作"><span class="toc-number">1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、CTS"><span class="toc-number">2.</span> <span class="toc-text">二、CTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、CTS-Verifier"><span class="toc-number">3.</span> <span class="toc-text">三、CTS-Verifier</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
