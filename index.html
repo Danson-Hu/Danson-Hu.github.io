@@ -166,40 +166,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。</p>
-<pre><code>import subprocess
-
-# adb device 命令获取所有设备的 serial number
-devices = subprocess.Popen(
-    &apos;adb devices&apos;.split(),
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE
-).communicate()[0]
-
-# 提取所有已连接设备的序列号
-serial_nos = []
-for item in devices.split():
-    filters = [b&apos;List&apos;, b&apos;of&apos;, b&apos;devices&apos;, b&apos;attached&apos;, b&apos;device&apos;]
-    if item not in filters:
-        serial_nos.append(item.decode(&quot;utf8&quot;))
-
-if len(serial_nos) != 0:
-    print(&quot;已连接设备序列号 %s ,共 %s 台设备&quot; % (serial_nos,len(serial_nos)))
-    # 循环列表执行adb命令
-    for serial_no in serial_nos:
-        print(&quot;\n设备号 %s 机器fingerprint为:&quot; % serial_no)
-        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.fingerprint&apos; % serial_no).split(),
-            #shell=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        ).communicate()[0].decode(&apos;gbk&apos;).split())
-        print(&quot;设备号 %s 机器display.id为:&quot; % serial_no)
-        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.display.id&apos; % serial_no).split(),
-            #shell=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        ).communicate()[0].decode(&apos;gbk&apos;).split())
-else:
-    print(&quot;未连接任何设备！请检查设备连接状态&quot;)</code></pre>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># adb device 命令获取所有设备的 serial number</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">devices = subprocess.Popen(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	<span class="string">'adb devices'</span>.split(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	stdout=subprocess.PIPE,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	stderr=subprocess.PIPE</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">).communicate()[<span class="number">0</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取所有已连接设备的序列号</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">serial_nos = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> devices.split():</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	filters = [<span class="string">b'List'</span>, <span class="string">b'of'</span>, <span class="string">b'devices'</span>, <span class="string">b'attached'</span>, <span class="string">b'device'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> filters:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">		serial_nos.append(item.decode(<span class="string">"utf8"</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> len(serial_nos) != <span class="number">0</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	print(<span class="string">"已连接设备序列号 %s ,共 %s 台设备"</span> % (serial_nos,len(serial_nos)))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># 循环列表执行adb命令</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">for</span> serial_no <span class="keyword">in</span> serial_nos:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">		print(<span class="string">"\n设备号 %s 机器fingerprint为:"</span> % serial_no)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">		print(subprocess.Popen((<span class="string">'adb -s %s shell getprop ro.build.fingerprint'</span> % serial_no).split(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">			<span class="comment">#shell=False,</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">			stdout=subprocess.PIPE,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">			stderr=subprocess.PIPE</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">		).communicate()[<span class="number">0</span>].decode(<span class="string">'gbk'</span>).split())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">		print(<span class="string">"设备号 %s 机器display.id为:"</span> % serial_no)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">		print(subprocess.Popen((<span class="string">'adb -s %s shell getprop ro.build.display.id'</span> % serial_no).split(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">			<span class="comment">#shell=False,</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">			stdout=subprocess.PIPE,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">			stderr=subprocess.PIPE</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">		).communicate()[<span class="number">0</span>].decode(<span class="string">'gbk'</span>).split())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	print(<span class="string">"未连接任何设备！请检查设备连接状态"</span>)</span></pre></td></tr></table></figure></code></pre>
       
 
       
@@ -278,41 +245,7 @@ else:
       
         <h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低  </p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p><a href="https://blog.csdn.net/Strive_0902/article/details/82825063" target="_blank" rel="noopener">参考博客</a>。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用<code>zip(list1，list2)</code>方法读取两个列表，拼接文件夹名称，最后使用<code>os.makedirs()</code>方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能</p>
-<h2 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h2><pre><code>import numpy as np
-import xlrd
-import os
-
-data = xlrd.open_workbook(r&apos;汇总_2020.xlsx&apos;)
-table = data.sheets()[0]    # 第一个sheet页
-start = 3  # 开始的行,默认该行不读取
-end = 20  # 结束的行
-rows = end - start
-
-# 自定义文件夹序列号前缀
-list_number = []
-No_start = 1    # 可进行修改起始值
-for i in range(No_start, rows+No_start+1):    # 同步修改结束值，最后一行不循环遍历，需要+1生成
-    list_number.append(i)
-#print(list_number)
-
-# 读取表格的值
-list_values = []
-for x in range(start-1, end):    # 定义的首行不读取，设置定义行-1
-    row = table.row_values(x)
-    res = row[1]    # 从0开始读取指定列，默认不读首行
-    list_values.append(res)
-#print(list_values)
-
-# 以序列+版本号格式命名，通过zip方法读取两个列表，匹配命名
-for number,name in zip(list_number,list_values):
-    dirname = &quot;D:\\本地归档\\&quot; + str(number) + &quot;.&quot; + name
-    #print(dirname)
-    try:
-        if not os.path.exists(dirname):
-            print (&apos;文件夹&apos;,dirname,&apos;不存在，新建&apos;)
-            os.makedirs(dirname)
-    except Exception as e:
-        print (&apos;错误 ：&apos;,e)</code></pre>
+<h2 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h2><pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">data = xlrd.open_workbook(<span class="string">r'汇总_2020.xlsx'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">table = data.sheets()[<span class="number">0</span>]	<span class="comment"># 第一个sheet页</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">start = <span class="number">3</span>  <span class="comment"># 开始的行,默认该行不读取</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">end = <span class="number">20</span>  <span class="comment"># 结束的行</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">rows = end - start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义文件夹序列号前缀</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">list_number = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">No_start = <span class="number">1</span>	<span class="comment"># 可进行修改起始值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(No_start, rows+No_start+<span class="number">1</span>):	<span class="comment"># 同步修改结束值，最后一行不循环遍历，需要+1生成</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	list_number.append(i)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#print(list_number)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取表格的值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">list_values = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(start<span class="number">-1</span>, end):	<span class="comment"># 定义的首行不读取，设置定义行-1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">	row = table.row_values(x)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	res = row[<span class="number">1</span>]	<span class="comment"># 从0开始读取指定列，默认不读首行</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">	list_values.append(res)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#print(list_values)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以序列+版本号格式命名，通过zip方法读取两个列表，匹配命名</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> number,name <span class="keyword">in</span> zip(list_number,list_values):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">	dirname = <span class="string">"D:\\本地归档\\"</span> + str(number) + <span class="string">"."</span> + name</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">#print(dirname)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">try</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirname):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">			<span class="keyword">print</span> (<span class="string">'文件夹'</span>,dirname,<span class="string">'不存在，新建'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">			os.makedirs(dirname)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">print</span> (<span class="string">'错误 ：'</span>,e)</span></pre></td></tr></table></figure></code></pre>
       
 
       
@@ -386,67 +319,7 @@ for number,name in zip(list_number,list_values):
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，<del>想去旅游都找不到目的地。</del><br>顺便分享一下 <a href="https://bing.ioliu.cn/" target="_blank" rel="noopener">这个网址</a>，可以查看/点赞/下载必应搜索首页的历史图片</p>
-<pre><code>import urllib.request
-import requests
-import os.path
-import ctypes
-from bs4 import BeautifulSoup
-import re
-import datetime
-
-# 解析必应官网，获取图片信息
-def img_info():
-    response = urllib.request.urlopen(&quot;https://www.bing.com/?mkt=zh-CN&quot;)
-    html = response.read()
-    # 创建Beautiful Soup对象
-    soup = BeautifulSoup(html,&quot;html.parser&quot;)
-    info = soup.findAll(id=&quot;sh_cp&quot;)[0][&apos;title&apos;]
-    # 删除括号和括号内内容，方便为图片命名
-    Pic_Name = re.sub(u&quot;\\(.*?\\)|\\{.*?}|\\[.*?]&quot;, &quot;&quot;, info) 
-    return Pic_Name.strip() # 取出来的值多一个空格，加方法把空格去了
-
-def save_img(img_url,dirname):
-    # 保存图片到磁盘文件夹dirname中
-    try:
-        if not os.path.exists(dirname):
-            print (&apos;文件夹&apos;,dirname,&apos;不存在，重新建立&apos;)
-            #os.mkdir(dirname)
-            os.makedirs(dirname)
-        # 拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名
-        basename = os.path.basename(img_url)
-        # 拼接目录与文件名，得到图片路径
-        filepath = os.path.join(dirname, img_info() + basename[5:])
-        # 下载图片，并保存到文件夹中
-        urllib.request.urlretrieve(img_url, filepath)
-    except IOError as e:
-        print (&apos;文件操作失败&apos;,e)
-    except Exception as e:
-        print (&apos;错误 ：&apos;,e)
-    print(&quot;Save&quot;, filepath, &quot;successfully!&quot;)
-    return filepath
-
-# 请求网页，跳转到最终img地址
-def get_img_url(raw_img_url = &quot;https://blog.mrabit.com/bing/today&quot;):
-    r = requests.get(raw_img_url) 
-    img_url = r.url     # 得到图片文件的网址
-    print(&apos;img_url:&apos;, img_url)
-    return img_url
-
-# 设置图片绝对路径filepath所指向的图片为壁纸
-def set_img_as_wallpaper(filepath):
-    ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath, 0)
-
-def main():
-    dirname = &quot;E:/Pictures/bingImg/&quot;    # 图片要被保存在的位置
-    img_url = get_img_url()
-    filepath = save_img(img_url, dirname)   # 图片文件的的路径
-#   set_img_as_wallpaper(filepath)        # 设置为壁纸
-main()
-&quot;&quot;&quot;
-备份网址：raw_img_url = https://area.sinaapp.com/bingImg/ ，使用该网址需重构命名代码块：  
-    basename = datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;)  
-    filepath = os.path.join(dirname, img_info() + basename + &quot;.jpg&quot;)
-&quot;&quot;&quot;&quot;</code></pre><p>本地路径结果如下图：  </p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os.path</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解析必应官网，获取图片信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">img_info</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	response = urllib.request.urlopen(<span class="string">"https://www.bing.com/?mkt=zh-CN"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	html = response.read()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># 创建Beautiful Soup对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	soup = BeautifulSoup(html,<span class="string">"html.parser"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	info = soup.findAll(id=<span class="string">"sh_cp"</span>)[<span class="number">0</span>][<span class="string">'title'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># 删除括号和括号内内容，方便为图片命名</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	Pic_Name = re.sub(<span class="string">u"\\(.*?\\)|\\&#123;.*?&#125;|\\[.*?]"</span>, <span class="string">""</span>, info) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> Pic_Name.strip() <span class="comment"># 取出来的值多一个空格，加方法把空格去了</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_img</span><span class="params">(img_url,dirname)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># 保存图片到磁盘文件夹dirname中</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">try</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirname):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">			<span class="keyword">print</span> (<span class="string">'文件夹'</span>,dirname,<span class="string">'不存在，重新建立'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">			<span class="comment"># os.mkdir(dirname)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">			os.makedirs(dirname)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">		<span class="comment"># 拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">		basename = os.path.basename(img_url)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">		<span class="comment"># 拼接目录与文件名，得到图片路径</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">		filepath = os.path.join(dirname, img_info() + basename[<span class="number">5</span>:])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">		<span class="comment"># 下载图片，并保存到文件夹中</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">		urllib.request.urlretrieve(img_url, filepath)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">print</span> (<span class="string">'文件操作失败'</span>,e)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">print</span> (<span class="string">'错误 ：'</span>,e)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">	print(<span class="string">"Save"</span>, filepath, <span class="string">"successfully!"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> filepath</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求网页，跳转到最终img地址</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span><span class="params">(raw_img_url = <span class="string">"https://blog.mrabit.com/bing/today"</span>)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">	r = requests.get(raw_img_url) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">	img_url = r.url     <span class="comment"># 得到图片文件的网址</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">	print(<span class="string">'img_url:'</span>, img_url)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> img_url</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置图片绝对路径filepath所指向的图片为壁纸</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_img_as_wallpaper</span><span class="params">(filepath)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">	ctypes.windll.user32.SystemParametersInfoW(<span class="number">20</span>, <span class="number">0</span>, filepath, <span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">	dirname = <span class="string">"E:/Pictures/bingImg/"</span>	<span class="comment"># 图片要被保存在的位置</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">	img_url = get_img_url()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">	filepath = save_img(img_url, dirname)   <span class="comment"># 图片文件的的路径</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#   set_img_as_wallpaper(filepath)		# 设置为壁纸</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">main()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line"><span class="string">备份网址：raw_img_url = https://area.sinaapp.com/bingImg/ ，使用该网址需重构命名代码块：  </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line"><span class="string">    basename = datetime.datetime.now().strftime('%Y-%m-%d')  </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line"><span class="string">    filepath = os.path.join(dirname, img_info() + basename + ".jpg")</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span><span class="string">"</span></span></pre></td></tr></table></figure></code></pre><p>本地路径结果如下图：  </p>
 <p><img src="/2020/06/10/Python-Bing/Python_Bing.png" alt="Python_Bing">  </p>
 
       
@@ -1273,11 +1146,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
