@@ -145,6 +145,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-CTS测试遇到的问题与解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/21/CTS%E6%B5%8B%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">CTS测试遇到的问题与解决方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/21/CTS%E6%B5%8B%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-12-21T12:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一：Ubuntu缓存目录media资源包被删除问题"><a href="#一：Ubuntu缓存目录media资源包被删除问题" class="headerlink" title="一：Ubuntu缓存目录media资源包被删除问题"></a>一：Ubuntu缓存目录media资源包被删除问题</h2><p>执行CTS-media相关模块测试时，会检查电脑<code>/tmp/android-cts-media</code>文件夹，但是Ubuntu重启后tmp缓存目录下的文件将会被清空，导致执行测试时将近5G的资源包需要重新下载，不仅消耗时间而且会占用大量网络，为了使资源包不被删除，找到两种方法解决。</p>
+<ol>
+<li>在Linux文件系统里，chattr可以改变文件的属性；使用<code>chattr</code>命令修改文件夹权限，<code>lsattr</code>命令查看，详细命令：<blockquote>
+<p><code>sudo chattr -V -R +a +u /tmp/android-cts-media</code> </p>
+<p>-R：递归处理，将指定目录下的所有文件及子目录一并处理<br>-V：显示指令执行过程<br>-v：&lt;版本编号&gt; 设置文件或目录版本<br>+ &lt;属性&gt; 开启文件或目录的该项属性  </p>
+<blockquote>
+<p>+a：文件可读可写不可删除<br>+u：预防意外删除</p>
+</blockquote>
+<p>- &lt;属性&gt; 关闭文件或目录的该项属性<br>= &lt;属性&gt; 指定文件或目录的该项属性  </p>
+</blockquote>
+</li>
+<li>修改<code>/etc/default/rcS</code>文件。缺点：tmp目录下所有文件都不会被删除，占用系统空间，不建议采用。<blockquote>
+<p><code>sudo gedit /etc/default/rcS</code></p>
+<p>修改TMPTIME=-1<br>TMPTIME的值为0表示重启后删除文件，值为-1就不会自动删除文件，值为正整数表示/tmp目录下文件保留时间</p>
+</blockquote></li></ol>
+        
+          <a class="article-more-a" href="/2019/12/21/CTS%E6%B5%8B%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/21/CTS%E6%B5%8B%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Learning-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -494,11 +588,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
