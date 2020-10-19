@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-19T10:42:48.464Z">
+<meta property="og:updated_time" content="2020-10-19T10:52:36.083Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -169,16 +169,15 @@
       
         <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。</p>
 <a id="more"></a>
-
 <pre><code>```python
 import subprocess
 import re
 
 # adb device 命令获取所有设备的 serial number
 devices = subprocess.Popen(
-    &apos;adb devices&apos;.split(),
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE
+   &apos;adb devices&apos;.split(),
+   stdout=subprocess.PIPE,
+   stderr=subprocess.PIPE
 ).communicate()[0]
 
 # 提取所有已连接设备的序列号
@@ -188,29 +187,29 @@ serial_nos = re.findall(&apos;\n(.+?)\t&apos;, devices.decode())  # devices的�
 &quot;&quot;&quot;
 serial_nos = []
 for item in devices.split():
-    filters = [b&apos;List&apos;, b&apos;of&apos;, b&apos;devices&apos;, b&apos;attached&apos;, b&apos;device&apos;]
-    if item not in filters:
-        serial_nos.append(item.decode(&quot;utf8&quot;))
+   filters = [b&apos;List&apos;, b&apos;of&apos;, b&apos;devices&apos;, b&apos;attached&apos;, b&apos;device&apos;]
+   if item not in filters:
+       serial_nos.append(item.decode(&quot;utf8&quot;))
 &quot;&quot;&quot;
 
 if len(serial_nos) != 0:
-    print(&quot;已连接设备序列号 %s ,共 %s 台设备&quot; % (serial_nos, len(serial_nos)))
-    # 循环列表执行adb命令
-    for serial_no in serial_nos:
-        print(&quot;\n设备号 %s 机器fingerprint为:&quot; % serial_no)
-        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.fingerprint&apos; % serial_no).split(),
-            #shell=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        ).communicate()[0].decode(&apos;gbk&apos;).split())
-        print(&quot;设备号 %s 机器display.id为:&quot; % serial_no)
-        print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.display.id&apos; % serial_no).split(),
-            #shell=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        ).communicate()[0].decode(&apos;gbk&apos;).split())
+   print(&quot;已连接设备序列号 %s ,共 %s 台设备&quot; % (serial_nos, len(serial_nos)))
+   # 循环列表执行adb命令
+   for serial_no in serial_nos:
+       print(&quot;\n设备号 %s 机器fingerprint为:&quot; % serial_no)
+       print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.fingerprint&apos; % serial_no).split(),
+           #shell=False,
+           stdout=subprocess.PIPE,
+           stderr=subprocess.PIPE
+       ).communicate()[0].decode(&apos;gbk&apos;).split())
+       print(&quot;设备号 %s 机器display.id为:&quot; % serial_no)
+       print(subprocess.Popen((&apos;adb -s %s shell getprop ro.build.display.id&apos; % serial_no).split(),
+           #shell=False,
+           stdout=subprocess.PIPE,
+           stderr=subprocess.PIPE
+       ).communicate()[0].decode(&apos;gbk&apos;).split())
 else:
-    print(&quot;未连接任何设备！请检查设备连接状态&quot;)
+   print(&quot;未连接任何设备！请检查设备连接状态&quot;)
 
 ```    </code></pre>
       
