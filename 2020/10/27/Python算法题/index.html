@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一些ADB命令 | Danson</title>
+  <title>Python算法题 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ADB(Android Debug Bridge)架构ADB是一个C&#x2F;S架构的应用程序，由三部分组成：    运行在pc端的adb client：命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb cli">
-<meta name="keywords" content="Android-ADB">
+  <meta name="description" content="一、冒泡排序冒泡排序（Bubble Sort）是一种简单的排序算法。它重复地遍历要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。遍历数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。冒泡排序解决了桶排序浪费空间的问题, 但是冒泡排序的效率特别低。冒泡排序算法的运作如下：   比较相邻的元素。">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些ADB命令">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;05&#x2F;adb_command&#x2F;index.html">
+<meta property="og:title" content="Python算法题">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;27&#x2F;Python%E7%AE%97%E6%B3%95%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="ADB(Android Debug Bridge)架构ADB是一个C&#x2F;S架构的应用程序，由三部分组成：    运行在pc端的adb client：命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb cli">
+<meta property="og:description" content="一、冒泡排序冒泡排序（Bubble Sort）是一种简单的排序算法。它重复地遍历要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。遍历数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。冒泡排序解决了桶排序浪费空间的问题, 但是冒泡排序的效率特别低。冒泡排序算法的运作如下：   比较相邻的元素。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-06T14:04:13.768Z">
+<meta property="og:updated_time" content="2020-10-27T13:19:00.302Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -147,100 +147,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-adb_command" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python算法题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一些ADB命令
+      Python算法题
     </h1>
   
 
         
-        <a href="/2020/04/05/adb_command/" class="archive-article-date">
-  	<time datetime="2020-04-05T09:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
+        <a href="/2020/10/27/Python%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-10-27T09:21:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C/S架构的应用程序，由三部分组成：  </p>
-<ol>
-<li>运行在pc端的adb client：<br>命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb client就可以向ADB servcer发送服务请求；</li>
-<li>运行在pc端的adb server：<br>ADB Server是运行在主机上的一个后台进程。它的作用在于检测USB端口感知设备的连接和拔除，以及模拟器实例的启动或停止，ADB Server还需要将adb client的请求通过usb或者tcp的方式发送到对应的adbd上；</li>
-<li>运行在设备端的常驻进程adb demon (adbd)：<br>程序“adbd”作为一个后台进程在Android设备或模拟器系统中运行。它的作用是连接ADB服务器，并且为运行在主机上的客户端提供一些服务。<a id="more"></a>
-<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2></li>
-</ol>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>1、查看机器是否root</p>
-<blockquote>
-<p><code>adb shell</code><br><code>adb shell id</code></p>
-</blockquote>
-<p>2、创建文件夹</p>
-<blockquote>
-<p>用法：adb shell mkdir [options] <directory name>  </directory></p>
+        <h3 id="一、冒泡排序"><a href="#一、冒泡排序" class="headerlink" title="一、冒泡排序"></a>一、冒泡排序</h3><p>冒泡排序（Bubble Sort）是一种简单的排序算法。它重复地遍历要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。遍历数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。冒泡排序解决了桶排序浪费空间的问题, 但是冒泡排序的效率特别低。<br>冒泡排序算法的运作如下：</p>
 <blockquote>
 <ul>
-<li>创建文件夹test1并给文件夹赋予读写执行的权限(使用-m参数)：<br><code>adb shell mkdir -m 777 /sdcard/test</code> </li>
+<li>比较相邻的元素。如果第一个比第二个大（升序），就交换他们两个。  </li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。  </li>
+<li>针对所有的元素重复以上的步骤，除了最后一个。  </li>
+<li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  </li>
 </ul>
 </blockquote>
+<pre><code><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(aList)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(aList)<span class="number">-1</span>, <span class="number">0</span>, <span class="number">-1</span>):	<span class="comment"># i每次遍历需要比较的次数，是逐渐减小的</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(i):		<span class="comment"># j为列表下标</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">			<span class="keyword">if</span> aList[j] &gt; aList[j+<span class="number">1</span>]:</span></pre></td></tr><tr><td class="code"><pre><span class="line">				aList[j], aList[j+<span class="number">1</span>] = aList[j+<span class="number">1</span>], aList[j]</span></pre></td></tr><tr><td class="code"><pre><span class="line">	<span class="keyword">return</span> aList</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">li = [<span class="number">54</span>, <span class="number">26</span>, <span class="number">93</span>, <span class="number">17</span>, <span class="number">77</span>, <span class="number">31</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">20</span>, <span class="number">26</span>, <span class="number">5</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(bubbleSort(li))</span></pre></td></tr></table></figure></code></pre><h3 id="二、二分法查找"><a href="#二、二分法查找" class="headerlink" title="二、二分法查找"></a>二、<a href="https://cloud.tencent.com/developer/news/288459" target="_blank" rel="noopener">二分法查找</a></h3><p><strong>二分法可以分为三类：二分查找算法、二分排序算法、二分合并算法。</strong><br>二分查找又被称为折半查找。假设我们有一个列表，要在该列表中查找某一个元素，我们需要先对该列表进行排序（假设是从小到大的排序），然后取这个列表的中值与待查找的元素进行比较，如果该元素等于中值，则查找成功；如果该元素大于中值，则接下来在右边的子表（之前二分出来的两个子表中的右边子表）中继续进行以中值为中心的折半查找；如果该元素小于中值，则在左边的子表中继续进行以中值为中心的折半查找…如此循环，直到查找到目标元素，此时查找成功，或者直到子表再也不能进行二分为止，此时查找不成功。</p>
 <blockquote>
 <ul>
-<li>递归创建目录(使用-p参数)：<br><code>adb shell mkdir -p /sdcard/test/test1/test2</code>  </li>
+<li>二分法的前提是输入的列表必须是有序的排布的，不可以是随机分布值的集合。</li>
+<li>列表排序可以使用sorted(list)或list.sort()方法解决，假设为升序输出。  </li>
+<li>二分的查找算法的时间复杂度是O（log n)</li>
 </ul>
 </blockquote>
-</blockquote>
-<p>3、创建文件或改变文件时间戳</p>
-<blockquote>
-<p>用法：adb shell touch [-alm] [-t YYYYMMDD [.HHMMSS]] &lt; file &gt;<br><code>adb shell touch /sdcard/test.txt /sdcard/test1.txt</code></p>
-</blockquote>
-<p>4、复制、移动、重命名文件</p>
-<blockquote>
-<p>复制：<code>adb shell cp /sdcard/test.txt /sdcard/Download</code><br>复制并修改新文件名称：<code>adb shell cp /sdcard/test.txt /sdcard/Download/test_new.txt</code><br>移动：<code>adb shell mv /sdcard/test.txt /sdcard/Download/</code><br>移动并重命名：<code>adb shell mv /sdcard/Download/test.txt /sdcard/Download/test_renamed.txt</code><br>重命名：<code>adb shell rename /sdcard/test1.txt /sdcard/test_renamed.txt</code></p>
-</blockquote>
-<p>5、查看文件内容/查看手机内存信息</p>
-<blockquote>
-<p><code>adb shell cat /proc/meminfo</code>  </p>
-<blockquote>
-<p>MemTotal: 所有可用RAM大小（即物理内存减去一些预留位和内核的二进制代码大小）；<br>MemFree: 被系统留着未使用的内存；<br>Buffers: 用来给文件做缓冲的大小；<br>Cached: 被高速缓冲存储器（cache memory）用的内存的大小（等于 diskcache minus SwapCache ）;<br>SwapCached:swap 缓存的大小，Android很少使用swap的，经常为0。被高速缓冲存储器（cache memory）用来交换空间的大小,用来在需要的时候很快的被替换而不需要再次打开I/O端口；<br>Active: 在活跃使用中的缓冲或高速缓冲存储器页面文件的大小，除非非常必要，否则不会被移作他用；<br>Inactive: 在不经常使用中的缓冲或高速缓冲存储器页面文件的大小，可能被用于其他途径；<br>SwapTotal: 交换空间的总大小；<br>SwapFree: 未被使用交换空间的大小。</p>
-</blockquote>
-</blockquote>
-<p>6、查看各个分区的存储情况 </p>
-<blockquote>
-<p><code>adb shell df -h</code></p>
-</blockquote>
-<p>7、查看应用列表(包名)</p>
-<blockquote>
-<p>用法：adb shell pm list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [–user USER_ID] [FILTER]</p>
-<blockquote>
-<p>无: 所有应用<br>-f: 显示应用关联的 apk 文件<br>-d: 只显示 disabled 的应用<br>-e: 只显示 enabled 的应用<br>-s: 只显示系统应用<br>-3: 只显示第三方应用<br>-i: 显示应用的 installer<br>-u: 包含已卸载应用<br>[FILTER]: 包名包含 [FILTER] 字符串</p>
-</blockquote>
-</blockquote>
-<p>8、查看当前界面应用包名和当前活动名</p>
-<blockquote>
-<p><code>adb shell dumpsys window | findstr mCurrentFocus</code></p>
-</blockquote>
-<p>9、打开应用界面，关闭应用</p>
-<blockquote>
-<p><code>adb shell am start com.android.cts.verifier/com.android.cts.verifier.CtsVerifierActivity</code><br><code>adb shell am force-stop com.android.cts.verifier</code></p>
-</blockquote>
-<p>10、<code>adb shell input</code>命令</p>
-<blockquote>
-<ul>
-<li><p>输入文本（不支持中文、空格、特殊字符）：<code>adb shell input text &quot;www.bing.com&quot;</code><br>输入键值，键值表详见<a href="https://danson-hu.github.io/2020/05/06/keyevent_keycode/" target="_blank" rel="noopener">博客</a>：</p>
-<blockquote>
-<p>返回：<code>adb shell input keyevent 4</code><br>确定：<code>adb shell input keyevent 66</code><br>删除：<code>adb shell input keyevent 67</code>  </p>
-</blockquote>
-</li>
-<li><p>点击：<code>adb shell input tap 屏幕坐标（x y）</code><br>坐标获取方法：打开手机开发者选项里面的“指针位置（pointer location）”开关</p>
-</li>
-<li><p>滑动(长按)：<code>adb shell input swipe 屏幕坐标1（x y） 屏幕坐标2（x1 y1）</code><br>最后加一个参数，表示操作的时间ms，如:<br>从(500,600)滑动到(500,1600)总花费1000ms：<code>adb shell input swipe 500 600 500 1600 1000</code><br>长按(1400,400) 900ms：<code>adb shell input swipe 1400 400 1400 400 900</code></p>
-</li>
-</ul>
-</blockquote>
-
+<pre><code><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dichotomySearch</span><span class="params">(num, myList)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    myList = sorted(myList)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'排序后列表：'</span>, myList)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    first = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    last = len(myList) - <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">while</span> first &lt;= last:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        middle = (first + last) // <span class="number">2</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">if</span> myList[middle] == num:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">return</span> middle</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">elif</span> myList[middle] &gt; num:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            last = middle - <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">elif</span> myList[middle] &lt; num:</span></pre></td></tr><tr><td class="code"><pre><span class="line">            first = middle + <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">key = <span class="number">12</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">7</span>, <span class="number">25</span>, <span class="number">10</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">result = dichotomySearch(key, list1)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> result <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'查找的元素是'</span>, key, <span class="string">'对应有序列表中序号下标为：'</span>, result)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'未找到该元素'</span>)</span></pre></td></tr></table></figure></code></pre>
       
 
       
@@ -253,7 +197,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -309,7 +253,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/05/adb_command/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/10/27/Python%E7%AE%97%E6%B3%95%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +267,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/06/keyevent_keycode/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/10/27/Python-os/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          adb shell input keyevent 常用键值表
+          Python中的os模块
         
       </div>
     </a>
   
   
-    <a href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">adb命令与Android系统剪贴板服务进行交互</div>
+    <a href="/2020/09/26/%E5%85%B3%E4%BA%8E%E6%89%B9%E5%A4%84%E7%90%86%E7%9A%84%E5%8F%98%E9%87%8F%E5%BB%B6%E8%BF%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于批处理的变量延迟</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -361,7 +305,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADB-Android-Debug-Bridge-架构"><span class="toc-number">1.</span> <span class="toc-text">ADB(Android Debug Bridge)架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本知识"><span class="toc-number">2.</span> <span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">3.</span> <span class="toc-text">常用命令</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、冒泡排序"><span class="toc-number">1.</span> <span class="toc-text">一、冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、二分法查找"><span class="toc-number">2.</span> <span class="toc-text">二、二分法查找</span></a></li></ol>
                     </div>
                 </span>
             </div>

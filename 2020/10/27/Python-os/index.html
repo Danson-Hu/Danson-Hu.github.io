@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一些ADB命令 | Danson</title>
+  <title>Python中的os模块 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ADB(Android Debug Bridge)架构ADB是一个C&#x2F;S架构的应用程序，由三部分组成：    运行在pc端的adb client：命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb cli">
-<meta name="keywords" content="Android-ADB">
+  <meta name="description" content="os模块与os.path模块的作用python中的os库提供了使用各种操作系统功能的接口，可以用来处理文件和目录。os.path是一个针对路径的模块，模块内提供对文件、目录和路径管理的函数。 os模块常用方法import osprint(os.getcwd())  # 显示当前工作目录print(os.chdir(&amp;apos;path&amp;apos;))     # 改变当前工作目录为pathprint(os.listd">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些ADB命令">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;05&#x2F;adb_command&#x2F;index.html">
+<meta property="og:title" content="Python中的os模块">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;27&#x2F;Python-os&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="ADB(Android Debug Bridge)架构ADB是一个C&#x2F;S架构的应用程序，由三部分组成：    运行在pc端的adb client：命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb cli">
+<meta property="og:description" content="os模块与os.path模块的作用python中的os库提供了使用各种操作系统功能的接口，可以用来处理文件和目录。os.path是一个针对路径的模块，模块内提供对文件、目录和路径管理的函数。 os模块常用方法import osprint(os.getcwd())  # 显示当前工作目录print(os.chdir(&amp;apos;path&amp;apos;))     # 改变当前工作目录为pathprint(os.listd">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-06T14:04:13.768Z">
+<meta property="og:updated_time" content="2020-10-27T13:19:19.281Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -147,100 +147,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-adb_command" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python-os" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一些ADB命令
+      Python中的os模块
     </h1>
   
 
         
-        <a href="/2020/04/05/adb_command/" class="archive-article-date">
-  	<time datetime="2020-04-05T09:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
+        <a href="/2020/10/27/Python-os/" class="archive-article-date">
+  	<time datetime="2020-10-27T12:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C/S架构的应用程序，由三部分组成：  </p>
-<ol>
-<li>运行在pc端的adb client：<br>命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb client就可以向ADB servcer发送服务请求；</li>
-<li>运行在pc端的adb server：<br>ADB Server是运行在主机上的一个后台进程。它的作用在于检测USB端口感知设备的连接和拔除，以及模拟器实例的启动或停止，ADB Server还需要将adb client的请求通过usb或者tcp的方式发送到对应的adbd上；</li>
-<li>运行在设备端的常驻进程adb demon (adbd)：<br>程序“adbd”作为一个后台进程在Android设备或模拟器系统中运行。它的作用是连接ADB服务器，并且为运行在主机上的客户端提供一些服务。<a id="more"></a>
-<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2></li>
-</ol>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>1、查看机器是否root</p>
-<blockquote>
-<p><code>adb shell</code><br><code>adb shell id</code></p>
-</blockquote>
-<p>2、创建文件夹</p>
-<blockquote>
-<p>用法：adb shell mkdir [options] <directory name>  </directory></p>
-<blockquote>
-<ul>
-<li>创建文件夹test1并给文件夹赋予读写执行的权限(使用-m参数)：<br><code>adb shell mkdir -m 777 /sdcard/test</code> </li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>递归创建目录(使用-p参数)：<br><code>adb shell mkdir -p /sdcard/test/test1/test2</code>  </li>
-</ul>
-</blockquote>
-</blockquote>
-<p>3、创建文件或改变文件时间戳</p>
-<blockquote>
-<p>用法：adb shell touch [-alm] [-t YYYYMMDD [.HHMMSS]] &lt; file &gt;<br><code>adb shell touch /sdcard/test.txt /sdcard/test1.txt</code></p>
-</blockquote>
-<p>4、复制、移动、重命名文件</p>
-<blockquote>
-<p>复制：<code>adb shell cp /sdcard/test.txt /sdcard/Download</code><br>复制并修改新文件名称：<code>adb shell cp /sdcard/test.txt /sdcard/Download/test_new.txt</code><br>移动：<code>adb shell mv /sdcard/test.txt /sdcard/Download/</code><br>移动并重命名：<code>adb shell mv /sdcard/Download/test.txt /sdcard/Download/test_renamed.txt</code><br>重命名：<code>adb shell rename /sdcard/test1.txt /sdcard/test_renamed.txt</code></p>
-</blockquote>
-<p>5、查看文件内容/查看手机内存信息</p>
-<blockquote>
-<p><code>adb shell cat /proc/meminfo</code>  </p>
-<blockquote>
-<p>MemTotal: 所有可用RAM大小（即物理内存减去一些预留位和内核的二进制代码大小）；<br>MemFree: 被系统留着未使用的内存；<br>Buffers: 用来给文件做缓冲的大小；<br>Cached: 被高速缓冲存储器（cache memory）用的内存的大小（等于 diskcache minus SwapCache ）;<br>SwapCached:swap 缓存的大小，Android很少使用swap的，经常为0。被高速缓冲存储器（cache memory）用来交换空间的大小,用来在需要的时候很快的被替换而不需要再次打开I/O端口；<br>Active: 在活跃使用中的缓冲或高速缓冲存储器页面文件的大小，除非非常必要，否则不会被移作他用；<br>Inactive: 在不经常使用中的缓冲或高速缓冲存储器页面文件的大小，可能被用于其他途径；<br>SwapTotal: 交换空间的总大小；<br>SwapFree: 未被使用交换空间的大小。</p>
-</blockquote>
-</blockquote>
-<p>6、查看各个分区的存储情况 </p>
-<blockquote>
-<p><code>adb shell df -h</code></p>
-</blockquote>
-<p>7、查看应用列表(包名)</p>
-<blockquote>
-<p>用法：adb shell pm list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [–user USER_ID] [FILTER]</p>
-<blockquote>
-<p>无: 所有应用<br>-f: 显示应用关联的 apk 文件<br>-d: 只显示 disabled 的应用<br>-e: 只显示 enabled 的应用<br>-s: 只显示系统应用<br>-3: 只显示第三方应用<br>-i: 显示应用的 installer<br>-u: 包含已卸载应用<br>[FILTER]: 包名包含 [FILTER] 字符串</p>
-</blockquote>
-</blockquote>
-<p>8、查看当前界面应用包名和当前活动名</p>
-<blockquote>
-<p><code>adb shell dumpsys window | findstr mCurrentFocus</code></p>
-</blockquote>
-<p>9、打开应用界面，关闭应用</p>
-<blockquote>
-<p><code>adb shell am start com.android.cts.verifier/com.android.cts.verifier.CtsVerifierActivity</code><br><code>adb shell am force-stop com.android.cts.verifier</code></p>
-</blockquote>
-<p>10、<code>adb shell input</code>命令</p>
-<blockquote>
-<ul>
-<li><p>输入文本（不支持中文、空格、特殊字符）：<code>adb shell input text &quot;www.bing.com&quot;</code><br>输入键值，键值表详见<a href="https://danson-hu.github.io/2020/05/06/keyevent_keycode/" target="_blank" rel="noopener">博客</a>：</p>
-<blockquote>
-<p>返回：<code>adb shell input keyevent 4</code><br>确定：<code>adb shell input keyevent 66</code><br>删除：<code>adb shell input keyevent 67</code>  </p>
-</blockquote>
-</li>
-<li><p>点击：<code>adb shell input tap 屏幕坐标（x y）</code><br>坐标获取方法：打开手机开发者选项里面的“指针位置（pointer location）”开关</p>
-</li>
-<li><p>滑动(长按)：<code>adb shell input swipe 屏幕坐标1（x y） 屏幕坐标2（x1 y1）</code><br>最后加一个参数，表示操作的时间ms，如:<br>从(500,600)滑动到(500,1600)总花费1000ms：<code>adb shell input swipe 500 600 500 1600 1000</code><br>长按(1400,400) 900ms：<code>adb shell input swipe 1400 400 1400 400 900</code></p>
-</li>
-</ul>
-</blockquote>
-
+        <h2 id="os模块与os-path模块的作用"><a href="#os模块与os-path模块的作用" class="headerlink" title="os模块与os.path模块的作用"></a>os模块与os.path模块的作用</h2><p>python中的os库提供了使用各种操作系统功能的接口，可以用来处理文件和目录。os.path是一个针对路径的模块，模块内提供对文件、目录和路径管理的函数。</p>
+<h3 id="os模块常用方法"><a href="#os模块常用方法" class="headerlink" title="os模块常用方法"></a>os模块常用方法</h3><pre><code><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.getcwd())  <span class="comment"># 显示当前工作目录</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.chdir(<span class="string">'path'</span>))     <span class="comment"># 改变当前工作目录为path</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.listdir(<span class="string">'dirName'</span>))    <span class="comment"># 返回dirName目录下所有文件和目录名</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.makedirs(<span class="string">'folderName'</span>))    <span class="comment"># 新建文件夹，可指定绝对路径</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.rmdir(<span class="string">'dirName'</span>))  <span class="comment"># 删除单级目录、文件夹</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.remove(<span class="string">'fileName'</span>))    <span class="comment"># 删除一个文件</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.rename(<span class="string">'oldName'</span>, <span class="string">'newName'</span>))  <span class="comment"># 重命名文件</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.stat(<span class="string">''</span>))  <span class="comment"># 获取文件或目录信息</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.system(<span class="string">'command'</span>))     <span class="comment"># 在终端窗口运行command</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.environ)   <span class="comment"># 获取系统环境变量</span></span></pre></td></tr></table></figure></code></pre><hr>
+<h3 id="os-path模块常用函数"><a href="#os-path模块常用函数" class="headerlink" title="os.path模块常用函数"></a>os.path模块常用函数</h3><pre><code><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.dirname(<span class="string">'path'</span>))  <span class="comment"># 返回该路径的父目录</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.basename(<span class="string">'path'</span>))     <span class="comment"># 返回该路径的最后一个目录或文件，即基本名称</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.split(<span class="string">'path'</span>))    <span class="comment"># 将path分割成路径名和文件名</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.getsize(<span class="string">'fileName'</span>))  <span class="comment"># 获取文件大小，以字节为单位</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.abspath(<span class="string">'path'</span>))  <span class="comment"># 返回参数的绝对路径字符串，这是将相对路径转为绝对路径的简便方法</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.exists(<span class="string">'path'</span>))   <span class="comment"># 如果参数所指的文件或文件夹存在，就返回True，否则返回False</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.isabs(<span class="string">'path'</span>))    <span class="comment"># 如果参数是一个绝对路径，就返回True，如果是一个相对路径则返回False</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.isfile(<span class="string">'path'</span>))   <span class="comment"># 如果参数是一个文件，就返回True</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.isdir(<span class="string">'path'</span>))    <span class="comment"># 如果参数是一个目录，就返回True</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(os.path.join(<span class="string">'path'</span>, <span class="string">'name'</span>))     <span class="comment"># 连接目录与文件名或者连接目录与目录，格式为path/name</span></span></pre></td></tr></table></figure></code></pre>
       
 
       
@@ -253,7 +182,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -309,7 +238,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/05/adb_command/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/10/27/Python-os/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +252,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/06/keyevent_keycode/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          adb shell input keyevent 常用键值表
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">adb命令与Android系统剪贴板服务进行交互</div>
+    <a href="/2020/10/27/Python%E7%AE%97%E6%B3%95%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python算法题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -361,7 +281,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADB-Android-Debug-Bridge-架构"><span class="toc-number">1.</span> <span class="toc-text">ADB(Android Debug Bridge)架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本知识"><span class="toc-number">2.</span> <span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">3.</span> <span class="toc-text">常用命令</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#os模块与os-path模块的作用"><span class="toc-number">1.</span> <span class="toc-text">os模块与os.path模块的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#os模块常用方法"><span class="toc-number">1.1.</span> <span class="toc-text">os模块常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os-path模块常用函数"><span class="toc-number">1.2.</span> <span class="toc-text">os.path模块常用函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
