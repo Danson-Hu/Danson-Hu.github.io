@@ -9,14 +9,14 @@
   <title>并行操作多台安卓设备 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。已优化">
-<meta name="keywords" content="Android-ADB,python">
+<meta name="keywords" content="python,Android-ADB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并行操作多台安卓设备">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;28&#x2F;Devices&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。已优化">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-23T13:15:34.520Z">
+<meta property="og:updated_time" content="2020-12-23T16:08:32.475Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -170,7 +170,7 @@
         <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。<strong>已优化</strong></p>
 <a id="more"></a>
 
-<pre><code><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">   devices = subprocess.getoutput(<span class="string">'adb devices'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">   sn_list = re.findall(<span class="string">r'\n(\w*)\t'</span>, devices)</span></pre></td></tr><tr><td class="code"><pre><span class="line">   <span class="keyword">if</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">f'已连接 <span class="subst">&#123;len(sn_list)&#125;</span> 台设备'</span>, sn_list)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> sn <span class="keyword">in</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">	    print(<span class="string">f'\n设备号 <span class="subst">&#123;sn&#125;</span> 机器的fingerprint为:'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">	    print(subprocess.getoutput(<span class="string">f'adb -s <span class="subst">&#123;sn&#125;</span> shell getprop ro.build.fingerprint'</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line">	    print(<span class="string">f'设备号 <span class="subst">&#123;sn&#125;</span> 机器的ro.build.display.id为:'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">	    print(subprocess.getoutput(<span class="string">f'adb -s <span class="subst">&#123;sn&#125;</span> shell getprop ro.build.display.id'</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line">   <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'未连接任何设备，请检查设备状态！'</span>)</span></pre></td></tr></table></figure></code></pre>
+<pre><code><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">devices = subprocess.getoutput(<span class="string">'adb devices'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">sn_list = re.findall(<span class="string">r'\n(\w*)\t'</span>, devices)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">f'已连接 <span class="subst">&#123;len(sn_list)&#125;</span> 台设备'</span>, sn_list)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> sn <span class="keyword">in</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(<span class="string">f'\n设备号 <span class="subst">&#123;sn&#125;</span> 机器的fingerprint为:'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(subprocess.getoutput(<span class="string">f'adb -s <span class="subst">&#123;sn&#125;</span> shell getprop ro.build.fingerprint'</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(<span class="string">f'设备号 <span class="subst">&#123;sn&#125;</span> 机器的ro.build.display.id为:'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(subprocess.getoutput(<span class="string">f'adb -s <span class="subst">&#123;sn&#125;</span> shell getprop ro.build.display.id'</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'未连接任何设备，请检查设备状态！'</span>)</span></pre></td></tr></table></figure></code></pre>
       
 
       
@@ -183,11 +183,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
         		</li>
       		
 		</ul>
@@ -421,7 +421,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -429,7 +429,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
