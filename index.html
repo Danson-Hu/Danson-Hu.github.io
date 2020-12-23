@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="记录一些最近看过的影视作品-哔哩哔哩资源链接"><a href="#记录一些最近看过的影视作品-哔哩哔哩资源链接" class="headerlink" title="记录一些最近看过的影视作品(哔哩哔哩资源链接)"></a>记录一些最近看过的影视作品(哔哩哔哩资源链接)</h3>
+        <h3 id="记录一些看过的影视作品"><a href="#记录一些看过的影视作品" class="headerlink" title="记录一些看过的影视作品"></a>记录一些看过的影视作品</h3>
         
           <a class="article-more-a" href="/2020/10/29/Movies/#more">more >></a>
         
@@ -470,7 +470,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。</p>
+        <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。<strong>已优化</strong></p>
         
           <a class="article-more-a" href="/2020/06/28/Devices/#more">more >></a>
         
@@ -551,7 +551,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低  </p>
-<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p><a href="https://blog.csdn.net/Strive_0902/article/details/82825063" target="_blank" rel="noopener">参考博客</a>。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用<code>zip(list1，list2)</code>方法读取两个列表，拼接文件夹名称，最后使用<code>os.makedirs()</code>方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能</p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p><a href="https://blog.csdn.net/Strive_0902/article/details/82825063" target="_blank" rel="noopener">参考博客</a>。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用<code>zip(list1，list2)</code>方法读取两个列表，拼接文件夹名称，最后使用<code>os.makedirs()</code>方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能。目前封装成Windows命令行交互工具，以后有时间优化成GUI工具。<br><a href="https://pan.baidu.com/s/15G3yOgK33_nfy2pdg-kHdg" target="_blank" rel="noopener">点击下载程序</a>，提取码：endb</p>
         
           <a class="article-more-a" href="/2020/06/13/Excel-makedirs/#more">more >></a>
         
@@ -938,14 +938,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>项目地址：<a href="https://github.com/majido/clipper" target="_blank" rel="noopener">https://github.com/majido/clipper</a></strong>  </p>
-<ol>
-<li>安装clipper.apk<br><a href="https://github.com/majido/clipper/releases/download/v1.2.1/clipper.apk" target="_blank" rel="noopener">点击下载APK</a><br><code>adb install 下载路径/clipper.apk</code>  </li>
-<li>打开应用apk，界面显示用法如下：<br>You can now copy to or paste from clipboard using the following commands in adb shell:<br><code>am broadcast -a clipper.set -e text &quot;this can be pasted now&quot;</code><br><code>am broadcast -a clipper.get</code>  </li>
-<li>例如往手机剪贴板写入”High or low, (high, low), it’s all the same.”<font color="#ff0000">（无法写入中文）</font><br> <code>adb shell</code><br> <code>am broadcast -a clipper.set -e text &quot;High or low, (high, low), it&#39;s all the same.&quot;</code><br>显示<strong>data=”Text is copied into clipboard.”</strong>即写入成功。  </li>
-<li>在手机需要的输入框中粘贴即可  </li>
-<li>当然，也可以用<code>am broadcast -a clipper.get</code>命令获取手机剪切板的内容<br> <code>adb shell</code><br> <code>am broadcast -a clipper.get</code><br>获取的内容在data里显示。</li>
-</ol>
-
+        
+          <a class="article-more-a" href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/#more">more >></a>
+        
       
 
       
