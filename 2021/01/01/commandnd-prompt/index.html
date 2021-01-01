@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>想一个梦 | Danson</title>
+  <title>终端窗口提示符显示时间 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="昏黄的灯早已熄了纸上写满未解完的题风裹挟了些月光想扑进来我看见窗帘上的树影像是在跳着舞的我的灵魂">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="参考链接:【Linux】让命令提示符显示日期和时间Ubuntu 18.04终端颜色个性化设置Windows powershell: changing the command promptwindows如何在cmd命令行提示符中显示当前的时间">
+<meta name="keywords" content="Linux,Windows">
 <meta property="og:type" content="article">
-<meta property="og:title" content="想一个梦">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;15&#x2F;Good_night&#x2F;index.html">
+<meta property="og:title" content="终端窗口提示符显示时间">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;01&#x2F;01&#x2F;commandnd-prompt&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="昏黄的灯早已熄了纸上写满未解完的题风裹挟了些月光想扑进来我看见窗帘上的树影像是在跳着舞的我的灵魂">
+<meta property="og:description" content="参考链接:【Linux】让命令提示符显示日期和时间Ubuntu 18.04终端颜色个性化设置Windows powershell: changing the command promptwindows如何在cmd命令行提示符中显示当前的时间">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;15&#x2F;Good_night&#x2F;Good_night.jpg">
-<meta property="og:updated_time" content="2020-01-03T14:36:05.439Z">
+<meta property="og:updated_time" content="2021-01-01T10:56:46.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;15&#x2F;Good_night&#x2F;Good_night.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
   
@@ -149,31 +147,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Good_night" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-commandnd-prompt" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      想一个梦
+      终端窗口提示符显示时间
     </h1>
   
 
         
-        <a href="/2019/12/15/Good_night/" class="archive-article-date">
-  	<time datetime="2019-12-15T09:28:11.701Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
+        <a href="/2021/01/01/commandnd-prompt/" class="archive-article-date">
+  	<time datetime="2021-01-01T10:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>昏黄的灯早已熄了<br>纸上写满未解完的题<br>风裹挟了些月光想扑进来<br>我看见窗帘上的树影<br>像是在跳着舞的我的灵魂  </p>
+        <blockquote>
+<p>参考链接:<br><a href="https://blog.csdn.net/qazx123q/article/details/88846288" target="_blank" rel="noopener">【Linux】让命令提示符显示日期和时间</a><br><a href="https://www.linuxidc.com/Linux/2020-01/162142.htm" target="_blank" rel="noopener">Ubuntu 18.04终端颜色个性化设置</a><br><a href="https://stackoverrun.com/cn/q/1413669" target="_blank" rel="noopener">Windows powershell: changing the command prompt</a><br><a href="https://blog.csdn.net/yzsind/article/details/2883295" target="_blank" rel="noopener">windows如何在cmd命令行提示符中显示当前的时间</a></p>
+</blockquote>
 <a id="more"></a>
 
-<p>被子轻轻抱住我<br>耳机卖力地在抖包袱<br>天花板正播放我主演的喜剧<br>趁着夜色<br>赶紧<br>想一个梦  </p>
-<p><img src="/2019/12/15/Good_night/Good_night.jpg" alt="Good_night"></p>
+<h3 id="Ubuntu-Terminal"><a href="#Ubuntu-Terminal" class="headerlink" title="Ubuntu Terminal"></a>Ubuntu Terminal</h3><ol>
+<li>编辑配置文件<br>在终端输入<code>gedit ~/.bashrc</code>  </li>
+<li>一般修改以下代码块<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$color_prompt</span>"</span> = yes ]; <span class="keyword">then</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    PS1=<span class="string">'$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">else</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    PS1=<span class="string">'$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ '</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">fi</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="built_in">unset</span> color_prompt force_color_prompt</span></pre></td></tr></table></figure></li>
+<li>比如在提示符账号名称前添加时间戳显示(添加\t参数)  <ol>
+<li>3.1 如果是普通用户，修改if条件下语句即可:<br><code>PS1=&#39;${debian_chroot:+($debian_chroot)\t \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code>  </li>
+<li>3.2 如果是root用户，则修改else下语句:<br><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\t \[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#39;</code>  </li>
+</ol>
+</li>
+<li>保存修改后，在终端重新读取下配置文件<br><code>source ~/.bashrc</code>  </li>
+</ol>
+<h3 id="Windows-Powershell"><a href="#Windows-Powershell" class="headerlink" title="Windows Powershell"></a>Windows Powershell</h3><ol>
+<li>编辑配置文件<br>使用管理员身份打开一个Powershell窗口，输入<code>Notepad $profile</code>以编辑配置文件。如果该文件不存在，建议在电脑文档目录下新建<code>WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>文件。向文件内粘贴以下代码:<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> prompt &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="variable">$dateTime</span> = get-date -Format <span class="string">"MM.dd HH:mm:ss"</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="variable">$currentDirectory</span> = $(Get-Location)</span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="variable">$UncRoot</span> = <span class="variable">$currentDirectory</span>.Drive.DisplayRoot</span></pre></td></tr><tr><td class="code"><pre><span class="line">       write-host <span class="string">"<span class="variable">$dateTime</span>"</span> -NoNewline -ForegroundColor Yellow</span></pre></td></tr><tr><td class="code"><pre><span class="line">       write-host <span class="string">" <span class="variable">$UncRoot</span>"</span> -ForegroundColor Gray</span></pre></td></tr><tr><td class="code"><pre><span class="line">       write-host <span class="string">"PS <span class="variable">$(Convert-Path $currentDirectory)</span>&gt;"</span> -NoNewline -ForegroundColor White</span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="built_in">return</span> <span class="string">" "</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></li>
+<li>保存配置文件，重新打开windows Powershell即可生效</li>
+</ol>
+<h3 id="Windows-CMD"><a href="#Windows-CMD" class="headerlink" title="Windows CMD"></a>Windows CMD</h3><p>打开一个CMD窗口，直接输入<code>PROMPT $P$G$D$T$G</code>或<code>PROMPT=$E[33m$D$T$H$H$H$S$E[37m$M$_$E[1m$P$G</code>立即生效，输入<code>prompt</code>恢复默认格式。</p>
 
       
 
@@ -187,7 +200,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Windows</a>
         		</li>
       		
 		</ul>
@@ -243,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/15/Good_night/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/01/01/commandnd-prompt/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,18 +274,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/19/Learning-python/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Learning-python
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/07/Android-Q/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android-Q CTS &amp; CTS-Verifier测试差异总结</div>
+    <a href="/2020/10/29/Movies/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Movies</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -287,6 +295,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-Terminal"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu Terminal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-Powershell"><span class="toc-number">2.</span> <span class="toc-text">Windows Powershell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-CMD"><span class="toc-number">3.</span> <span class="toc-text">Windows CMD</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
