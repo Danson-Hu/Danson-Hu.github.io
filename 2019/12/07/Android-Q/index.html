@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Android-Q CTS &amp; CTS-Verifier测试差异总结 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作从Android-P切换到Android-Q CTS测试，你需要准备：   Linux系统电脑（内存最低16G） 谷歌Android-Q CTS测试套件，进入官网下载对应版本工具 USB-MIDI回环线和Bluetooth">
+  <meta name="description" content="此文档供CTS测试人员参考。">
 <meta name="keywords" content="Android-GMS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-Q CTS &amp; CTS-Verifier测试差异总结">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。 一、准备工作从Android-P切换到Android-Q CTS测试，你需要准备：   Linux系统电脑（内存最低16G） 谷歌Android-Q CTS测试套件，进入官网下载对应版本工具 USB-MIDI回环线和Bluetooth">
+<meta property="og:description" content="此文档供CTS测试人员参考。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;apk_name.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;MIDI_Test.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2020-01-07T14:03:36.183Z">
+<meta property="og:updated_time" content="2021-02-27T05:41:39.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;07&#x2F;Android-Q&#x2F;cts10_module.png">
   
@@ -172,7 +172,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>首个安卓10.0项目的CTS已经摸底一段时间，特在此总结安卓10.0与安卓9.0 CTS&amp;CTS-Verifier的标志性差异，此文档供CTS测试人员参考。</strong></p>
+        <p><strong>此文档供CTS测试人员参考。</strong></p>
+<a id="more"></a>
+
 <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>从Android-P切换到Android-Q CTS测试，你需要准备：</p>
 <blockquote>
 <ul>
@@ -182,8 +184,6 @@
 <li>安装MIDI+BTLE.apk<del>和Loopback.apk</del>，MIDI+BTLE.apk可前往Google Play商店下载安装</li>
 </ul>
 </blockquote>
-<a id="more"></a>
-
 <h2 id="二、CTS"><a href="#二、CTS" class="headerlink" title="二、CTS"></a>二、CTS</h2><ol>
 <li>使用Linux（这边使用的是Ubuntu）系统，电脑内存最低要求16G，内存不足会导致生成的报告异常，不能继续retry；</li>
 <li>需修改工具包tools目录下<code>cts-tradefed</code>文件最后一行修改为：<blockquote>
@@ -469,7 +469,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">‘胡’言乱语</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">

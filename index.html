@@ -263,7 +263,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">‘胡’言乱语</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">「胡」言乱语</a>
         		</li>
       		
 		</ul>
@@ -552,7 +552,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>GMS认证挂测过程中，需要确认各台样机版本是否匹配；一台PC挂多个项目时，需要获取各样机的信息以做区分。<strong>已优化</strong></p>
+        <p>获取在连设备信息。<strong>已优化</strong></p>
         
           <a class="article-more-a" href="/2020/06/28/Devices/#more">more >></a>
         
@@ -632,7 +632,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题提出"><a href="#问题提出" class="headerlink" title="问题提出"></a>问题提出</h2><p>业务中需要对每个项目和任务进行归档，接到任务后首先在表格中进行记录，并且服务器里要有每个任务对应的文件夹归档，大批量项目时手动创建对应文件夹效率很低  </p>
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>从表格读取数据并批量创建对应文件夹  </p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p><a href="https://blog.csdn.net/Strive_0902/article/details/82825063" target="_blank" rel="noopener">参考博客</a>。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用<code>zip(list1，list2)</code>方法读取两个列表，拼接文件夹名称，最后使用<code>os.makedirs()</code>方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能。目前封装成Windows命令行交互工具，以后有时间优化成GUI工具。<br><a href="https://pan.baidu.com/s/15G3yOgK33_nfy2pdg-kHdg" target="_blank" rel="noopener">点击下载程序</a>，提取码：endb</p>
         
           <a class="article-more-a" href="/2020/06/13/Excel-makedirs/#more">more >></a>
@@ -939,11 +939,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C/S架构的应用程序，由三部分组成：  </p>
-<ol>
-<li>运行在pc端的adb client：<br>命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb client就可以向ADB servcer发送服务请求；</li>
-<li>运行在pc端的adb server：<br>ADB Server是运行在主机上的一个后台进程。它的作用在于检测USB端口感知设备的连接和拔除，以及模拟器实例的启动或停止，ADB Server还需要将adb client的请求通过usb或者tcp的方式发送到对应的adbd上；</li>
-<li>运行在设备端的常驻进程adb demon (adbd)：<br>程序“adbd”作为一个后台进程在Android设备或模拟器系统中运行。它的作用是连接ADB服务器，并且为运行在主机上的客户端提供一些服务。</li></ol>
+        <p>官方地址：<a href="https://developer.android.google.cn/studio/command-line/adb" target="_blank" rel="noopener">https://developer.android.google.cn/studio/command-line/adb</a></p>
         
           <a class="article-more-a" href="/2020/04/05/adb_command/#more">more >></a>
         
@@ -1126,7 +1122,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">‘胡’言乱语</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">

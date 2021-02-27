@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>一些ADB命令 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ADB(Android Debug Bridge)架构ADB是一个C&#x2F;S架构的应用程序，由三部分组成：    运行在pc端的adb client：命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb cli">
+  <meta name="description" content="官方地址：https:&#x2F;&#x2F;developer.android.google.cn&#x2F;studio&#x2F;command-line&#x2F;adb">
 <meta name="keywords" content="Android-ADB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些ADB命令">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;05&#x2F;adb_command&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="ADB(Android Debug Bridge)架构ADB是一个C&#x2F;S架构的应用程序，由三部分组成：    运行在pc端的adb client：命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb cli">
+<meta property="og:description" content="官方地址：https:&#x2F;&#x2F;developer.android.google.cn&#x2F;studio&#x2F;command-line&#x2F;adb">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-23T12:40:40.881Z">
+<meta property="og:updated_time" content="2021-02-27T06:26:44.589Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -167,14 +167,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C/S架构的应用程序，由三部分组成：  </p>
+        <p>官方地址：<a href="https://developer.android.google.cn/studio/command-line/adb" target="_blank" rel="noopener">https://developer.android.google.cn/studio/command-line/adb</a></p>
+<a id="more"></a>
+<h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C/S架构的应用程序，由三部分组成：  </p>
 <ol>
 <li>运行在pc端的adb client：<br>命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb client就可以向ADB servcer发送服务请求；</li>
 <li>运行在pc端的adb server：<br>ADB Server是运行在主机上的一个后台进程。它的作用在于检测USB端口感知设备的连接和拔除，以及模拟器实例的启动或停止，ADB Server还需要将adb client的请求通过usb或者tcp的方式发送到对应的adbd上；</li>
-<li>运行在设备端的常驻进程adb demon (adbd)：<br>程序“adbd”作为一个后台进程在Android设备或模拟器系统中运行。它的作用是连接ADB服务器，并且为运行在主机上的客户端提供一些服务。<a id="more"></a>
-<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2></li>
+<li>运行在设备端的常驻进程adb demon (adbd)：<br>程序“adbd”作为一个后台进程在Android设备或模拟器系统中运行。它的作用是连接ADB服务器，并且为运行在主机上的客户端提供一些服务。</li>
 </ol>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>1、查看机器是否root</p>
+<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>1、查看机器是否root</p>
 <blockquote>
 <p><code>adb shell</code><br><code>adb shell id</code></p>
 </blockquote>
@@ -503,7 +504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">‘胡’言乱语</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
