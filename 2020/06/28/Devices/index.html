@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>并行操作多台安卓设备 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="获取在连设备信息。已优化">
-<meta name="keywords" content="Android-ADB,python">
+  <meta name="description" content="循环获取在连设备信息">
+<meta name="keywords" content="python,Android-ADB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并行操作多台安卓设备">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;28&#x2F;Devices&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
-<meta property="og:description" content="获取在连设备信息。已优化">
+<meta property="og:description" content="循环获取在连设备信息">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-02-27T06:16:26.651Z">
+<meta property="og:updated_time" content="2021-03-30T12:59:09.516Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -167,10 +167,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>获取在连设备信息。<strong>已优化</strong></p>
-<a id="more"></a>
+        <h2 id="循环获取在连设备信息"><a href="#循环获取在连设备信息" class="headerlink" title="循环获取在连设备信息"></a>循环获取在连设备信息</h2><a id="more"></a>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">devices = subprocess.getoutput(<span class="string">'adb devices'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">sn_list = re.findall(<span class="string">r'\n(\w*)\t'</span>, devices)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">f'已连接 <span class="subst">&#123;len(sn_list)&#125;</span> 台设备'</span>, sn_list)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> sn <span class="keyword">in</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(<span class="string">f'\n设备号 <span class="subst">&#123;sn&#125;</span> 机器的fingerprint为:'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(subprocess.getoutput(<span class="string">f'adb -s <span class="subst">&#123;sn&#125;</span> shell getprop ro.build.fingerprint'</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(<span class="string">f'设备号 <span class="subst">&#123;sn&#125;</span> 机器的ro.build.display.id为:'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(subprocess.getoutput(<span class="string">f'adb -s <span class="subst">&#123;sn&#125;</span> shell getprop ro.build.display.id'</span>))</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'未连接任何设备，请检查设备状态！'</span>)</span></pre></td></tr></table></figure>
-
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">devices = subprocess.getoutput(<span class="string">'adb devices'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># sn_list = re.findall(r'\n(\w*)\t', devices)</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">sn_list = re.findall(<span class="string">r'(.*)\t'</span>, devices)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">todo</span><span class="params">(sn)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">pass</span> <span class="comment"># 需要执行的代码块</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> sn_list:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    threads= []</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sn_list)):</span></pre></td></tr><tr><td class="code"><pre><span class="line">        t = threading.Thread(target=todo, args=(sn_list[i],))</span></pre></td></tr><tr><td class="code"><pre><span class="line">        threads.append(t)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(number_list)):</span></pre></td></tr><tr><td class="code"><pre><span class="line">        threads[i].start()</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(number_list)):</span></pre></td></tr><tr><td class="code"><pre><span class="line">        threads[i].join()</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'未连接任何设备，请检查设备状态！'</span>)</span></pre></td></tr></table></figure>
       
 
       
@@ -183,11 +182,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
         		</li>
       		
 		</ul>
@@ -267,8 +266,8 @@
     </a>
   
   
-    <a href="/2020/06/13/Excel-makedirs/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">读取表格数据，按指定序列新建对应名称文件夹</div>
+    <a href="/2020/06/23/Excel-makedirs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Excel-makedirs</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -295,7 +294,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#循环获取在连设备信息"><span class="toc-number">1.</span> <span class="toc-text">循环获取在连设备信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程"><span class="toc-number">2.</span> <span class="toc-text">多线程</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -425,11 +424,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -437,11 +436,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
