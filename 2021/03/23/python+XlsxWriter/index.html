@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/2 | Danson</title>
+  <title>python xlsxwriter | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Danson">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;02&#x2F;index.html">
+  <meta name="description" content="参考 https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;index.html https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;examples.html">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python xlsxwriter">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;03&#x2F;23&#x2F;python+XlsxWriter&#x2F;index.html">
 <meta property="og:site_name" content="Danson">
+<meta property="og:description" content="参考 https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;index.html https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;examples.html">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-04-01T12:12:32.524Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -143,60 +147,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python+XlsxWriter" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/" class="archive-article-date">
-  	<time datetime="2020-02-16T10:40:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/16/adb%E5%91%BD%E4%BB%A4%E4%B8%8EAndroid%E7%B3%BB%E7%BB%9F%E5%89%AA%E8%B4%B4%E6%9D%BF%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92/">adb命令与Android系统剪贴板服务进行交互</a>
+    <h1 class="article-title" itemprop="name">
+      python xlsxwriter
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/03/23/python+XlsxWriter/" class="archive-article-date">
+  	<time datetime="2021-03-23T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://xlsxwriter.readthedocs.io/index.html" target="_blank" rel="noopener">https://xlsxwriter.readthedocs.io/index.html</a></li>
+<li><a href="https://xlsxwriter.readthedocs.io/examples.html" target="_blank" rel="noopener">https://xlsxwriter.readthedocs.io/examples.html</a><a id="more"></a>
+
+</li>
+</ol>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>xlsxwriter</code> 可以将文本，数字和公式写入多个工作表，几乎是除Excel自身之外功能最强的工具，支持格式设置，图像，图表，页面设置，条件格式设置，vba写入等功能。但是它只支持xlsx格式，并且无法对工作表内数据进行读取。处理Excel的模块还有 <code>python-excel</code> 与 <code>OpenPyXL</code> ，它们都可以对工作表内数据进行读取操作。<code>python-excel</code> 含 <code>xlrd</code> 、<code>xlwt</code> 和 <code>xlutils</code> 三大模块，分别提供读、写和其他功能，<code>xlrd</code> 的使用可参考<a href="https://danson-hu.github.io/2020/06/23/Excel-makedirs/" target="_blank" rel="noopener">我的这篇博客</a>。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>本例仅介绍了一些基本功能：创建工作薄工作表、设置列宽、添加格式对象和写入数据。进阶功能强烈建议查看<a href="https://xlsxwriter.readthedocs.io/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> xlsxwriter</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">workbook = xlsxwriter.Workbook(<span class="string">'result.xlsx'</span>)  <span class="comment"># 创建excel文件</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet = workbook.add_worksheet()  <span class="comment"># 新建一个sheet页，不带名字默认为 'sheet1'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.set_column(<span class="string">'A:D'</span>, <span class="number">15</span>)  <span class="comment"># 设置A列到D列列宽为15</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">title_format = workbook.add_format(&#123;<span class="string">'bold'</span>: <span class="literal">True</span>, <span class="string">'align'</span>: <span class="string">'center'</span>&#125;)  <span class="comment"># 设置一个加粗并且水平居中的格式对象</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 要写入的内容</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">example = (</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'张三'</span>, <span class="string">'男'</span>, <span class="number">24</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'李四'</span>, <span class="string">'女'</span>, <span class="number">20</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'王五'</span>, <span class="string">'男'</span>, <span class="number">18</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'铁锤'</span>, <span class="string">'女'</span>, <span class="number">20</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 写入首行标题。支持 [字母][数字] 和 [序列],[序列] 两种指定单元格方式，即 A1 相当于 0,0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'姓名'</span>, title_format)  <span class="comment"># 首行首个单元格</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.write(<span class="string">'B1'</span>, <span class="string">'性别'</span>, title_format)</span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.write(<span class="string">'C1'</span>, <span class="string">'年龄'</span>, title_format)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 写入数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">row = <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">col = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> name, sex, age <span class="keyword">in</span> (example):</span></pre></td></tr><tr><td class="code"><pre><span class="line">    worksheet.write_string(row, col, name)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    worksheet.write_string(row, col + <span class="number">1</span>, sex)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    worksheet.write_number(row, col + <span class="number">2</span>, age)   <span class="comment"># 指定写入数值</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    row += <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">workbook.close()    <span class="comment"># 关闭</span></span></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/03/23/python+XlsxWriter/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/04/01/python%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          python项目中的配置文件
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/03/14/python%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python的多进程与多线程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number">3.</span> <span class="toc-text">示例</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -237,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
