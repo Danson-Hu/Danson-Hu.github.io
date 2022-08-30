@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="此文档供CTS测试人员参考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/Android-Q/cts10_module.png">
-<meta property="og:image" content="http://yoursite.com/Android-Q/apk_name.png">
-<meta property="og:image" content="http://yoursite.com/Android-Q/MIDI_Test.png">
-<meta property="og:image" content="http://yoursite.com/Android-Q/ProAudio_Test.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/Android-Q/cts10_module.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/Android-Q/apk_name.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/Android-Q/MIDI_Test.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/20/Android-Q/ProAudio_Test.png">
 <meta property="article:published_time" content="2019-12-20T03:33:19.000Z">
 <meta property="article:modified_time" content="2022-08-30T13:21:14.043Z">
 <meta property="article:author" content="道 信">
 <meta property="article:tag" content="Android-GMS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/Android-Q/cts10_module.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/20/Android-Q/cts10_module.png">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
   
@@ -196,7 +196,7 @@
 </li>
 <li><p>新项目机器连接电脑提示adb没有权限，需要在Ubuntu的<code>/etc/udev/rules.d/51-android.rules</code>文件按格式添加测试机的VID与PID（命令行输入lsusb获取）。如需在Ubuntu上使用Fastboot工具，在安装配置Fastboot环境后，测试机进入Fastboot模式，找到机器Fastboot状态下的VID与PID并添加至<code>51-android.rules</code>文件中即可；</p>
 </li>
-<li><p>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/Android-Q/cts10_module.png" alt="Module"></p>
+<li><p>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/2019/12/20/Android-Q/cts10_module.png" alt="Module"></p>
 </li>
 <li><p><code>CtsTelephonyTestCases</code>模块只有64位的case，联通卡相关项跑完不再锁SIM卡短信功能；</p>
 </li>
@@ -210,12 +210,12 @@
 </li>
 </ol>
 <h2 id="三、CTS-Verifier"><a href="#三、CTS-Verifier" class="headerlink" title="三、CTS-Verifier"></a>三、CTS-Verifier</h2><ol>
-<li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/Android-Q/apk_name.png" alt="Apk"><blockquote>
+<li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/2019/12/20/Android-Q/apk_name.png" alt="Apk"><blockquote>
 <p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可</p>
 </blockquote>
 <ol>
-<li>1.1 MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
-<li><del>1.2 ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
+<li>1.1 MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/2019/12/20/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
+<li><del>1.2 ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/2019/12/20/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
 </ol>
 </li>
 <li><code>HARDWARE</code>模块裁剪了GNSS和GPS相关测试项；</li>
@@ -509,11 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
