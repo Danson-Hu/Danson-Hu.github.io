@@ -9,14 +9,16 @@
   <title>一些ADB命令 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="官方地址：https:&#x2F;&#x2F;developer.android.google.cn&#x2F;studio&#x2F;command-line&#x2F;adb">
-<meta name="keywords" content="Android-ADB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些ADB命令">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;05&#x2F;adb_command&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/05/adb_command/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="官方地址：https:&#x2F;&#x2F;developer.android.google.cn&#x2F;studio&#x2F;command-line&#x2F;adb">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-02-27T06:26:46.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-05T09:43:19.000Z">
+<meta property="article:modified_time" content="2021-02-27T06:26:46.000Z">
+<meta property="article:author" content="道 信">
+<meta property="article:tag" content="Android-ADB">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -35,7 +37,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -49,7 +51,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">道 信</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -105,7 +107,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">道 信</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -167,9 +169,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>官方地址：<a href="https://developer.android.google.cn/studio/command-line/adb" target="_blank" rel="noopener">https://developer.android.google.cn/studio/command-line/adb</a></p>
-<a id="more"></a>
-<h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C/S架构的应用程序，由三部分组成：  </p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>官方地址：<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/command-line/adb">https://developer.android.google.cn/studio/command-line/adb</a></p>
+<span id="more"></span>
+<h2 id="ADB-Android-Debug-Bridge-架构"><a href="#ADB-Android-Debug-Bridge-架构" class="headerlink" title="ADB(Android Debug Bridge)架构"></a>ADB(Android Debug Bridge)架构</h2><p>ADB是一个C&#x2F;S架构的应用程序，由三部分组成：  </p>
 <ol>
 <li>运行在pc端的adb client：<br>命令行程序”adb”用于从shell或脚本中运行adb命令。首先，“adb”程序尝试定位主机上的ADB服务器，如果找不到ADB服务器，“adb”程序自动启动一个ADB服务器。接下来，当设备的adbd和pc端的adb server建立连接后，adb client就可以向ADB servcer发送服务请求；</li>
 <li>运行在pc端的adb server：<br>ADB Server是运行在主机上的一个后台进程。它的作用在于检测USB端口感知设备的连接和拔除，以及模拟器实例的启动或停止，ADB Server还需要将adb client的请求通过usb或者tcp的方式发送到对应的adbd上；</li>
@@ -184,12 +186,12 @@
 <p>用法：adb shell mkdir [options] <directory name>  </directory></p>
 <blockquote>
 <ul>
-<li>创建文件夹test1并给文件夹赋予读写执行的权限(使用-m参数)：<br><code>adb shell mkdir -m 777 /sdcard/test</code> </li>
+<li>创建文件夹test1并给文件夹赋予读写执行的权限(使用-m参数)：<br><code>adb shell mkdir -m 777 /sdcard/test</code></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>递归创建目录(使用-p参数)：<br><code>adb shell mkdir -p /sdcard/test/test1/test2</code>  </li>
+<li>递归创建目录(使用-p参数)：<br><code>adb shell mkdir -p /sdcard/test/test1/test2</code></li>
 </ul>
 </blockquote>
 </blockquote>
@@ -201,11 +203,11 @@
 <blockquote>
 <p>复制：<code>adb shell cp /sdcard/test.txt /sdcard/Download</code><br>复制并修改新文件名称：<code>adb shell cp /sdcard/test.txt /sdcard/Download/test_new.txt</code><br>移动：<code>adb shell mv /sdcard/test.txt /sdcard/Download/</code><br>移动并重命名：<code>adb shell mv /sdcard/Download/test.txt /sdcard/Download/test_renamed.txt</code><br>重命名：<code>adb shell rename /sdcard/test1.txt /sdcard/test_renamed.txt</code></p>
 </blockquote>
-<p>5、查看文件内容/查看手机内存信息</p>
+<p>5、查看文件内容&#x2F;查看手机内存信息</p>
 <blockquote>
 <p><code>adb shell cat /proc/meminfo</code>  </p>
 <blockquote>
-<p>MemTotal: 所有可用RAM大小（即物理内存减去一些预留位和内核的二进制代码大小）；<br>MemFree: 被系统留着未使用的内存；<br>Buffers: 用来给文件做缓冲的大小；<br>Cached: 被高速缓冲存储器（cache memory）用的内存的大小（等于 diskcache minus SwapCache ）;<br>SwapCached:swap 缓存的大小，Android很少使用swap的，经常为0。被高速缓冲存储器（cache memory）用来交换空间的大小,用来在需要的时候很快的被替换而不需要再次打开I/O端口；<br>Active: 在活跃使用中的缓冲或高速缓冲存储器页面文件的大小，除非非常必要，否则不会被移作他用；<br>Inactive: 在不经常使用中的缓冲或高速缓冲存储器页面文件的大小，可能被用于其他途径；<br>SwapTotal: 交换空间的总大小；<br>SwapFree: 未被使用交换空间的大小。</p>
+<p>MemTotal: 所有可用RAM大小（即物理内存减去一些预留位和内核的二进制代码大小）；<br>MemFree: 被系统留着未使用的内存；<br>Buffers: 用来给文件做缓冲的大小；<br>Cached: 被高速缓冲存储器（cache memory）用的内存的大小（等于 diskcache minus SwapCache ）;<br>SwapCached:swap 缓存的大小，Android很少使用swap的，经常为0。被高速缓冲存储器（cache memory）用来交换空间的大小,用来在需要的时候很快的被替换而不需要再次打开I&#x2F;O端口；<br>Active: 在活跃使用中的缓冲或高速缓冲存储器页面文件的大小，除非非常必要，否则不会被移作他用；<br>Inactive: 在不经常使用中的缓冲或高速缓冲存储器页面文件的大小，可能被用于其他途径；<br>SwapTotal: 交换空间的总大小；<br>SwapFree: 未被使用交换空间的大小。</p>
 </blockquote>
 </blockquote>
 <p>6、查看各个分区的存储情况 </p>
@@ -230,7 +232,7 @@
 <p>10、<code>adb shell input</code>命令</p>
 <blockquote>
 <ul>
-<li><p>输入文本（不支持中文、空格、特殊字符）：<code>adb shell input text &quot;www.bing.com&quot;</code><br>输入键值，详见<a href="https://danson-hu.github.io/2020/05/06/keyevent_keycode/" target="_blank" rel="noopener">常用键值表</a>：</p>
+<li><p>输入文本（不支持中文、空格、特殊字符）：<code>adb shell input text &quot;www.bing.com&quot;</code><br>输入键值，详见<a target="_blank" rel="noopener" href="https://danson-hu.github.io/2020/05/06/keyevent_keycode/">常用键值表</a>：</p>
 <blockquote>
 <p>返回：<code>adb shell input keyevent 4</code><br>确定：<code>adb shell input keyevent 66</code><br>删除：<code>adb shell input keyevent 67</code>  </p>
 </blockquote>
@@ -254,7 +256,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-ADB</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Android-ADB</a>
         		</li>
       		
 		</ul>
@@ -269,35 +271,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+      <a href="javascript:;" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+          <a class="google share-sns" href="javascript:;" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -307,7 +309,7 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/05/adb_command/" alt="微信分享二维码">
@@ -346,7 +348,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -362,7 +364,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADB-Android-Debug-Bridge-架构"><span class="toc-number">1.</span> <span class="toc-text">ADB(Android Debug Bridge)架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本知识"><span class="toc-number">2.</span> <span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">3.</span> <span class="toc-text">常用命令</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADB-Android-Debug-Bridge-%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">ADB(Android Debug Bridge)架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">常用命令</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -461,13 +463,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -488,63 +490,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">心理</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
               </li>
             
             <div class="clearfix"></div>

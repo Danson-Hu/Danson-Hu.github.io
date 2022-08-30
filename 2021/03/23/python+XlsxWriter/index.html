@@ -9,14 +9,16 @@
   <title>python xlsxwriter | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考 https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;index.html https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;examples.html">
-<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python xlsxwriter">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;03&#x2F;23&#x2F;python+XlsxWriter&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2021/03/23/python+XlsxWriter/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="参考 https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;index.html https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;examples.html">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-01T12:12:34.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-23T15:23:23.000Z">
+<meta property="article:modified_time" content="2021-04-01T12:12:34.000Z">
+<meta property="article:author" content="道 信">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -35,7 +37,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -49,7 +51,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">道 信</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -105,7 +107,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">道 信</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -167,15 +169,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://xlsxwriter.readthedocs.io/index.html" target="_blank" rel="noopener">https://xlsxwriter.readthedocs.io/index.html</a></li>
-<li><a href="https://xlsxwriter.readthedocs.io/examples.html" target="_blank" rel="noopener">https://xlsxwriter.readthedocs.io/examples.html</a><a id="more"></a>
-
-</li>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://xlsxwriter.readthedocs.io/index.html">https://xlsxwriter.readthedocs.io/index.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://xlsxwriter.readthedocs.io/examples.html">https://xlsxwriter.readthedocs.io/examples.html</a><span id="more"></span></li>
 </ol>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>xlsxwriter</code> 可以将文本，数字和公式写入多个工作表，几乎是除Excel自身之外功能最强的工具，支持格式设置，图像，图表，页面设置，条件格式设置，vba写入等功能。但是它只支持xlsx格式，并且无法对工作表内数据进行读取。处理Excel的模块还有 <code>python-excel</code> 与 <code>OpenPyXL</code> ，它们都可以对工作表内数据进行读取操作。<code>python-excel</code> 含 <code>xlrd</code> 、<code>xlwt</code> 和 <code>xlutils</code> 三大模块，分别提供读、写和其他功能，<code>xlrd</code> 的使用可参考<a href="https://danson-hu.github.io/2020/06/23/Excel-makedirs/" target="_blank" rel="noopener">我的这篇博客</a>。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>本例仅介绍了一些基本功能：创建工作薄工作表、设置列宽、添加格式对象和写入数据。进阶功能强烈建议查看<a href="https://xlsxwriter.readthedocs.io/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> xlsxwriter</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">workbook = xlsxwriter.Workbook(<span class="string">'result.xlsx'</span>)  <span class="comment"># 创建excel文件</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet = workbook.add_worksheet()  <span class="comment"># 新建一个sheet页，不带名字默认为 'sheet1'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.set_column(<span class="string">'A:D'</span>, <span class="number">15</span>)  <span class="comment"># 设置A列到D列列宽为15</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">title_format = workbook.add_format(&#123;<span class="string">'bold'</span>: <span class="literal">True</span>, <span class="string">'align'</span>: <span class="string">'center'</span>&#125;)  <span class="comment"># 设置一个加粗并且水平居中的格式对象</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 要写入的内容</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">example = (</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'张三'</span>, <span class="string">'男'</span>, <span class="number">24</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'李四'</span>, <span class="string">'女'</span>, <span class="number">20</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'王五'</span>, <span class="string">'男'</span>, <span class="number">18</span>],</span></pre></td></tr><tr><td class="code"><pre><span class="line">    [<span class="string">'铁锤'</span>, <span class="string">'女'</span>, <span class="number">20</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 写入首行标题。支持 [字母][数字] 和 [序列],[序列] 两种指定单元格方式，即 A1 相当于 0,0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'姓名'</span>, title_format)  <span class="comment"># 首行首个单元格</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.write(<span class="string">'B1'</span>, <span class="string">'性别'</span>, title_format)</span></pre></td></tr><tr><td class="code"><pre><span class="line">worksheet.write(<span class="string">'C1'</span>, <span class="string">'年龄'</span>, title_format)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 写入数据</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">row = <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">col = <span class="number">0</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> name, sex, age <span class="keyword">in</span> (example):</span></pre></td></tr><tr><td class="code"><pre><span class="line">    worksheet.write_string(row, col, name)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    worksheet.write_string(row, col + <span class="number">1</span>, sex)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    worksheet.write_number(row, col + <span class="number">2</span>, age)   <span class="comment"># 指定写入数值</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    row += <span class="number">1</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">workbook.close()    <span class="comment"># 关闭</span></span></pre></td></tr></table></figure>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>xlsxwriter</code> 可以将文本，数字和公式写入多个工作表，几乎是除Excel自身之外功能最强的工具，支持格式设置，图像，图表，页面设置，条件格式设置，vba写入等功能。但是它只支持xlsx格式，并且无法对工作表内数据进行读取。处理Excel的模块还有 <code>python-excel</code> 与 <code>OpenPyXL</code> ，它们都可以对工作表内数据进行读取操作。<code>python-excel</code> 含 <code>xlrd </code> 、<code>xlwt</code> 和 <code>xlutils</code> 三大模块，分别提供读、写和其他功能，<code>xlrd</code> 的使用可参考<a target="_blank" rel="noopener" href="https://danson-hu.github.io/2020/06/23/Excel-makedirs/">我的这篇博客</a>。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>本例仅介绍了一些基本功能：创建工作薄工作表、设置列宽、添加格式对象和写入数据。进阶功能强烈建议查看<a target="_blank" rel="noopener" href="https://xlsxwriter.readthedocs.io/index.html">官方文档</a>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> xlsxwriter</span><br><span class="line"></span><br><span class="line">workbook = xlsxwriter.Workbook(<span class="string">&#x27;result.xlsx&#x27;</span>)  <span class="comment"># 创建excel文件</span></span><br><span class="line">worksheet = workbook.add_worksheet()  <span class="comment"># 新建一个sheet页，不带名字默认为 &#x27;sheet1&#x27;</span></span><br><span class="line">worksheet.set_column(<span class="string">&#x27;A:D&#x27;</span>, <span class="number">15</span>)  <span class="comment"># 设置A列到D列列宽为15</span></span><br><span class="line">title_format = workbook.add_format(&#123;<span class="string">&#x27;bold&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;align&#x27;</span>: <span class="string">&#x27;center&#x27;</span>&#125;)  <span class="comment"># 设置一个加粗并且水平居中的格式对象</span></span><br><span class="line"><span class="comment"># 要写入的内容</span></span><br><span class="line">example = (</span><br><span class="line">    [<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="number">24</span>],</span><br><span class="line">    [<span class="string">&#x27;李四&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">20</span>],</span><br><span class="line">    [<span class="string">&#x27;王五&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="number">18</span>],</span><br><span class="line">    [<span class="string">&#x27;铁锤&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">20</span>]</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 写入首行标题。支持 [字母][数字] 和 [序列],[序列] 两种指定单元格方式，即 A1 相当于 0,0</span></span><br><span class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">&#x27;姓名&#x27;</span>, title_format)  <span class="comment"># 首行首个单元格</span></span><br><span class="line">worksheet.write(<span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>, title_format)</span><br><span class="line">worksheet.write(<span class="string">&#x27;C1&#x27;</span>, <span class="string">&#x27;年龄&#x27;</span>, title_format)</span><br><span class="line"><span class="comment"># 写入数据</span></span><br><span class="line">row = <span class="number">1</span></span><br><span class="line">col = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> name, sex, age <span class="keyword">in</span> (example):</span><br><span class="line">    worksheet.write_string(row, col, name)</span><br><span class="line">    worksheet.write_string(row, col + <span class="number">1</span>, sex)</span><br><span class="line">    worksheet.write_number(row, col + <span class="number">2</span>, age)   <span class="comment"># 指定写入数值</span></span><br><span class="line">    row += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">workbook.close()    <span class="comment"># 关闭</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -188,7 +188,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -203,35 +203,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+      <a href="javascript:;" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+          <a class="google share-sns" href="javascript:;" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -241,7 +241,7 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/03/23/python+XlsxWriter/" alt="微信分享二维码">
@@ -280,7 +280,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -296,7 +296,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-number">3.</span> <span class="toc-text">示例</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">示例</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -395,13 +395,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -422,63 +422,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">心理</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
               </li>
             
             <div class="clearfix"></div>

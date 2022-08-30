@@ -9,17 +9,19 @@
   <title>爬取必应每日一图，以图片信息和日期命名，并设置为桌面壁纸 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考博客，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，想去旅游都找不到目的地。顺便分享一下 这个网址，可以查看&#x2F;点赞&#x2F;下载必应搜索首页的历史图片">
-<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬取必应每日一图，以图片信息和日期命名，并设置为桌面壁纸">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;10&#x2F;Python-Bing&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2020/06/10/Python-Bing/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="参考博客，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，想去旅游都找不到目的地。顺便分享一下 这个网址，可以查看&#x2F;点赞&#x2F;下载必应搜索首页的历史图片">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;10&#x2F;Python-Bing&#x2F;Python_Bing.png">
-<meta property="og:updated_time" content="2021-02-27T05:57:56.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/Python-Bing/Python_Bing.png">
+<meta property="article:published_time" content="2020-06-10T11:57:03.000Z">
+<meta property="article:modified_time" content="2021-02-27T05:57:56.000Z">
+<meta property="article:author" content="道 信">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;06&#x2F;10&#x2F;Python-Bing&#x2F;Python_Bing.png">
+<meta name="twitter:image" content="http://yoursite.com/Python-Bing/Python_Bing.png">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
   
@@ -37,7 +39,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -51,7 +53,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">道 信</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -107,7 +109,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">道 信</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -169,12 +171,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://blog.csdn.net/icevmj/article/details/78890552" target="_blank" rel="noopener">参考博客</a>，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，<del>想去旅游都找不到目的地。</del><br>顺便分享一下 <a href="https://bing.ioliu.cn/" target="_blank" rel="noopener">这个网址</a>，可以查看/点赞/下载必应搜索首页的历史图片</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os.path</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 解析必应官网，获取图片信息</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">img_info</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    response = urllib.request.urlopen(<span class="string">"https://www.bing.com/?mkt=zh-CN"</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    html = response.read()</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 创建Beautiful Soup对象</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    soup = BeautifulSoup(html, <span class="string">"html.parser"</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 提取图片文字信息</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    info = soup.findAll(id=<span class="string">"sh_cp"</span>)[<span class="number">0</span>][<span class="string">'title'</span>]</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 删除括号和括号内内容，方便为图片命名</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 2020年8月25日七夕节修改，出现图片信息(info)中不含括号，并更换正则表达式</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 2020年除夕，图片信息内出现中文括号'（）'</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> <span class="string">'('</span> <span class="keyword">in</span> info:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        Pic_Name = re.findall(<span class="string">r'(.+?)\s\('</span>, info)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">elif</span> <span class="string">'（'</span> <span class="keyword">in</span> info:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        Pic_Name = re.findall(<span class="string">r'(.+?)\s（'</span>, info)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">else</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        Pic_Name = re.findall(<span class="string">r'(.+?)\s©'</span>, info)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> str(Pic_Name[<span class="number">0</span>])</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># Pic_Name = re.sub(u"\\(.*?\\)|&#123;.*?&#125;|[.*?]|（.*?）", "", info) </span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># return Pic_Name.strip() # 取出来的值多一个空格，加方法去除空格</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_img</span><span class="params">(img_url, dirname)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 保存图片到磁盘文件夹dirname中</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">try</span>:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirname):</span></pre></td></tr><tr><td class="code"><pre><span class="line">            <span class="keyword">print</span> (<span class="string">'文件夹'</span>, dirname, <span class="string">'不存在，重新建立'</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">            os.makedirs(dirname)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="comment"># 拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        basename = os.path.basename(img_url)</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="comment"># 拼接目录与文件名，得到图片路径</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        filepath = os.path.join(dirname, img_info() + basename[<span class="number">5</span>:])</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="comment"># 下载图片，并保存到文件夹中</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">        urllib.request.urlretrieve(img_url, filepath)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(<span class="string">'文件操作失败'</span>,e)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span></pre></td></tr><tr><td class="code"><pre><span class="line">        print(<span class="string">'错误 ：'</span>,e)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">"Save"</span>, filepath, <span class="string">"successfully!"</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> filepath</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 请求网页，跳转到最终img地址</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span><span class="params">(raw_img_url=<span class="string">"https://blog.mrabit.com/bing/today"</span>)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    r = requests.get(raw_img_url)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    img_url = r.url     <span class="comment"># 得到图片文件的网址</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    print(<span class="string">'img_url:'</span>, img_url)</span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="keyword">return</span> img_url</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 设置图片绝对路径filepath所指向的图片为壁纸</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_img_as_wallpaper</span><span class="params">(filepath)</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    ctypes.windll.user32.SystemParametersInfoW(<span class="number">20</span>, <span class="number">0</span>, filepath, <span class="number">0</span>)</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    dirname = <span class="string">"E:/Pictures/bingImg/"</span>	<span class="comment"># 图片要被保存在的位置</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    img_url = get_img_url()</span></pre></td></tr><tr><td class="code"><pre><span class="line">    filepath = save_img(img_url, dirname)   <span class="comment"># 图片文件的的路径</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    <span class="comment"># 设置为壁纸</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    set_img_as_wallpaper(filepath)</span></pre></td></tr><tr><td class="code"><pre><span class="line">main()</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">备份网址：raw_img_url = https://area.sinaapp.com/bingImg/ ，使用该网址需重构命名代码块：  </span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    basename = datetime.datetime.now().strftime('%Y-%m-%d')  </span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">    filepath = os.path.join(dirname, img_info() + basename + ".jpg")</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="string">"""</span><span class="string">"</span></span></pre></td></tr></table></figure>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/icevmj/article/details/78890552">参考博客</a>，增加了以图片信息命名该图片的功能。原因是爬取下来的图片许多不知道是在哪里拍摄的，<del>想去旅游都找不到目的地。</del><br>顺便分享一下 <a target="_blank" rel="noopener" href="https://bing.ioliu.cn/">这个网址</a>，可以查看&#x2F;点赞&#x2F;下载必应搜索首页的历史图片</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析必应官网，获取图片信息</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">img_info</span>():</span><br><span class="line">    response = urllib.request.urlopen(<span class="string">&quot;https://www.bing.com/?mkt=zh-CN&quot;</span>)</span><br><span class="line">    html = response.read()</span><br><span class="line">    <span class="comment"># 创建Beautiful Soup对象</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">    <span class="comment"># 提取图片文字信息</span></span><br><span class="line">    info = soup.findAll(<span class="built_in">id</span>=<span class="string">&quot;sh_cp&quot;</span>)[<span class="number">0</span>][<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">    <span class="comment"># 删除括号和括号内内容，方便为图片命名</span></span><br><span class="line">    <span class="comment"># 2020年8月25日七夕节修改，出现图片信息(info)中不含括号，并更换正则表达式</span></span><br><span class="line">    <span class="comment"># 2020年除夕，图片信息内出现中文括号&#x27;（）&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;(&#x27;</span> <span class="keyword">in</span> info:</span><br><span class="line">        Pic_Name = re.findall(<span class="string">r&#x27;(.+?)\s\(&#x27;</span>, info)</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">&#x27;（&#x27;</span> <span class="keyword">in</span> info:</span><br><span class="line">        Pic_Name = re.findall(<span class="string">r&#x27;(.+?)\s（&#x27;</span>, info)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Pic_Name = re.findall(<span class="string">r&#x27;(.+?)\s©&#x27;</span>, info)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(Pic_Name[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Pic_Name = re.sub(u&quot;\\(.*?\\)|&#123;.*?&#125;|[.*?]|（.*?）&quot;, &quot;&quot;, info) </span></span><br><span class="line">    <span class="comment"># return Pic_Name.strip() # 取出来的值多一个空格，加方法去除空格</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_img</span>(<span class="params">img_url, dirname</span>):</span><br><span class="line">    <span class="comment"># 保存图片到磁盘文件夹dirname中</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dirname):</span><br><span class="line">            <span class="built_in">print</span> (<span class="string">&#x27;文件夹&#x27;</span>, dirname, <span class="string">&#x27;不存在，重新建立&#x27;</span>)</span><br><span class="line">            os.makedirs(dirname)</span><br><span class="line">        <span class="comment"># 拼接目录与文件名，得到图片本地绝对路径；原图已按日期命名</span></span><br><span class="line">        basename = os.path.basename(img_url)</span><br><span class="line">        <span class="comment"># 拼接目录与文件名，得到图片路径</span></span><br><span class="line">        filepath = os.path.join(dirname, img_info() + basename[<span class="number">5</span>:])</span><br><span class="line">        <span class="comment"># 下载图片，并保存到文件夹中</span></span><br><span class="line">        urllib.request.urlretrieve(img_url, filepath)</span><br><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;文件操作失败&#x27;</span>,e)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;错误 ：&#x27;</span>,e)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Save&quot;</span>, filepath, <span class="string">&quot;successfully!&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> filepath</span><br><span class="line"></span><br><span class="line"><span class="comment"># 请求网页，跳转到最终img地址</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_img_url</span>(<span class="params">raw_img_url=<span class="string">&quot;https://blog.mrabit.com/bing/today&quot;</span></span>):</span><br><span class="line">    r = requests.get(raw_img_url)</span><br><span class="line">    img_url = r.url     <span class="comment"># 得到图片文件的网址</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;img_url:&#x27;</span>, img_url)</span><br><span class="line">    <span class="keyword">return</span> img_url</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图片绝对路径filepath所指向的图片为壁纸</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">set_img_as_wallpaper</span>(<span class="params">filepath</span>):</span><br><span class="line">    ctypes.windll.user32.SystemParametersInfoW(<span class="number">20</span>, <span class="number">0</span>, filepath, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    dirname = <span class="string">&quot;E:/Pictures/bingImg/&quot;</span>	<span class="comment"># 图片要被保存在的位置</span></span><br><span class="line">    img_url = get_img_url()</span><br><span class="line">    filepath = save_img(img_url, dirname)   <span class="comment"># 图片文件的的路径</span></span><br><span class="line">    <span class="comment"># 设置为壁纸</span></span><br><span class="line">    set_img_as_wallpaper(filepath)</span><br><span class="line">main()</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">备份网址：raw_img_url = https://area.sinaapp.com/bingImg/ ，使用该网址需重构命名代码块：  </span></span><br><span class="line"><span class="string">    basename = datetime.datetime.now().strftime(&#x27;%Y-%m-%d&#x27;)  </span></span><br><span class="line"><span class="string">    filepath = os.path.join(dirname, img_info() + basename + &quot;.jpg&quot;)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span><span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>本地路径结果如下图：  </p>
-<p><img src="/2020/06/10/Python-Bing/Python_Bing.png" alt="Python_Bing"> </p>
+<p><img src="/Python-Bing/Python_Bing.png" alt="Python_Bing"> </p>
 
       
 
@@ -188,7 +190,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -203,35 +205,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+      <a href="javascript:;" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+          <a class="google share-sns" href="javascript:;" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -241,7 +243,7 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/10/Python-Bing/" alt="微信分享二维码">
@@ -262,7 +264,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Excel-makedirs
+          (no title)
         
       </div>
     </a>
@@ -280,7 +282,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -395,13 +397,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -422,63 +424,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">心理</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
               </li>
             
             <div class="clearfix"></div>

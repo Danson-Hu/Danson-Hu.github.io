@@ -9,20 +9,22 @@
   <title>Android-Q CTS &amp; CTS-Verifier测试差异总结 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="此文档供CTS测试人员参考。">
-<meta name="keywords" content="Android-GMS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-Q CTS &amp; CTS-Verifier测试差异总结">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;Android-Q&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2019/12/20/Android-Q/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="此文档供CTS测试人员参考。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;Android-Q&#x2F;cts10_module.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;Android-Q&#x2F;apk_name.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;Android-Q&#x2F;MIDI_Test.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;Android-Q&#x2F;ProAudio_Test.png">
-<meta property="og:updated_time" content="2022-08-30T13:21:14.043Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/Android-Q/cts10_module.png">
+<meta property="og:image" content="http://yoursite.com/Android-Q/apk_name.png">
+<meta property="og:image" content="http://yoursite.com/Android-Q/MIDI_Test.png">
+<meta property="og:image" content="http://yoursite.com/Android-Q/ProAudio_Test.png">
+<meta property="article:published_time" content="2019-12-20T03:33:19.000Z">
+<meta property="article:modified_time" content="2022-08-30T13:21:14.043Z">
+<meta property="article:author" content="道 信">
+<meta property="article:tag" content="Android-GMS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;Android-Q&#x2F;cts10_module.png">
+<meta name="twitter:image" content="http://yoursite.com/Android-Q/cts10_module.png">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
   
@@ -40,7 +42,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -54,7 +56,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">道 信</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -110,7 +112,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">道 信</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -172,14 +174,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>此文档供CTS测试人员参考。</strong></p>
-<a id="more"></a>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>此文档供CTS测试人员参考。</strong></p>
+<span id="more"></span>
 
 <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>从Android-P切换到Android-Q CTS测试，你需要准备：</p>
 <blockquote>
 <ul>
 <li>Linux系统电脑（内存最低16G）</li>
-<li>谷歌Android-Q CTS测试套件，<a href="https://source.android.com/compatibility/cts/downloads" target="_blank" rel="noopener">进入官网</a>下载对应版本工具</li>
+<li>谷歌Android-Q CTS测试套件，<a target="_blank" rel="noopener" href="https://source.android.com/compatibility/cts/downloads">进入官网</a>下载对应版本工具</li>
 <li>USB-MIDI回环线和Bluetooth-MIDI回环线</li>
 <li>安装MIDI+BTLE.apk<del>和Loopback.apk</del>，MIDI+BTLE.apk可前往Google Play商店下载安装</li>
 </ul>
@@ -194,26 +196,26 @@
 </li>
 <li><p>新项目机器连接电脑提示adb没有权限，需要在Ubuntu的<code>/etc/udev/rules.d/51-android.rules</code>文件按格式添加测试机的VID与PID（命令行输入lsusb获取）。如需在Ubuntu上使用Fastboot工具，在安装配置Fastboot环境后，测试机进入Fastboot模式，找到机器Fastboot状态下的VID与PID并添加至<code>51-android.rules</code>文件中即可；</p>
 </li>
-<li><p>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/2019/12/20/Android-Q/cts10_module.png" alt="Module"></p>
+<li><p>目前谷歌安卓官网不提供10.0CTS-instant测试套件，所以不必再单独提供CTS-instant测试报告，CTS套件集和部分instant模块，例如：<br><img src="/Android-Q/cts10_module.png" alt="Module"></p>
 </li>
 <li><p><code>CtsTelephonyTestCases</code>模块只有64位的case，联通卡相关项跑完不再锁SIM卡短信功能；</p>
 </li>
-<li><p>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备/不能挂载MTP设备”警告窗口。鉴于目前18版本较之前稳定，可考虑切换至18.04版本开展测试；</p>
+<li><p>目前使用Ubuntu 16.04版本测试<code>CtsAppsecurityhosttestcases</code>模块时，会因为USB reset导致一条case执行失败，怀疑与16.04版本USB机制有关，升级到Ubuntu 18.04版本问题解决，且18.04版本不会弹出“无法打开设备&#x2F;不能挂载MTP设备”警告窗口。鉴于目前18版本较之前稳定，可考虑切换至18.04版本开展测试；</p>
 </li>
 <li><p>执行完一轮测试后，需关闭当前命令行窗口另开窗口进行retry（使用Ctrl+C终止或输入exit退出当前控制台也可以）。原因是执行测试时Java程序会占用大量内存，关闭已执行完成窗口释放系统内存，否则将导致运行卡顿甚至生成的报告出现问题。可使用系统工具<strong>System Monitor</strong>查看内存实时占用情况；</p>
 </li>
 <li><p>筛选过滤模块指令<code>--exclude-filter &lt;module name&gt;</code>在10.0CTS控制台中存在某些项目会概率性不生效问题；  </p>
 </li>
-<li><p>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行VTS工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，<strong><font color="#ff0000">不建议使用</font></strong>root账户执行CTS-on-gsi与VTS测试。</p>
+<li><p>CTS-on-gsi与VTS需要特别配置环境，Ubuntu系统运行VTS工具包中<code>/android-vts/bin/setup.sh</code>文件即可配置，**<font color="#ff0000">不建议使用</font>**root账户执行CTS-on-gsi与VTS测试。</p>
 </li>
 </ol>
 <h2 id="三、CTS-Verifier"><a href="#三、CTS-Verifier" class="headerlink" title="三、CTS-Verifier"></a>三、CTS-Verifier</h2><ol>
-<li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/2019/12/20/Android-Q/apk_name.png" alt="Apk"><blockquote>
+<li>Android-Q Cts-verifier中<code>AUDIO</code>模块新增MIDI Test、Native MIDI API Test、<del>ProAudio Test</del>三条case，需要使用到USB声卡及新买的两根MIDI线，另外需要安装两个指定apk如下：<br><img src="/Android-Q/apk_name.png" alt="Apk"><blockquote>
 <p>PS：Cts verifier 10.0_r2套件已将ProAudio Test删除，测试时仅安装MIDI+BTLE.apk即可</p>
 </blockquote>
 <ol>
-<li>1.1 MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/2019/12/20/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
-<li><del>1.2 ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/2019/12/20/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
+<li>1.1 MIDI Test、Native MIDI API Test：两条Case的测试界面如下图，其中USB MIDI Loopback Test使用普通USB MIDI线连接声卡测试通过，Bluetooth MIDI Loopback Test使用带蓝牙功能的MIDI线连接声卡，测试机器需要安装MIDI+BTLE.apk以 配对MIDI线蓝牙（MD-BT01）进行测试：<br><img src="/Android-Q/MIDI_Test.png" alt="MIDI_test"></li>
+<li><del>1.2 ProAudio Test：测试该case需要使用3.5mm封闭式回环耳机，安装Loopback.apk，设置成如下选项更易测试通过：</del><br><img src="/Android-Q/ProAudio_Test.png" alt="MIDI_test"></li>
 </ol>
 </li>
 <li><code>HARDWARE</code>模块裁剪了GNSS和GPS相关测试项；</li>
@@ -233,7 +235,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">Android-GMS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Android-GMS</a>
         		</li>
       		
 		</ul>
@@ -248,35 +250,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+      <a href="javascript:;" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+          <a class="google share-sns" href="javascript:;" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -286,7 +288,7 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/20/Android-Q/" alt="微信分享二维码">
@@ -325,7 +327,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -341,7 +343,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、准备工作"><span class="toc-number">1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、CTS"><span class="toc-number">2.</span> <span class="toc-text">二、CTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、CTS-Verifier"><span class="toc-number">3.</span> <span class="toc-text">三、CTS-Verifier</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81CTS"><span class="toc-number">2.</span> <span class="toc-text">二、CTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81CTS-Verifier"><span class="toc-number">3.</span> <span class="toc-text">三、CTS-Verifier</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -440,13 +442,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -467,63 +469,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">心理</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
               </li>
             
             <div class="clearfix"></div>

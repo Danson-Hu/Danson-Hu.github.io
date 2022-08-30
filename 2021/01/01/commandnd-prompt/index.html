@@ -9,14 +9,17 @@
   <title>终端窗口提示符显示时间 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考链接:    【Linux】让命令提示符显示日期和时间   Ubuntu 18.04终端颜色个性化设置   Windows powershell: changing the command prompt   windows如何在cmd命令行提示符中显示当前的时间">
-<meta name="keywords" content="Linux,Windows">
 <meta property="og:type" content="article">
 <meta property="og:title" content="终端窗口提示符显示时间">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;01&#x2F;01&#x2F;commandnd-prompt&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2021/01/01/commandnd-prompt/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="参考链接:    【Linux】让命令提示符显示日期和时间   Ubuntu 18.04终端颜色个性化设置   Windows powershell: changing the command prompt   windows如何在cmd命令行提示符中显示当前的时间">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-30T13:35:34.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-01T10:38:49.000Z">
+<meta property="article:modified_time" content="2021-03-30T13:35:34.000Z">
+<meta property="article:author" content="道 信">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -35,7 +38,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -49,7 +52,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">道 信</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -105,7 +108,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">道 信</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -167,29 +170,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
 <p>参考链接:  </p>
 <ul>
-<li><a href="https://blog.csdn.net/qazx123q/article/details/88846288" target="_blank" rel="noopener">【Linux】让命令提示符显示日期和时间</a>  </li>
-<li><a href="https://www.linuxidc.com/Linux/2020-01/162142.htm" target="_blank" rel="noopener">Ubuntu 18.04终端颜色个性化设置</a>  </li>
-<li><a href="https://stackoverrun.com/cn/q/1413669" target="_blank" rel="noopener">Windows powershell: changing the command prompt</a>  </li>
-<li><a href="https://blog.csdn.net/yzsind/article/details/2883295" target="_blank" rel="noopener">windows如何在cmd命令行提示符中显示当前的时间</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qazx123q/article/details/88846288">【Linux】让命令提示符显示日期和时间</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2020-01/162142.htm">Ubuntu 18.04终端颜色个性化设置</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://stackoverrun.com/cn/q/1413669">Windows powershell: changing the command prompt</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yzsind/article/details/2883295">windows如何在cmd命令行提示符中显示当前的时间</a></li>
 </ul>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 <h3 id="Ubuntu-Terminal"><a href="#Ubuntu-Terminal" class="headerlink" title="Ubuntu Terminal"></a>Ubuntu Terminal</h3><ol>
 <li>编辑配置文件<br>在终端输入<code>gedit ~/.bashrc</code>  </li>
-<li>一般修改以下代码块<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$color_prompt</span>"</span> = yes ]; <span class="keyword">then</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    PS1=<span class="string">'$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">else</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">    PS1=<span class="string">'$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ '</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="keyword">fi</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="built_in">unset</span> color_prompt force_color_prompt</span></pre></td></tr></table></figure></li>
+<li>一般修改以下代码块<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$color_prompt</span>&quot;</span> = <span class="built_in">yes</span> ]; <span class="keyword">then</span></span><br><span class="line">    PS1=<span class="string">&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    PS1=<span class="string">&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#x27;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">unset</span> color_prompt force_color_prompt</span><br></pre></td></tr></table></figure></li>
 <li>比如在提示符账号名称前添加时间戳显示(添加\t参数)  <ol>
-<li>3.1 如果是普通用户，修改if条件下语句即可:<br><code>PS1=&#39;${debian_chroot:+($debian_chroot)\t \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code>  </li>
-<li>3.2 如果是root用户，则修改else下语句:<br><code>PS1=&#39;${debian_chroot:+($debian_chroot)}\t \[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#39;</code>  </li>
+<li>3.1 如果是普通用户，修改if条件下语句即可:<br><code>PS1=&#39;$&#123;debian_chroot:+($debian_chroot)\t \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code>  </li>
+<li>3.2 如果是root用户，则修改else下语句:<br><code>PS1=&#39;$&#123;debian_chroot:+($debian_chroot)&#125;\t \[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#39;</code></li>
 </ol>
 </li>
-<li>保存修改后，在终端重新读取下配置文件<br><code>source ~/.bashrc</code>  </li>
+<li>保存修改后，在终端重新读取下配置文件<br><code>source ~/.bashrc</code></li>
 </ol>
 <h3 id="Windows-Powershell"><a href="#Windows-Powershell" class="headerlink" title="Windows Powershell"></a>Windows Powershell</h3><ol>
-<li>编辑配置文件<br>使用管理员身份打开一个Powershell窗口，输入<code>Notepad $profile</code>以编辑配置文件。如果该文件不存在，建议在电脑文档目录下新建<code>WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>文件。向文件内粘贴以下代码:<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> prompt &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="variable">$dateTime</span> = get-date -Format <span class="string">"MM.dd HH:mm:ss"</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="variable">$currentDirectory</span> = $(Get-Location)</span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="variable">$UncRoot</span> = <span class="variable">$currentDirectory</span>.Drive.DisplayRoot</span></pre></td></tr><tr><td class="code"><pre><span class="line">       write-host <span class="string">"<span class="variable">$dateTime</span>"</span> -NoNewline -ForegroundColor Yellow</span></pre></td></tr><tr><td class="code"><pre><span class="line">       write-host <span class="string">" <span class="variable">$UncRoot</span>"</span> -ForegroundColor Gray</span></pre></td></tr><tr><td class="code"><pre><span class="line">       write-host <span class="string">"PS <span class="variable">$(Convert-Path $currentDirectory)</span>&gt;"</span> -NoNewline -ForegroundColor White</span></pre></td></tr><tr><td class="code"><pre><span class="line">       <span class="built_in">return</span> <span class="string">" "</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></li>
+<li>编辑配置文件<br>使用管理员身份打开一个Powershell窗口，输入<code>Notepad $profile</code>以编辑配置文件。如果该文件不存在，建议在电脑文档目录下新建<code>WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>文件。向文件内粘贴以下代码:<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> prompt &#123;</span><br><span class="line">       <span class="variable">$dateTime</span> = get-date -Format <span class="string">&quot;MM.dd HH:mm:ss&quot;</span></span><br><span class="line">       <span class="variable">$currentDirectory</span> = $(Get-Location)</span><br><span class="line">       <span class="variable">$UncRoot</span> = <span class="variable">$currentDirectory</span>.Drive.DisplayRoot</span><br><span class="line">       write-host <span class="string">&quot;<span class="variable">$dateTime</span>&quot;</span> -NoNewline -ForegroundColor Yellow</span><br><span class="line">       write-host <span class="string">&quot; <span class="variable">$UncRoot</span>&quot;</span> -ForegroundColor Gray</span><br><span class="line">       write-host <span class="string">&quot;PS <span class="subst">$(Convert-Path $currentDirectory)</span>&gt;&quot;</span> -NoNewline -ForegroundColor White</span><br><span class="line">       <span class="built_in">return</span> <span class="string">&quot; &quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>保存配置文件，重新打开windows Powershell即可生效</li>
 </ol>
 <h3 id="Windows-CMD"><a href="#Windows-CMD" class="headerlink" title="Windows CMD"></a>Windows CMD</h3><p>打开一个CMD窗口，直接输入<code>PROMPT $P$G$D$T$G</code>或<code>PROMPT=$E[33m$D$T$H$H$H$S$E[37m$M$_$E[1m$P$G</code>立即生效，输入<code>prompt</code>恢复默认格式。</p>
@@ -206,11 +209,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">Windows</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
         		</li>
       		
 		</ul>
@@ -225,35 +228,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+      <a href="javascript:;" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+          <a class="google share-sns" href="javascript:;" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -263,7 +266,7 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/01/01/commandnd-prompt/" alt="微信分享二维码">
@@ -302,7 +305,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -417,13 +420,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -444,63 +447,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">心理</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
               </li>
             
             <div class="clearfix"></div>

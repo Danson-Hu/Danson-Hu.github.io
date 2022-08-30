@@ -9,14 +9,16 @@
   <title>python argparse | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_36653505&#x2F;article&#x2F;details&#x2F;83788460 https:&#x2F;&#x2F;docs.python.org&#x2F;zh-cn&#x2F;3.7&#x2F;library&#x2F;argparse.html https:&#x2F;&#x2F;docs.python.org&#x2F;zh-cn&#x2F;3.7&#x2F;howto&#x2F;argparse.html">
-<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python argparse">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;01&#x2F;24&#x2F;python+argparse&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2021/01/24/python+argparse/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="参考 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_36653505&#x2F;article&#x2F;details&#x2F;83788460 https:&#x2F;&#x2F;docs.python.org&#x2F;zh-cn&#x2F;3.7&#x2F;library&#x2F;argparse.html https:&#x2F;&#x2F;docs.python.org&#x2F;zh-cn&#x2F;3.7&#x2F;howto&#x2F;argparse.html">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-30T14:10:30.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-24T12:14:05.000Z">
+<meta property="article:modified_time" content="2021-03-30T14:10:30.000Z">
+<meta property="article:author" content="道 信">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Danson" type="application/atom+xml">
@@ -35,7 +37,7 @@
 
   
 
-</head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -49,7 +51,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">道 信</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -105,7 +107,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">道 信</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -167,15 +169,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://blog.csdn.net/qq_36653505/article/details/83788460" target="_blank" rel="noopener">https://blog.csdn.net/qq_36653505/article/details/83788460</a></li>
-<li><a href="https://docs.python.org/zh-cn/3.7/library/argparse.html" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3.7/library/argparse.html</a></li>
-<li><a href="https://docs.python.org/zh-cn/3.7/howto/argparse.html" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3.7/howto/argparse.html</a><a id="more"></a>
-
-</li>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36653505/article/details/83788460">https://blog.csdn.net/qq_36653505/article/details/83788460</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/argparse.html">https://docs.python.org/zh-cn/3.7/library/argparse.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/howto/argparse.html">https://docs.python.org/zh-cn/3.7/howto/argparse.html</a><span id="more"></span></li>
 </ol>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://docs.python.org/zh-cn/3.7/library/argparse.html" target="_blank" rel="noopener">argparse</a> 是Python内置的一个用于命令项选项与参数解析的模块，通过在程序中定义好我们需要的参数， <code>argparse</code> 将会从 <code>sys.argv</code> 中解析出这些参数，自动生成帮助和使用信息，并在用户给程序传入无效参数时报出错误信息。当然，Python也有第三方的库可用于命令行解析，而且功能也更加强大，比如<code>docopt</code>，<code>Click</code>。</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 使用argparse的第一步是创建一个ArgumentParser对象,其中包含将命令行解析成Python数据类型所需的全部信息</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">parser = argparse.ArgumentParser()</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 添加参数。nargs="*" 表示可传入多个选项，聚集在一个列表内</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">parser.add_argument(<span class="string">"-t"</span>, <span class="string">"--type"</span>, help=<span class="string">"add type"</span>, type=str)</span></pre></td></tr><tr><td class="code"><pre><span class="line">parser.add_argument(<span class="string">"-s"</span>, <span class="string">"--sn"</span>, help=<span class="string">"add device SN number"</span>, nargs=<span class="string">"*"</span>, type=str)</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># 解析参数。它将检查命令行，把每个参数转换为适当的类型然后调用相应的操作</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">args = parser.parse_args()</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">print(args.type)</span></pre></td></tr><tr><td class="code"><pre><span class="line">print(args.sn)</span></pre></td></tr></table></figure>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/argparse.html">argparse</a> 是Python内置的一个用于命令项选项与参数解析的模块，通过在程序中定义好我们需要的参数， <code>argparse</code> 将会从 <code>sys.argv</code> 中解析出这些参数，自动生成帮助和使用信息，并在用户给程序传入无效参数时报出错误信息。当然，Python也有第三方的库可用于命令行解析，而且功能也更加强大，比如<code>docopt</code>，<code>Click</code>。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用argparse的第一步是创建一个ArgumentParser对象,其中包含将命令行解析成Python数据类型所需的全部信息</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"><span class="comment"># 添加参数。nargs=&quot;*&quot; 表示可传入多个选项，聚集在一个列表内</span></span><br><span class="line">parser.add_argument(<span class="string">&quot;-t&quot;</span>, <span class="string">&quot;--type&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;add type&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>)</span><br><span class="line">parser.add_argument(<span class="string">&quot;-s&quot;</span>, <span class="string">&quot;--sn&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;add device SN number&quot;</span>, nargs=<span class="string">&quot;*&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>)</span><br><span class="line"><span class="comment"># 解析参数。它将检查命令行，把每个参数转换为适当的类型然后调用相应的操作</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(args.<span class="built_in">type</span>)</span><br><span class="line"><span class="built_in">print</span>(args.sn)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>add_argument() 方法</strong><br><code>ArgumentParser.add_argument(name or flags...[, action][, nargs][, const][, default][, type][, choices][, required][, help][, metavar][, dest])</code><br>定义单个的命令行参数应当如何解析。每个形参都在下面有它自己更多的描述，长话短说有：<br>name or flags - 一个命名或者一个选项字符串的列表，例如 foo 或 -f, –foo。<br>action - 当参数在命令行中出现时使用的动作基本类型。<br>nargs - 命令行参数应当消耗的数目。<br>const - 被一些 action 和 nargs 选择所需求的常数。<br>default - 当参数未在命令行中出现时使用的值。<br>type - 命令行参数应当被转换成的类型。<br>choices - 可用的参数的容器。<br>required - 此命令行选项是否可省略 （仅选项可用）。<br>help - 一个此选项作用的简单描述。<br>metavar - 在使用方法消息中使用的参数值示例。<br>dest - 被添加到 parse_args() 所返回对象上的属性名。  </p>
 </blockquote>
@@ -192,7 +192,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -207,35 +207,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+      <a href="javascript:;" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+          <a class="google share-sns" href="javascript:;" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -245,7 +245,7 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/01/24/python+argparse/" alt="微信分享二维码">
@@ -284,7 +284,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -300,7 +300,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">3.</span> <span class="toc-text">用法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">用法</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -399,13 +399,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -426,63 +426,63 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">「胡」言乱语</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">心理</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
               </li>
             
             <div class="clearfix"></div>
