@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Danson</title>
+  <title>根据表格内容新建文件夹 | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="需求从表格读取数据并批量创建对应文件夹   解决思路参考博客。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用zip(list1，list2)方法读取两个列表，拼接文件夹名称，最后使用os.makedirs()方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能。目前封装成Windows命令行交互工具，以后有时间优化成GUI工具。点击下载程序，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Danson">
+<meta property="og:title" content="根据表格内容新建文件夹">
 <meta property="og:url" content="http://yoursite.com/2020/06/23/Excel-makedirs/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="需求从表格读取数据并批量创建对应文件夹   解决思路参考博客。通过读取表格里的任务记录所在列生成一个列表；自定义一个区间的数字列表（两个列表长度匹配），使用zip(list1，list2)方法读取两个列表，拼接文件夹名称，最后使用os.makedirs()方法新建文件夹。根据自己需求，新增了自定义文件夹序列前缀功能。目前封装成Windows命令行交互工具，以后有时间优化成GUI工具。点击下载程序，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-23T12:14:05.000Z">
-<meta property="article:modified_time" content="2021-03-30T13:36:36.000Z">
+<meta property="article:modified_time" content="2022-08-30T15:49:00.406Z">
 <meta property="article:author" content="道 信">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -51,7 +51,7 @@
 			<img src="/photos/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">道 信</a></h1>
 		</hgroup>
 		
 
@@ -107,7 +107,7 @@
 				<img src="/photos/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">道 信</h1>
 			</hgroup>
 			
 			
@@ -151,6 +151,21 @@
           <div id="js-content" class="content-ll">
             <article id="post-Excel-makedirs" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      根据表格内容新建文件夹
+    </h1>
+  
+
+        
+        <a href="/2020/06/23/Excel-makedirs/" class="archive-article-date">
+  	<time datetime="2020-06-23T12:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-23</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -413,15 +428,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,14 +456,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
@@ -458,6 +465,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">诗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心理</a>
               </li>
              
               <li class="article-tag-list-item">
