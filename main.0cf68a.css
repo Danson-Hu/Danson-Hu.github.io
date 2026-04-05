@@ -2034,7 +2034,7 @@ pre .id {
   width: 14px;
   height: 14px;
   position: absolute;
-  top: 15px;
+  top: 7px;
   left: 2px;
   -webkit-transform: translateY(-50%);
   border-radius: 100%;
@@ -3191,19 +3191,7 @@ pre .id {
 
   .tools-col .tools-section .search-tag.tagcloud,
   .tools-col .tools-wrap .search-tag.tagcloud {
-    margin-right: 0;
-    text-align: center
-  }
-  .tools-col .tools-section .search-tag.tagcloud .search-tag-wording,
-  .tools-col .tools-wrap .search-tag.tagcloud .search-tag-wording {
-    float: none;
-    display: inline-block;
-    margin: 4px 10px 0 0
-  }
-  .tools-col .tools-section .search-tag.tagcloud .search-switch,
-  .tools-col .tools-wrap .search-tag.tagcloud .search-switch {
-    display: inline-block;
-    vertical-align: middle
+    margin-right: -30px
   }
 
   .tools-col .tools-section .search-ul .search-li,
