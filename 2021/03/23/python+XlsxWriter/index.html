@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://danson-hu.github.io">
+  <link rel="dns-prefetch" href="https://20500405.xyz">
   <title>python xlsxwriter | Danson</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考 https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;index.html https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;examples.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python xlsxwriter">
-<meta property="og:url" content="https://danson-hu.github.io/2021/03/23/python+XlsxWriter/index.html">
+<meta property="og:url" content="https://20500405.xyz/2021/03/23/python+XlsxWriter/index.html">
 <meta property="og:site_name" content="Danson">
 <meta property="og:description" content="参考 https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;index.html https:&#x2F;&#x2F;xlsxwriter.readthedocs.io&#x2F;examples.html">
 <meta property="og:locale" content="zh_CN">
@@ -173,7 +173,7 @@
 <li><a target="_blank" rel="noopener" href="https://xlsxwriter.readthedocs.io/index.html">https://xlsxwriter.readthedocs.io/index.html</a></li>
 <li><a target="_blank" rel="noopener" href="https://xlsxwriter.readthedocs.io/examples.html">https://xlsxwriter.readthedocs.io/examples.html</a><span id="more"></span></li>
 </ol>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>xlsxwriter</code> 可以将文本，数字和公式写入多个工作表，几乎是除Excel自身之外功能最强的工具，支持格式设置，图像，图表，页面设置，条件格式设置，vba写入等功能。但是它只支持xlsx格式，并且无法对工作表内数据进行读取。处理Excel的模块还有 <code>python-excel</code> 与 <code>OpenPyXL</code> ，它们都可以对工作表内数据进行读取操作。<code>python-excel</code> 含 <code>xlrd </code> 、<code>xlwt</code> 和 <code>xlutils</code> 三大模块，分别提供读、写和其他功能，<code>xlrd</code> 的使用可参考<a href="https://danson-hu.github.io/2020/06/23/Excel-makedirs/">我的这篇博客</a>。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>xlsxwriter</code> 可以将文本，数字和公式写入多个工作表，几乎是除Excel自身之外功能最强的工具，支持格式设置，图像，图表，页面设置，条件格式设置，vba写入等功能。但是它只支持xlsx格式，并且无法对工作表内数据进行读取。处理Excel的模块还有 <code>python-excel</code> 与 <code>OpenPyXL</code> ，它们都可以对工作表内数据进行读取操作。<code>python-excel</code> 含 <code>xlrd </code> 、<code>xlwt</code> 和 <code>xlutils</code> 三大模块，分别提供读、写和其他功能，<code>xlrd</code> 的使用可参考<a target="_blank" rel="noopener" href="https://danson-hu.github.io/2020/06/23/Excel-makedirs/">我的这篇博客</a>。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>本例仅介绍了一些基本功能：创建工作薄工作表、设置列宽、添加格式对象和写入数据。进阶功能强烈建议查看<a target="_blank" rel="noopener" href="https://xlsxwriter.readthedocs.io/index.html">官方文档</a>。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> xlsxwriter</span><br><span class="line"></span><br><span class="line">workbook = xlsxwriter.Workbook(<span class="string">&#x27;result.xlsx&#x27;</span>)  <span class="comment"># 创建excel文件</span></span><br><span class="line">worksheet = workbook.add_worksheet()  <span class="comment"># 新建一个sheet页，不带名字默认为 &#x27;sheet1&#x27;</span></span><br><span class="line">worksheet.set_column(<span class="string">&#x27;A:D&#x27;</span>, <span class="number">15</span>)  <span class="comment"># 设置A列到D列列宽为15</span></span><br><span class="line">title_format = workbook.add_format(&#123;<span class="string">&#x27;bold&#x27;</span>: <span class="literal">True</span>, <span class="string">&#x27;align&#x27;</span>: <span class="string">&#x27;center&#x27;</span>&#125;)  <span class="comment"># 设置一个加粗并且水平居中的格式对象</span></span><br><span class="line"><span class="comment"># 要写入的内容</span></span><br><span class="line">example = (</span><br><span class="line">    [<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="number">24</span>],</span><br><span class="line">    [<span class="string">&#x27;李四&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">20</span>],</span><br><span class="line">    [<span class="string">&#x27;王五&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="number">18</span>],</span><br><span class="line">    [<span class="string">&#x27;铁锤&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">20</span>]</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 写入首行标题。支持 [字母][数字] 和 [序列],[序列] 两种指定单元格方式，即 A1 相当于 0,0</span></span><br><span class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">&#x27;姓名&#x27;</span>, title_format)  <span class="comment"># 首行首个单元格</span></span><br><span class="line">worksheet.write(<span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;性别&#x27;</span>, title_format)</span><br><span class="line">worksheet.write(<span class="string">&#x27;C1&#x27;</span>, <span class="string">&#x27;年龄&#x27;</span>, title_format)</span><br><span class="line"><span class="comment"># 写入数据</span></span><br><span class="line">row = <span class="number">1</span></span><br><span class="line">col = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> name, sex, age <span class="keyword">in</span> (example):</span><br><span class="line">    worksheet.write_string(row, col, name)</span><br><span class="line">    worksheet.write_string(row, col + <span class="number">1</span>, sex)</span><br><span class="line">    worksheet.write_number(row, col + <span class="number">2</span>, age)   <span class="comment"># 指定写入数值</span></span><br><span class="line">    row += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">workbook.close()    <span class="comment"># 关闭</span></span><br></pre></td></tr></table></figure>
       
@@ -244,7 +244,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://danson-hu.github.io/2021/03/23/python+XlsxWriter/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://20500405.xyz/2021/03/23/python+XlsxWriter/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -422,10 +422,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
@@ -434,15 +430,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,7 +438,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,11 +458,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">诗</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,6 +471,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">音</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
