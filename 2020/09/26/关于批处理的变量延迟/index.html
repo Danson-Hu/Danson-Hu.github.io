@@ -192,7 +192,7 @@ var _hmt = _hmt || [];
 <h2 id="项目功能"><a href="#项目功能" class="headerlink" title="项目功能"></a>项目功能</h2><p>周期性读取指定安卓设备的WiFi连接状态（开启或关闭），若判定为关闭状态，则通过命令开启。<del>当然，仅循环一个开启命令也是可以的。</del></p>
 <span id="more"></span>
 
-<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">::开启变量延迟</span><br><span class="line">setlocal enabledelayedexpansion</span><br><span class="line"></span><br><span class="line">adb devices</span><br><span class="line"><span class="built_in">set</span> /p sn=请输入设备序列号：</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> /l %%n <span class="keyword">in</span> (1,1,24) <span class="keyword">do</span> (</span><br><span class="line">    adb shell <span class="built_in">sleep</span> 1800</span><br><span class="line">    <span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;adb -s %sn% shell settings get global wifi_on&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">set</span> result=%%i</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">echo</span> !result!</span><br><span class="line">    <span class="keyword">if</span> !result! equ 0 (</span><br><span class="line">        <span class="built_in">echo</span> Enable Wifi</span><br><span class="line">        adb -s %sn% shell svc wifi <span class="built_in">enable</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">::开启变量延迟</span><br><span class="line">setlocal enabledelayedexpansion</span><br><span class="line"></span><br><span class="line">adb devices</span><br><span class="line"><span class="built_in">set</span> /p sn=请输入设备序列号：</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> /l %%n <span class="keyword">in</span> (1,1,24) <span class="keyword">do</span> (</span><br><span class="line">    adb shell <span class="built_in">sleep</span> 1800</span><br><span class="line">    <span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;adb -s %sn% shell settings get global wifi_on&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">set</span> result=%%i</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">echo</span> !result!</span><br><span class="line">    <span class="keyword">if</span> !result! equ 0 (</span><br><span class="line">        <span class="built_in">echo</span> Enable Wifi</span><br><span class="line">        adb -s %sn% shell svc wifi <span class="built_in">enable</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 <ol>
 <li>使用<code>setlocal enabledelayedexpansion</code>开启变量延迟，匹配<code>!变量名!</code>处理变量；</li>
 <li>通过<code>adb shell settings get global wifi_on</code>命令获取WiFi状态：0为关闭，1为开启；</li>
@@ -463,6 +463,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -471,15 +475,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,19 +491,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">诗</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,7 +499,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
             
             <div class="clearfix"></div>
@@ -636,5 +636,9 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/clipboard_use.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":75,"vOffset":-20},"mobile":{"show":false},"react":{"opacity":0.8}});</script></body>
 </html>

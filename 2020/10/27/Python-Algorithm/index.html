@@ -201,7 +201,7 @@ var _hmt = _hmt || [];
 <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
 </ul>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bubbleSort</span>(<span class="params">aList</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(aList)-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>):	<span class="comment"># i每次遍历需要比较的次数，是逐渐减小的</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i):		<span class="comment"># j为列表下标</span></span><br><span class="line">            <span class="keyword">if</span> aList[j] &gt; aList[j+<span class="number">1</span>]:</span><br><span class="line">                aList[j], aList[j+<span class="number">1</span>] = aList[j+<span class="number">1</span>], aList[j]</span><br><span class="line">    <span class="keyword">return</span> aList</span><br><span class="line"></span><br><span class="line">li = [<span class="number">54</span>, <span class="number">26</span>, <span class="number">93</span>, <span class="number">17</span>, <span class="number">77</span>, <span class="number">31</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">20</span>, <span class="number">26</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(bubbleSort(li))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bubbleSort</span>(<span class="params">aList</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(aList)-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>):	<span class="comment"># i每次遍历需要比较的次数，是逐渐减小的</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i):		<span class="comment"># j为列表下标</span></span><br><span class="line">            <span class="keyword">if</span> aList[j] &gt; aList[j+<span class="number">1</span>]:</span><br><span class="line">                aList[j], aList[j+<span class="number">1</span>] = aList[j+<span class="number">1</span>], aList[j]</span><br><span class="line">    <span class="keyword">return</span> aList</span><br><span class="line"></span><br><span class="line">li = [<span class="number">54</span>, <span class="number">26</span>, <span class="number">93</span>, <span class="number">17</span>, <span class="number">77</span>, <span class="number">31</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">20</span>, <span class="number">26</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(bubbleSort(li))</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、二分法查找"><a href="#二、二分法查找" class="headerlink" title="二、二分法查找"></a>二、<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/288459">二分法查找</a></h3><p><strong>二分法可以分为三类：二分查找算法、二分排序算法、二分合并算法。</strong><br>二分查找又被称为折半查找。假设我们有一个列表，要在该列表中查找某一个元素，我们需要先对该列表进行排序（假设是从小到大的排序），然后取这个列表的中值与待查找的元素进行比较，如果该元素等于中值，则查找成功；如果该元素大于中值，则接下来在右边的子表（之前二分出来的两个子表中的右边子表）中继续进行以中值为中心的折半查找；如果该元素小于中值，则在左边的子表中继续进行以中值为中心的折半查找…如此循环，直到查找到目标元素，此时查找成功，或者直到子表再也不能进行二分为止，此时查找不成功。</p>
 <blockquote>
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
 <li>二分的查找算法的时间复杂度是O（log n)</li>
 </ul>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dichotomySearch</span>(<span class="params">num, myList</span>):</span><br><span class="line">    myList = <span class="built_in">sorted</span>(myList)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;排序后列表：&#x27;</span>, myList)</span><br><span class="line"></span><br><span class="line">    first = <span class="number">0</span></span><br><span class="line">    last = <span class="built_in">len</span>(myList) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> first &lt;= last:</span><br><span class="line">        middle = (first + last) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> myList[middle] == num:</span><br><span class="line">            <span class="keyword">return</span> middle</span><br><span class="line">        <span class="keyword">elif</span> myList[middle] &gt; num:</span><br><span class="line">            last = middle - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> myList[middle] &lt; num:</span><br><span class="line">            first = middle + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">key = <span class="number">12</span></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">7</span>, <span class="number">25</span>, <span class="number">10</span>]</span><br><span class="line">result = dichotomySearch(key, list1)</span><br><span class="line"><span class="keyword">if</span> result <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;查找的元素是&#x27;</span>, key, <span class="string">&#x27;对应有序列表中序号下标为：&#x27;</span>, result)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;未找到该元素&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dichotomySearch</span>(<span class="params">num, myList</span>):</span><br><span class="line">    myList = <span class="built_in">sorted</span>(myList)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;排序后列表：&#x27;</span>, myList)</span><br><span class="line"></span><br><span class="line">    first = <span class="number">0</span></span><br><span class="line">    last = <span class="built_in">len</span>(myList) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> first &lt;= last:</span><br><span class="line">        middle = (first + last) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> myList[middle] == num:</span><br><span class="line">            <span class="keyword">return</span> middle</span><br><span class="line">        <span class="keyword">elif</span> myList[middle] &gt; num:</span><br><span class="line">            last = middle - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> myList[middle] &lt; num:</span><br><span class="line">            first = middle + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">key = <span class="number">12</span></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">7</span>, <span class="number">25</span>, <span class="number">10</span>]</span><br><span class="line">result = dichotomySearch(key, list1)</span><br><span class="line"><span class="keyword">if</span> result <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;查找的元素是&#x27;</span>, key, <span class="string">&#x27;对应有序列表中序号下标为：&#x27;</span>, result)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;未找到该元素&#x27;</span>)</span><br></pre></td></tr></table></figure>
       
 
       
@@ -466,6 +466,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -474,15 +478,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,19 +494,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">诗</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,7 +502,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
             
             <div class="clearfix"></div>
@@ -639,5 +639,9 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/clipboard_use.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":75,"vOffset":-20},"mobile":{"show":false},"react":{"opacity":0.8}});</script></body>
 </html>

@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 
 <h3 id="Ubuntu-Terminal"><a href="#Ubuntu-Terminal" class="headerlink" title="Ubuntu Terminal"></a>Ubuntu Terminal</h3><ol>
 <li>编辑配置文件<br>在终端输入<code>gedit ~/.bashrc</code>  </li>
-<li>一般修改以下代码块<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$color_prompt</span>&quot;</span> = <span class="built_in">yes</span> ]; <span class="keyword">then</span></span><br><span class="line">    PS1=<span class="string">&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    PS1=<span class="string">&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#x27;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">unset</span> color_prompt force_color_prompt</span><br></pre></td></tr></table></figure></li>
+<li>一般修改以下代码块<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$color_prompt</span>&quot;</span> = <span class="built_in">yes</span> ]; <span class="keyword">then</span></span><br><span class="line">    PS1=<span class="string">&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    PS1=<span class="string">&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#x27;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">unset</span> color_prompt force_color_prompt</span><br></pre></td></tr></table></figure></li>
 <li>比如在提示符账号名称前添加时间戳显示(添加\t参数)  <ol>
 <li>3.1 如果是普通用户，修改if条件下语句即可:<br><code>PS1=&#39;$&#123;debian_chroot:+($debian_chroot)\t \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#39;</code>  </li>
 <li>3.2 如果是root用户，则修改else下语句:<br><code>PS1=&#39;$&#123;debian_chroot:+($debian_chroot)&#125;\t \[\033[01;32m\]\t\[\033[00m\] \u@\h:\w\$ &#39;</code></li>
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
 <li>保存修改后，在终端重新读取下配置文件<br><code>source ~/.bashrc</code></li>
 </ol>
 <h3 id="Windows-Powershell"><a href="#Windows-Powershell" class="headerlink" title="Windows Powershell"></a>Windows Powershell</h3><ol>
-<li>编辑配置文件<br>使用管理员身份打开一个Powershell窗口，输入<code>Notepad $profile</code>以编辑配置文件。如果该文件不存在，建议在电脑文档目录下新建<code>WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>文件。向文件内粘贴以下代码:<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> prompt &#123;</span><br><span class="line">       <span class="variable">$dateTime</span> = get-date -Format <span class="string">&quot;MM.dd HH:mm:ss&quot;</span></span><br><span class="line">       <span class="variable">$currentDirectory</span> = $(Get-Location)</span><br><span class="line">       <span class="variable">$UncRoot</span> = <span class="variable">$currentDirectory</span>.Drive.DisplayRoot</span><br><span class="line">       write-host <span class="string">&quot;<span class="variable">$dateTime</span>&quot;</span> -NoNewline -ForegroundColor Yellow</span><br><span class="line">       write-host <span class="string">&quot; <span class="variable">$UncRoot</span>&quot;</span> -ForegroundColor Gray</span><br><span class="line">       write-host <span class="string">&quot;PS <span class="subst">$(Convert-Path $currentDirectory)</span>&gt;&quot;</span> -NoNewline -ForegroundColor White</span><br><span class="line">       <span class="built_in">return</span> <span class="string">&quot; &quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编辑配置文件<br>使用管理员身份打开一个Powershell窗口，输入<code>Notepad $profile</code>以编辑配置文件。如果该文件不存在，建议在电脑文档目录下新建<code>WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>文件。向文件内粘贴以下代码:<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> prompt &#123;</span><br><span class="line">       <span class="variable">$dateTime</span> = get-date -Format <span class="string">&quot;MM.dd HH:mm:ss&quot;</span></span><br><span class="line">       <span class="variable">$currentDirectory</span> = $(Get-Location)</span><br><span class="line">       <span class="variable">$UncRoot</span> = <span class="variable">$currentDirectory</span>.Drive.DisplayRoot</span><br><span class="line">       write-host <span class="string">&quot;<span class="variable">$dateTime</span>&quot;</span> -NoNewline -ForegroundColor Yellow</span><br><span class="line">       write-host <span class="string">&quot; <span class="variable">$UncRoot</span>&quot;</span> -ForegroundColor Gray</span><br><span class="line">       write-host <span class="string">&quot;PS <span class="subst">$(Convert-Path $currentDirectory)</span>&gt;&quot;</span> -NoNewline -ForegroundColor White</span><br><span class="line">       <span class="built_in">return</span> <span class="string">&quot; &quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>保存配置文件，重新打开windows Powershell即可生效</li>
 </ol>
 <h3 id="Windows-CMD"><a href="#Windows-CMD" class="headerlink" title="Windows CMD"></a>Windows CMD</h3><p>打开一个CMD窗口，直接输入<code>PROMPT $P$G$D$T$G</code>或<code>PROMPT=$E[33m$D$T$H$H$H$S$E[37m$M$_$E[1m$P$G</code>立即生效，输入<code>prompt</code>恢复默认格式。</p>
@@ -474,6 +474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -482,15 +486,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
+                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,19 +502,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">诗</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,7 +510,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
             
             <div class="clearfix"></div>
@@ -647,5 +647,9 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+  <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/clipboard_use.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":75,"vOffset":-20},"mobile":{"show":false},"react":{"opacity":0.8}});</script></body>
 </html>
