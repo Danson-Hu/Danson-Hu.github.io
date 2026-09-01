@@ -400,7 +400,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/29/Monkey/">Monkey源码解析</a>
+      <a class="article-title" href="/2022/07/29/Monkey/">Monkey 源码解析</a>
     </h1>
   
 
@@ -413,8 +413,33 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://developer.android.com/studio/test/monkey">官网指导</a><br><a target="_blank" rel="noopener" href="https://github.com/aosp-mirror/platform_development/blob/master/cmds/monkey/src/com/android/commands/monkey/Monkey.java">monkey源码</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43273051/article/details/89304338">monkey源码解析</a></p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>Monkey是android自带的命令行工具，可以运行在模拟器里或实际设备中。它向系统发送伪随机的用户事件流(如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试。Monkey测试是一种为了测试软件的稳定性、健壮性的快速有效的方法。</p>
+        <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/studio/test/monkey">官网指导</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/aosp-mirror/platform_development/blob/master/cmds/monkey/src/com/android/commands/monkey/Monkey.java">Monkey 源码</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43273051/article/details/89304338">Monkey 源码解析</a></li>
+</ul>
+<h2 id="源码版本说明"><a href="#源码版本说明" class="headerlink" title="源码版本说明"></a>源码版本说明</h2><p>本文所有 Java 片段均摘自 AOSP 官方镜像 <a target="_blank" rel="noopener" href="https://github.com/aosp-mirror/platform_development">aosp-mirror&#x2F;platform_development</a> 的 <code>master</code> 分支（仓库 HEAD 提交时间 2025-03-27，该镜像已发布至 <code>android16-release</code>），路径 <code>cmds/monkey/src/com/android/commands/monkey/</code>。两个核心文件的最后改动时间：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>最后提交</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Monkey.java</code></td>
+<td>2024-08-19</td>
+<td><code>Use uinput touchscreen to inject monkey touch events</code>，改的是事件注入底层通道</td>
+</tr>
+<tr>
+<td><code>MonkeySourceRandom.java</code></td>
+<td>2022-04-08</td>
+<td>此后未再变更，事件生成逻辑长期稳定</td>
+</tr>
+</tbody></table>
+<p>需要注意的是，<strong>事件百分比的默认值从 Android 6 到当前 master 一直没有变过</strong>，所以下文表格中的默认值同时适用于新旧版本。但如果你在低版本（Android 6&#x2F;7）设备上核对源码，<code>--pct-permission</code>、<code>--pct-rotation</code> 相关代码路径可能与本文略有差异 —— 权限事件（<code>MonkeyPermissionUtil</code>）是 Android 6.0 引入运行时权限后才加入的。</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>Monkey 是 Android 自带的命令行工具，可以运行在模拟器里或实际设备中。它向系统发送伪随机的用户事件流（如按键输入、触摸屏输入、手势输入等），实现对正在开发的应用程序进行压力测试。Monkey 测试是一种为了测试软件的稳定性、健壮性的快速有效的方法。</p>
         
           <a class="article-more-a" href="/2022/07/29/Monkey/#more">more >></a>
         
@@ -1055,7 +1080,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1063,11 +1088,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Android-GMS</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1075,7 +1096,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1083,11 +1104,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1095,15 +1116,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">诗</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,7 +1136,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
