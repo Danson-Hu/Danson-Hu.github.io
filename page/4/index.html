@@ -586,15 +586,26 @@ var _hmt = _hmt || [];
     </div>
   </div>
   
-	<!-- 不蒜子统计 -->
-    <span >
-            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	<!-- 访问统计：Cloudflare Worker + D1 -->
+    <span id="visitor-counter" style="display:none">
+            本站总访问量<span id="site-pv"></span>次
+            <span class="post-meta-divider">|</span>
+            本站访客数<span id="site-uv"></span>人
     </span>
-    <span class="post-meta-divider">|</span>
-    <span >
-            本站访客数<span id="busuanzi_value_site_uv"></span>人
-    </span>
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script>
+    (function () {
+      fetch('/api/counter', { method: 'POST', credentials: 'same-origin', cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (d) {
+          document.getElementById('site-pv').textContent = Number(d.site_pv).toLocaleString();
+          document.getElementById('site-uv').textContent = Number(d.site_uv).toLocaleString();
+          document.getElementById('visitor-counter').style.display = 'inline';
+        })
+        .catch(function () {
+          /* 接口失败时保持隐藏，不显示空标签 */
+        });
+    })();
+    </script>
 	
 </footer>
     </div>
@@ -676,19 +687,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">Android-ADB</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,7 +719,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">思维</a>
+                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,11 +727,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">王小波</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">音</a>
+                <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
               <li class="article-tag-list-item">
