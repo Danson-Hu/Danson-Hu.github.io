@@ -16,7 +16,7 @@
 <meta property="og:description" content="总结一些遇到的问题和解决方法，需注意时效性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-21T12:27:33.000Z">
-<meta property="article:modified_time" content="2021-02-27T05:54:52.000Z">
+<meta property="article:modified_time" content="2026-10-31T09:55:24.521Z">
 <meta property="article:author" content="道 信">
 <meta property="article:tag" content="Android-GMS">
 <meta property="article:tag" content="Android-ADB">
@@ -213,13 +213,13 @@ var _hmt = _hmt || [];
 <li>原机器备份：<br>  <code>adb backup -f com.android.cts.verifier.backup -apk com.android.cts.verifier</code></li>
 <li>导入到新机器：<br>  <code>adb restore com.android.cts.verifier.backup</code></li>
 </ul>
-<h2 id="三：对总模块缺失的报告进行补全（目前比较少遇到）"><a href="#三：对总模块缺失的报告进行补全（目前比较少遇到）" class="headerlink" title="三：对总模块缺失的报告进行补全（目前比较少遇到）"></a>三：对总模块缺失的报告进行补全（目前比较少遇到）</h2><p>CTS测试生成的报告总模块数（非已执行总模块）有缺失，使用命令筛选提取出完整报告与有缺失报告的模块名，然后使用**notepad++**的<code>compear</code>对比插件定位出缺失模块，最后在缺失模块报告的xml文件里补全。  </p>
+<h2 id="三：对总模块缺失的报告进行补全（目前比较少遇到）"><a href="#三：对总模块缺失的报告进行补全（目前比较少遇到）" class="headerlink" title="三：对总模块缺失的报告进行补全（目前比较少遇到）"></a>三：对总模块缺失的报告进行补全（目前比较少遇到）</h2><p>CTS测试生成的报告总模块数（非已执行总模块）有缺失，使用命令筛选提取出完整报告与有缺失报告的模块名，然后使用**notepad++**的<code>Compare</code>对比插件定位出缺失模块，最后在缺失模块报告的xml文件里补全。  </p>
 <ul>
 <li>首先在Windows的cmd窗口执行<code>findstr /c:&quot;Module name&quot; 报告xml文件 &gt; 要生成的提取关键字文件</code>，如：<blockquote>
 <p><code>findstr /c:&quot;Module name&quot; D:\2019.12.12_xx.xx.xx\test_result.xml &gt; D:\complete.txt</code><br><code>findstr /c:&quot;Module name&quot; D:\2019.12.21_xx.xx.xx\test_result.xml &gt; D:\lost.txt</code></p>
 </blockquote>
 </li>
-<li>使用notepad++的compear对比插件定位缺失模块，插件的安装使用参考网上教程</li>
+<li>使用notepad++的Compare对比插件定位缺失模块，插件的安装使用参考网上教程</li>
 <li>在缺失模块报告的xml文件里补全，补充格式参考：  <blockquote>
 <p><code>&lt;Module name=&quot;模块名称&quot; abi=&quot;abi类别&quot; runtime=&quot;0&quot; done=&quot;false&quot; pass=&quot;0&quot; total_tests=&quot;0&quot; /&gt;</code></p>
 </blockquote>
@@ -494,7 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,15 +506,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">「胡」言乱语</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,15 +538,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">音</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">诗</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">鲁讯</a>
+                <a href="javascript:void(0)" class="js-tag color2">音</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">鲁迅</a>
               </li>
              
               <li class="article-tag-list-item">
